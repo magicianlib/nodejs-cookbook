@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>毛玻璃效果登录页面 | 梦幻视觉体验</title>
+    <!-- 引入 Google Fonts 提升字体质感 -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap">
+    <!-- Font Awesome 6 (免费图标库) 用于增加细节图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* 优雅的渐变背景，为毛玻璃效果提供丰富的底色 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            /* 优化字体渲染，让文字更清晰 */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* 添加动态的装饰性光晕，增强背景层次感 */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 60%);
+            animation: subtleMove 20s infinite alternate ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            bottom: -30%;
+            right: -30%;
+            background: radial-gradient(circle at 70% 80%, rgba(255, 215, 150, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+            animation: subtleMoveReverse 18s infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes subtleMove {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translate(5%, 5%) rotate(3deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes subtleMoveReverse {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translate(-4%, -6%) rotate(-2deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* 主容器：实现毛玻璃卡片效果 */
+        .glass-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 450px;
+            margin: 1.5rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* 毛玻璃背景层 - 使用伪元素避免影响文字清晰度 */
+        .glass-container::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: inherit;
+            z-index: -1;
+        }
+
+        /* 鼠标跟随光晕效果层 */
+        .glass-container::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(255, 255, 255, 0.6),
+                    rgba(255, 255, 255, 0.3) 30%,
+                    transparent 60%);
+            transition: opacity 0.15s ease;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+            padding: 2px;
+        }
+
+        .glass-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 55px rgba(0, 0, 0, 0.25);
+        }
+
+        .glass-container:hover::after {
+            opacity: 1;
+        }
+
+        /* 额外的内层光晕效果 */
+        .glass-container .login-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0;
+            background: radial-gradient(250px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(255, 255, 255, 0.15),
+                    transparent 50%);
+            transition: opacity 0.15s ease;
+        }
+
+        .glass-container:hover .login-card::before {
+            opacity: 1;
+        }
+
+        /* 卡片内部内容区域 */
+        .login-card {
+            position: relative;
+            z-index: 2;
+            padding: 2.5rem 2rem 2.8rem;
+            color: #fff;
+            border-radius: 2rem;
+            /* 增强文字清晰度 */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 头部品牌/标题区域 */
+        .brand {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .brand-icon {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+        }
+
+        .brand h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-top: 0.6rem;
+            letter-spacing: -0.3px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand p {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-top: 0.3rem;
+            font-weight: 400;
+        }
+
+        /* 表单样式 */
+        .input-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.2s;
+            pointer-events: none;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            font-size: 1rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 2rem;
+            outline: none;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.25s ease;
+            /* 移除backdrop-filter以保持文字清晰 */
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+
+        .input-group input:focus {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+
+        .input-group input:focus+i {
+            color: white;
+        }
+
+        /* 选项区域: 记住我 & 忘记密码 */
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            font-size: 0.85rem;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .remember input {
+            width: 1rem;
+            height: 1rem;
+            accent-color: #fff;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 0.2rem;
+        }
+
+        .remember label {
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .forgot a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+            transition: color 0.2s;
+        }
+
+        .forgot a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        /* 登录按钮 */
+        .login-btn {
+            width: 100%;
+            padding: 0.9rem;
+            font-size: 1rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.28);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 2.5rem;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-btn i {
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+
+        .login-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.9);
+            transform: scale(1.01);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        .login-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* 按钮错误状态 */
+        .login-btn.error {
+            background: rgba(255, 80, 80, 0.5);
+            border-color: rgba(255, 100, 100, 0.7);
+            animation: shake 0.4s ease;
+        }
+
+        .login-btn.error:hover {
+            background: rgba(255, 80, 80, 0.6);
+            border-color: rgba(255, 100, 100, 0.9);
+            transform: scale(1.01);
+        }
+
+        /* 按钮加载状态 */
+        .login-btn.loading {
+            background: rgba(255, 255, 255, 0.3);
+            cursor: wait;
+            pointer-events: none;
+        }
+
+        .login-btn.loading .btn-icon {
+            animation: spin 0.8s linear infinite;
+        }
+
+        /* 按钮成功状态 */
+        .login-btn.success {
+            background: rgba(76, 175, 80, 0.5);
+            border-color: rgba(76, 175, 80, 0.7);
+        }
+
+        .login-btn.success:hover {
+            background: rgba(76, 175, 80, 0.6);
+            border-color: rgba(76, 175, 80, 0.9);
+            transform: scale(1.01);
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-8px);
+            }
+
+            40% {
+                transform: translateX(8px);
+            }
+
+            60% {
+                transform: translateX(-6px);
+            }
+
+            80% {
+                transform: translateX(6px);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 分隔线 */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.8rem 0 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.75rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .divider span {
+            margin: 0 0.8rem;
+            font-weight: 500;
+        }
+
+        /* 第三方登录 */
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.22);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: white;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* 注册引导 */
+        .signup-link {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .signup-link a {
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            margin-left: 0.3rem;
+            transition: all 0.2s;
+        }
+
+        .signup-link a:hover {
+            border-bottom-color: white;
+        }
+
+        /* 针对移动端微调 */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 2rem 1.5rem 2.2rem;
+            }
+
+            .brand h1 {
+                font-size: 1.8rem;
+            }
+
+            .input-group input {
+                padding: 0.9rem 1rem 0.9rem 2.8rem;
+            }
+        }
+
+        /* 成功提示（小动画，用于演示登录反馈） */
+        .success-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.9);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            z-index: 200;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            pointer-events: none;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+
+        .success-toast.show-toast {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glass-container">
+        <div class="login-card">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h1>欢迎回来</h1>
+                <p>登录以探索奇妙世界</p>
+            </div>
+
+            <!-- 登录表单 -->
+            <form id="loginForm" action="javascript:void(0);">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" id="username" placeholder="电子邮箱 / 用户名" autocomplete="username" value="">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="密码" autocomplete="current-password">
+                </div>
+                <div class="options">
+                    <label class="remember">
+                        <input type="checkbox" id="rememberCheck"> <span>记住我</span>
+                    </label>
+                    <div class="forgot">
+                        <a href="#" id="forgotPwdLink">忘记密码？</a>
+                    </div>
+                </div>
+                <button type="submit" class="login-btn" id="loginButton">
+                    <span class="btn-text">登录账户</span> <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
+            </form>
+
+            <div class="divider">
+                <span>或使用社交账号登录</span>
+            </div>
+
+            <div class="social-login">
+                <a href="#" class="social-icon" id="googleLogin"><i class="fab fa-google"></i></a>
+                <a href="#" class="social-icon" id="githubLogin"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon" id="twitterLogin"><i class="fab fa-twitter"></i></a>
+            </div>
+
+            <div class="signup-link">
+                还没有账号？<a href="#" id="signupLink">立即注册</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局toast提示浮层 -->
+    <div id="toastMessage" class="success-toast"></div>
+
+    <script>
+        (function () {
+            // ==================== 鼠标跟随光晕效果 ====================
+            const glassContainer = document.querySelector('.glass-container');
+            const loginCard = document.querySelector('.login-card');
+
+            glassContainer.addEventListener('mousemove', (e) => {
+                const rect = glassContainer.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                glassContainer.style.setProperty('--mouse-x', `${x}%`);
+                glassContainer.style.setProperty('--mouse-y', `${y}%`);
+                // 同步到内层光晕
+                loginCard.style.setProperty('--mouse-x', `${x}%`);
+                loginCard.style.setProperty('--mouse-y', `${y}%`);
+            });
+
+            // 获取DOM元素
+            const loginForm = document.getElementById('loginForm');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const loginButton = document.getElementById('loginButton');
+            const btnText = loginButton.querySelector('.btn-text');
+            const btnIcon = loginButton.querySelector('.btn-icon');
+            const toastMsgDiv = document.getElementById('toastMessage');
+
+            // 保存按钮原始状态
+            const originalBtnText = btnText.textContent;
+            const originalBtnIcon = btnIcon.className;
+
+            // 演示性demo：正确的账号密码 （admin / 123456）也可自定义其他账号演示毛玻璃效果
+            const VALID_CREDENTIALS = {
+                username: 'admin',
+                password: '123456'
+            };
+
+            // 辅助函数：显示自定义toast提示
+            function showToast(message, isError = false) {
+                toastMsgDiv.textContent = message;
+                toastMsgDiv.classList.add('show-toast');
+                if (isError) {
+                    toastMsgDiv.style.background = 'rgba(220, 53, 69, 0.9)';
+                } else {
+                    toastMsgDiv.style.background = 'rgba(0, 0, 0, 0.85)';
+                }
+                setTimeout(() => {
+                    toastMsgDiv.classList.remove('show-toast');
+                    setTimeout(() => {
+                        toastMsgDiv.style.background = '';
+                    }, 200);
+                }, 2800);
+            }
+
+            // 显示按钮加载状态
+            function showBtnLoading() {
+                loginButton.classList.remove('error', 'success');
+                loginButton.classList.add('loading');
+                btnText.textContent = '正在验证';
+                btnIcon.className = 'fas fa-spinner btn-icon';
+                loginButton.disabled = true;
+            }
+
+            // 显示按钮错误状态
+            function showBtnError(message) {
+                loginButton.classList.remove('loading', 'success');
+                loginButton.classList.add('error');
+                btnText.textContent = message;
+                btnIcon.className = 'fas fa-exclamation-circle btn-icon';
+
+                // 2.5秒后恢复
+                setTimeout(() => {
+                    resetBtn();
+                }, 2500);
+            }
+
+            // 显示按钮成功状态
+            function showBtnSuccess(message) {
+                loginButton.classList.remove('loading', 'error');
+                loginButton.classList.add('success');
+                btnText.textContent = message;
+                btnIcon.className = 'fas fa-check-circle btn-icon';
+            }
+
+            // 恢复按钮原始状态
+            function resetBtn() {
+                loginButton.classList.remove('loading', 'error', 'success');
+                btnText.textContent = originalBtnText;
+                btnIcon.className = originalBtnIcon;
+                loginButton.disabled = false;
+            }
+
+            // 登录验证核心逻辑
+            function performLogin(username, password) {
+                const trimmedUser = username.trim();
+                const trimmedPass = password.trim();
+
+                if (trimmedUser === '' || trimmedPass === '') {
+                    showBtnError('请填写用户名和密码');
+                    return false;
+                }
+
+                // 显示加载状态
+                showBtnLoading();
+
+                // 模拟网络延迟
+                setTimeout(() => {
+                    if (trimmedUser === VALID_CREDENTIALS.username && trimmedPass === VALID_CREDENTIALS.password) {
+                        // 登录成功
+                        const rememberChk = document.getElementById('rememberCheck');
+                        if (rememberChk.checked) {
+                            localStorage.setItem('rememberedUser', trimmedUser);
+                        } else {
+                            localStorage.removeItem('rememberedUser');
+                        }
+                        showBtnSuccess('登录成功');
+
+                        // 1.5秒后重置
+                        setTimeout(() => {
+                            passwordInput.value = '';
+                            resetBtn();
+                        }, 1500);
+                    } else {
+                        // 登录失败
+                        showBtnError('用户名或密码错误');
+                    }
+                }, 800);
+            }
+
+            // 处理表单提交事件
+            function onLoginSubmit(e) {
+                e.preventDefault();
+                const username = usernameInput.value;
+                const password = passwordInput.value;
+                performLogin(username, password);
+            }
+
+            // 监听表单提交
+            loginForm.addEventListener('submit', onLoginSubmit);
+
+            // 按钮额外安全处理: 阻止重复提交？不需要，但可以通过disable? 但简单起见无需
+
+            // 演示“忘记密码”交互：优雅提示毛玻璃弹窗风格（toast）
+            const forgotLink = document.getElementById('forgotPwdLink');
+            if (forgotLink) {
+                forgotLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showToast('演示模式：重置密码链接已发送至您的注册邮箱', false);
+                });
+            }
+
+            // 演示社交登录交互
+            const googleBtn = document.getElementById('googleLogin');
+            const githubBtn = document.getElementById('githubLogin');
+            const twitterBtn = document.getElementById('twitterLogin');
+
+            function socialLogin(platform) {
+                showToast(`正在跳转至 ${platform} 进行身份验证 (演示交互)`, false);
+                // 模拟延迟后提示登录演示成功 (可选)
+                setTimeout(() => {
+                    showToast(`${platform} 演示登录成功！欢迎体验毛玻璃风格`, false);
+                }, 800);
+            }
+
+            if (googleBtn) {
+                googleBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    socialLogin('Google');
+                });
+            }
+            if (githubBtn) {
+                githubBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    socialLogin('GitHub');
+                });
+            }
+            if (twitterBtn) {
+                twitterBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    socialLogin('Twitter');
+                });
+            }
+
+            // 注册链接演示
+            const signupLink = document.getElementById('signupLink');
+            if (signupLink) {
+                signupLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showToast('注册新账号 (演示模式 - 请填写真实信息)', false);
+                });
+            }
+
+            // 可选：页面加载时检查localStorage中是否有记住账号填充 (增强演示)
+            function loadRememberedUser() {
+                const remembered = localStorage.getItem('rememberedUser');
+                if (remembered && remembered === VALID_CREDENTIALS.username) {
+                    usernameInput.value = remembered;
+                    document.getElementById('rememberCheck').checked = true;
+                    // 可选提示: 不打扰用户
+                    // showToast('已自动填充记住的账号', false);
+                } else {
+                    // 可以提供示例占位文字，但不强制，展示demo内容可空，为了效果友好留空并建议admin
+                    // 但也可以设置placeholder提示，不填充具体值
+                    usernameInput.placeholder = "例如: admin";
+                    passwordInput.placeholder = "密码: 123456";
+                }
+            }
+            loadRememberedUser();
+
+            // 附加小效果：点击卡片或者输入框增加柔和光效，已经由css完成
+
+            // 另外添加简单的键盘支持: 在输入框按回车触发表单提交，已经由form自带submit完成
+            // 优雅的防止XSS确保界面安全
+
+            // 添加动态的辅助说明：初始化后如果错误区需要自动消失逻辑内置
+
+            // 再额外添加演示登录演示账号便捷提醒（在控制台不干扰）
+            console.log('毛玻璃登录页已加载，演示账号: admin / 123456');
+
+            // 制作一个小彩蛋: 双击品牌图标展示信息
+            const brandIconDiv = document.querySelector('.brand-icon');
+            if (brandIconDiv) {
+                brandIconDiv.addEventListener('dblclick', () => {
+                    showToast('✨ 毛玻璃设计 | 极致视觉体验 ✨', false);
+                });
+            }
+
+            // 为了避免用户多次快速点击社交账号导致重复toast，通过标志限制但无伤大雅，做简单去抖
+            let socialClickTimer = null;
+            const socialDebounce = (fn, platform) => {
+                if (socialClickTimer) return;
+                fn(platform);
+                socialClickTimer = setTimeout(() => {
+                    socialClickTimer = null;
+                }, 1500);
+            };
+
+            // 重新绑定防止快速多次点击
+            const originalSocialLogin = socialLogin;
+            window.socialLogin = function (platform) {
+                if (socialClickTimer) {
+                    showToast('操作过于频繁，请稍后再试', false);
+                    return;
+                }
+                originalSocialLogin(platform);
+                socialClickTimer = setTimeout(() => {
+                    socialClickTimer = null;
+                }, 1500);
+            };
+
+            // 覆盖上面绑定的监听器 (为了整洁，直接修改监听器函数)
+            const newGoogle = (e) => {
+                e.preventDefault();
+                window.socialLogin('Google');
+            };
+            const newGithub = (e) => {
+                e.preventDefault();
+                window.socialLogin('GitHub');
+            };
+            const newTwitter = (e) => {
+                e.preventDefault();
+                window.socialLogin('Twitter');
+            };
+            if (googleBtn) googleBtn.removeEventListener('click', socialLogin);
+            if (githubBtn) githubBtn.removeEventListener('click', socialLogin);
+            if (twitterBtn) twitterBtn.removeEventListener('click', socialLogin);
+            if (googleBtn) googleBtn.addEventListener('click', newGoogle);
+            if (githubBtn) githubBtn.addEventListener('click', newGithub);
+            if (twitterBtn) twitterBtn.addEventListener('click', newTwitter);
+
+            // 补充一点额外处理：如果用户名密码正确展示成功并清空密码，我们已做，另外当回车时候input不会导致异常。
+        })();
+    </script>
+</body>
+
+</html>
