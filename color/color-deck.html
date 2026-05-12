@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ColorDeck - 颜色并列对比工具</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f5f5f7;--surface:#fff;--text:#1d1d1f;--text2:#6e6e73;
+  --border:#d2d2d7;--accent:#0071e3;--accent-h:#0077ed;
+  --radius:12px;--shadow:0 2px 12px rgba(0,0,0,.08);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* Header */
+header{padding:32px 24px 0;text-align:center}
+header h1{font-size:28px;font-weight:700;letter-spacing:-.5px}
+header p{color:var(--text2);margin-top:6px;font-size:15px}
+
+/* Input bar */
+.input-bar{display:flex;align-items:center;gap:10px;max-width:560px;margin:24px auto;padding:0 24px}
+.input-bar input[type=text]{flex:1;height:44px;padding:0 14px;border:1px solid var(--border);border-radius:var(--radius);font-size:15px;outline:none;transition:border .2s}
+.input-bar input[type=text]:focus{border-color:var(--accent)}
+.input-bar input[type=color]{width:44px;height:44px;border:none;border-radius:var(--radius);cursor:pointer;padding:2px;background:var(--surface);box-shadow:var(--shadow)}
+.input-bar button{height:44px;padding:0 20px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);font-size:15px;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap}
+.input-bar button:hover{background:var(--accent-h)}
+
+/* Color grid */
+.colors{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;padding:24px;max-width:1200px;margin:0 auto}
+.colors:empty::after{content:"点击上方按钮添加颜色";display:block;grid-column:1/-1;text-align:center;color:var(--text2);padding:60px 0;font-size:15px}
+
+/* Color card */
+.card{background:var(--surface);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s,opacity .15s;position:relative;cursor:grab;user-select:none}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.12)}
+.card.dragging{opacity:.4;transform:scale(.96)}
+.card.drag-over{box-shadow:0 0 0 3px var(--accent),var(--shadow)}
+.card .swatch{height:140px;position:relative;cursor:pointer;transition:height .2s}
+.card .swatch .copy-hint{position:absolute;bottom:8px;right:10px;font-size:12px;opacity:0;transition:opacity .15s;padding:3px 8px;border-radius:6px;background:rgba(0,0,0,.3);color:#fff;backdrop-filter:blur(4px)}
+.card .swatch:hover .copy-hint{opacity:1}
+.card .actions{position:absolute;top:8px;right:8px;display:flex;gap:4px;opacity:0;transition:opacity .15s}
+.card:hover .actions{opacity:1}
+.card .actions button{width:26px;height:26px;border-radius:50%;border:none;background:rgba(0,0,0,.25);color:#fff;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;backdrop-filter:blur(4px)}
+.card .actions button:hover{background:rgba(0,0,0,.5)}
+.card .info{padding:12px 14px}
+.card .info .hex{font-size:18px;font-weight:600;font-family:"SF Mono",Monaco,Consolas,monospace;cursor:pointer;transition:color .15s}
+.card .info .hex:hover{color:var(--accent)}
+.card .info .meta{font-size:12px;color:var(--text2);margin-top:4px;font-family:"SF Mono",Monaco,Consolas,monospace}
+
+/* Maximize overlay */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.overlay.active{opacity:1;visibility:visible}
+.overlay .preview{width:70vmin;height:70vmin;border-radius:20px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4);transform:scale(.9);transition:transform .25s}
+.overlay.active .preview{transform:scale(1)}
+.overlay .preview .close-btn{position:absolute;top:-14px;right:-14px;width:36px;height:36px;border-radius:50%;border:none;background:#fff;color:#1d1d1f;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.2);transition:transform .15s}
+.overlay .preview .close-btn:hover{transform:scale(1.1)}
+.overlay .preview .color-info{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;border-radius:0 0 20px 20px;display:flex;flex-direction:column;gap:4px;font-family:"SF Mono",Monaco,Consolas,monospace}
+.overlay .preview .color-info span{cursor:pointer;padding:2px 6px;border-radius:4px;transition:background .15s}
+.overlay .preview .color-info span:hover{background:rgba(255,255,255,.15)}
+
+/* Contrast strip between adjacent cards */
+.contrast-strip{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;padding:4px 0}
+.contrast-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);background:var(--surface);padding:6px 12px;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.contrast-item .dot-pair{display:flex;gap:2px}
+.contrast-item .dot-pair span{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.1)}
+.contrast-item .ratio{font-weight:600;color:var(--text);font-family:"SF Mono",Monaco,Consolas,monospace}
+.contrast-item .grade{font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;color:#fff}
+.contrast-item .grade.aa{background:#34c759}
+.contrast-item .grade.aa-large{background:#ff9f0a}
+.contrast-item .grade.fail{background:#ff3b30}
+
+/* Toast */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:#1d1d1f;color:#fff;padding:10px 20px;border-radius:10px;font-size:14px;transition:transform .25s,opacity .25s;opacity:0;pointer-events:none;z-index:99}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* Clear btn */
+.clear-bar{max-width:1200px;margin:0 auto;padding:0 24px 8px;display:flex;justify-content:flex-end}
+.clear-bar button{background:none;border:1px solid var(--border);color:var(--text2);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;transition:all .15s}
+.clear-bar button:hover{border-color:#ff3b30;color:#ff3b30}
+
+/* Responsive */
+@media(max-width:520px){
+  .input-bar{flex-wrap:wrap}
+  .input-bar input[type=text]{width:100%}
+  .colors{grid-template-columns:1fr 1fr}
+  .card .swatch{height:110px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>颜色对比工具</h1>
+  <p>添加颜色值，并列对比查看效果</p>
+</header>
+
+<div class="input-bar">
+  <input type="color" id="picker" value="#0071e3">
+  <input type="text" id="hexInput" placeholder="输入颜色值，如 #ff6600、rgb(255,102,0)、red" spellcheck="false">
+  <button id="addBtn">添加</button>
+</div>
+
+<div class="clear-bar" id="clearBar" style="display:none">
+  <button id="clearBtn">清除全部</button>
+</div>
+
+<div class="colors" id="grid"></div>
+
+<div class="toast" id="toast"></div>
+
+<div class="overlay" id="overlay">
+  <div class="preview" id="preview">
+    <button class="close-btn" id="closeOverlay">×</button>
+    <div class="color-info" id="previewInfo"></div>
+  </div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const picker = $('#picker');
+const hexInput = $('#hexInput');
+const addBtn = $('#addBtn');
+const grid = $('#grid');
+const clearBar = $('#clearBar');
+const clearBtn = $('#clearBtn');
+const toast = $('#toast');
+
+let colors = [];
+let toastTimer = null;
+
+// Parse any CSS color string to {r,g,b} or null
+function parseColor(str) {
+  const s = document.createElement('div');
+  s.style.color = str;
+  document.body.appendChild(s);
+  const computed = getComputedStyle(s).color;
+  document.body.removeChild(s);
+  const m = computed.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+  if (!m) return null;
+  return { r: +m[1], g: +m[2], b: +m[3] };
+}
+
+function rgbToHex(r, g, b) {
+  return '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('');
+}
+
+function rgbToHsl(r, g, b) {
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+  if (max === min) { h = s = 0; }
+  else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+      case g: h = ((b - r) / d + 2) / 6; break;
+      case b: h = ((r - g) / d + 4) / 6; break;
+    }
+  }
+  return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
+}
+
+function luminance(r, g, b) {
+  const [rs, gs, bs] = [r, g, b].map(c => {
+    c /= 255;
+    return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+}
+
+function contrastRatio(c1, c2) {
+  const l1 = luminance(c1.r, c1.g, c1.b);
+  const l2 = luminance(c2.r, c2.g, c2.b);
+  const lighter = Math.max(l1, l2);
+  const darker = Math.min(l1, l2);
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+function textColor(r, g, b) {
+  return luminance(r, g, b) > 0.35 ? '#1d1d1f' : '#fff';
+}
+
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 1500);
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(() => showToast('已复制: ' + text));
+}
+
+function addColor(value) {
+  // Auto-prefix # for bare hex values like 00BFFF, ff6600, f00
+  let v = value.trim();
+  if (/^[0-9a-fA-F]{3}$|^[0-9a-fA-F]{6}$/.test(v)) v = '#' + v;
+  const rgb = parseColor(v);
+  if (!rgb) { showToast('无效的颜色值'); return; }
+  const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+  if (colors.find(c => c.hex === hex)) { showToast('该颜色已存在'); return; }
+  colors.push({ hex, ...rgb });
+  render();
+  showToast('已添加: ' + hex);
+}
+
+function removeColor(index) {
+  colors.splice(index, 1);
+  render();
+}
+
+function render() {
+  clearBar.style.display = colors.length ? 'flex' : 'none';
+  grid.innerHTML = '';
+
+  colors.forEach((c, i) => {
+    const hsl = rgbToHsl(c.r, c.g, c.b);
+    const tc = textColor(c.r, c.g, c.b);
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.draggable = true;
+    card.dataset.index = i;
+    card.innerHTML = `
+      <div class="swatch" style="background:${c.hex}" data-hex="${c.hex}">
+        <span class="copy-hint" style="color:${tc}">点击复制</span>
+        <div class="actions">
+          <button class="maximize" title="最大化">⤢</button>
+          <button class="remove" title="移除">×</button>
+        </div>
+      </div>
+      <div class="info">
+        <div class="hex" data-copy="${c.hex}">${c.hex.toUpperCase()}</div>
+        <div class="meta">rgb(${c.r}, ${c.g}, ${c.b})</div>
+        <div class="meta">hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)</div>
+      </div>
+    `;
+
+    card.querySelector('.swatch').addEventListener('click', e => {
+      if (e.target.closest('.actions')) return;
+      copyText(c.hex);
+    });
+    card.querySelector('.remove').addEventListener('click', e => { e.stopPropagation(); removeColor(i); });
+    card.querySelector('.maximize').addEventListener('click', e => { e.stopPropagation(); openPreview(i); });
+    card.querySelector('.hex').addEventListener('click', () => copyText(c.hex));
+
+    // Drag events
+    card.addEventListener('dragstart', onDragStart);
+    card.addEventListener('dragend', onDragEnd);
+    card.addEventListener('dragover', onDragOver);
+    card.addEventListener('dragenter', onDragEnter);
+    card.addEventListener('dragleave', onDragLeave);
+    card.addEventListener('drop', onDrop);
+
+    grid.appendChild(card);
+  });
+
+  // Contrast strip
+  if (colors.length >= 2) {
+    const strip = document.createElement('div');
+    strip.className = 'contrast-strip';
+    for (let i = 0; i < colors.length - 1; i++) {
+      const ratio = contrastRatio(colors[i], colors[i + 1]);
+      const rStr = ratio.toFixed(2);
+      const passAA = ratio >= 4.5;
+      const passAALarge = ratio >= 3;
+      const grade = passAA ? 'AA' : passAALarge ? 'AA-L' : 'FAIL';
+      const gradeClass = passAA ? 'aa' : passAALarge ? 'aa-large' : 'fail';
+      const item = document.createElement('div');
+      item.className = 'contrast-item';
+      item.innerHTML = `
+        <div class="dot-pair"><span style="background:${colors[i].hex}"></span><span style="background:${colors[i+1].hex}"></span></div>
+        <span>对比度</span>
+        <span class="ratio">${rStr}:1</span>
+        <span class="grade ${gradeClass}">${grade}</span>
+      `;
+      strip.appendChild(item);
+    }
+    grid.appendChild(strip);
+  }
+}
+
+// --- Drag & Drop ---
+let dragIndex = null;
+
+function onDragStart(e) {
+  dragIndex = +this.dataset.index;
+  this.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+}
+function onDragEnd() {
+  this.classList.remove('dragging');
+  document.querySelectorAll('.card.drag-over').forEach(c => c.classList.remove('drag-over'));
+}
+function onDragOver(e) { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; }
+function onDragEnter(e) { e.preventDefault(); this.classList.add('drag-over'); }
+function onDragLeave() { this.classList.remove('drag-over'); }
+function onDrop(e) {
+  e.preventDefault();
+  this.classList.remove('drag-over');
+  const from = dragIndex;
+  const to = +this.dataset.index;
+  if (from === null || from === to) return;
+  const [moved] = colors.splice(from, 1);
+  colors.splice(to, 0, moved);
+  dragIndex = null;
+  render();
+}
+
+// --- Maximize Preview ---
+const overlay = $('#overlay');
+const preview = $('#preview');
+const previewInfo = $('#previewInfo');
+const closeOverlay = $('#closeOverlay');
+
+function openPreview(index) {
+  const c = colors[index];
+  if (!c) return;
+  const hsl = rgbToHsl(c.r, c.g, c.b);
+  const tc = textColor(c.r, c.g, c.b);
+  preview.style.background = c.hex;
+  previewInfo.style.color = tc;
+  previewInfo.innerHTML = `
+    <span onclick="copyText('${c.hex.toUpperCase()}')">${c.hex.toUpperCase()}</span>
+    <span onclick="copyText('rgb(${c.r}, ${c.g}, ${c.b})')">rgb(${c.r}, ${c.g}, ${c.b})</span>
+    <span onclick="copyText('hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)')">hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)</span>
+  `;
+  overlay.classList.add('active');
+}
+
+function closePreview() { overlay.classList.remove('active'); }
+closeOverlay.addEventListener('click', closePreview);
+overlay.addEventListener('click', e => { if (e.target === overlay) closePreview(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePreview(); });
+
+// Sync picker -> input
+picker.addEventListener('input', () => { hexInput.value = picker.value; });
+
+addBtn.addEventListener('click', () => addColor(hexInput.value || picker.value));
+hexInput.addEventListener('keydown', e => { if (e.key === 'Enter') addColor(hexInput.value || picker.value); });
+clearBtn.addEventListener('click', () => { colors = []; render(); showToast('已清除全部'); });
+
+// Init with some demo colors
+['#7df9ff', '#00ffff', '#55ffff', '#00ccff', '#00bfff', '#1e90ff', '#ff3366', '#ff0000', '#ffff00', '#00ff00'].forEach(c => addColor(c));
+</script>
+</body>
+</html>
