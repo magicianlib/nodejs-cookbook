@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资金账户 - Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── Design Tokens ────────────────────────────────────── */
+    :root {
+      --color-primary: #F59E0B;
+      --color-primary-hover: #D97706;
+      --color-on-primary: #0F172A;
+      --color-accent: #8B5CF6;
+      --color-bg: #F3F4F8;
+      --color-surface: #FFFFFF;
+      --color-surface-hover: #F9FAFB;
+      --color-foreground: #0F172A;
+      --color-foreground-secondary: #475569;
+      --color-muted: #94A3B8;
+      --color-border: #E2E8F0;
+      --color-border-light: #F1F5F9;
+      --color-income: #EF4444;
+      --color-income-bg: rgba(239, 68, 68, 0.06);
+      --color-expense: #22C55E;
+      --color-expense-bg: rgba(34, 197, 94, 0.06);
+      --color-tab-active: #0F172A;
+      --color-tab-inactive: #94A3B8;
+
+      --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'IBM Plex Mono', 'SF Mono', 'Cascadia Code', monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+      --transition-fast: 120ms ease;
+      --transition-base: 200ms ease;
+    }
+
+    /* ── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-foreground);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Top Bar ──────────────────────────────────────────── */
+    .topbar {
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topbar-logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .topbar-logo-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--color-on-primary);
+      stroke-width: 2.5;
+    }
+
+    .topbar-logo-text {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .topbar-breadcrumb {
+      font-size: 13px;
+      color: var(--color-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .topbar-breadcrumb span { color: var(--color-foreground-secondary); }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topbar-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--color-foreground-secondary);
+    }
+
+    .topbar-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366F1, #8B5CF6);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .icon-btn:hover {
+      border-color: var(--color-muted);
+      color: var(--color-foreground);
+    }
+
+    .icon-btn:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .icon-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2;
+    }
+
+    /* ── Main Layout ──────────────────────────────────────── */
+    .main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 32px 48px;
+    }
+
+    /* ── Tab Bar ──────────────────────────────────────────── */
+    .tab-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tab-bar::-webkit-scrollbar { display: none; }
+
+    .tab-item {
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-tab-inactive);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: var(--font-sans);
+    }
+
+    .tab-item:hover {
+      color: var(--color-foreground-secondary);
+    }
+
+    .tab-item.active {
+      color: var(--color-tab-active);
+      border-bottom-color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .tab-item:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: -2px;
+      border-radius: 2px;
+    }
+
+    /* ── Account Card (single) ─────────────────────────────── */
+    .account-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 24px 32px;
+      margin-bottom: 24px;
+      transition: box-shadow var(--transition-base);
+      cursor: default;
+    }
+
+    .account-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .account-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .account-card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .account-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-foreground);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .account-name .tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 2px 7px;
+      border-radius: 3px;
+      background: var(--color-border-light);
+      color: var(--color-foreground-secondary);
+    }
+
+    .account-number {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-foreground-secondary);
+      letter-spacing: 0.02em;
+    }
+
+    .account-card-balance-area {
+      text-align: right;
+    }
+
+    .account-balance .amount-row {
+      font-family: var(--font-mono);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--color-foreground);
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-end;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      gap: 0;
+    }
+
+    .amount-row .currency-symbol {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-foreground-secondary);
+      margin-right: 3px;
+      position: relative;
+      top: -1px;
+    }
+
+    .amount-row .amount-digits {
+      letter-spacing: 0.01em;
+    }
+
+    .amount-row .amount-scale {
+      font-size: 15px;
+      font-weight: 700;
+      font-family: var(--font-sans);
+      color: var(--color-primary);
+      margin: 0 2px;
+      position: relative;
+      top: -1px;
+    }
+
+    .amount-row .amount-fraction {
+      color: var(--color-foreground-secondary);
+    }
+
+    .amount-row .currency-code {
+      font-size: 11px;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      letter-spacing: 0.06em;
+      color: var(--color-foreground-secondary);
+      background: var(--color-border-light);
+      padding: 2px 7px;
+      border-radius: 3px;
+      margin-left: 8px;
+      position: relative;
+      top: -1px;
+      flex-shrink: 0;
+    }
+
+    .balance-label-sm {
+      font-size: 12px;
+      color: var(--color-muted);
+      margin-top: 4px;
+      text-align: right;
+    }
+
+    .account-card-bottom {
+      display: flex;
+      gap: 24px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border-light);
+    }
+
+    .account-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .account-stat-label {
+      font-size: 12px;
+      color: var(--color-muted);
+    }
+
+    .account-stat-value {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .account-stat-value.income { color: var(--color-income); }
+    .account-stat-value.expense { color: var(--color-expense); }
+
+    .stat-row {
+      display: flex;
+      gap: 0;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--color-border-light);
+    }
+
+    .stat-cell {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px 0;
+    }
+
+    .stat-cell + .stat-cell {
+      border-left: 1px solid var(--color-border-light);
+      padding-left: 20px;
+    }
+
+    .stat-cell:first-child {
+      padding-left: 0;
+    }
+
+    .stat-cell-header {
+      font-size: 12px;
+      color: var(--color-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stat-cell-header .detail-link {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-primary);
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity var(--transition-fast);
+    }
+
+    .stat-cell-header .detail-link:hover { opacity: 0.7; }
+    .stat-cell-header .detail-link:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; border-radius: 2px; }
+
+    .stat-cell-value {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-foreground);
+      display: inline-flex;
+      align-items: flex-end;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    .stat-cell-value .currency-symbol {
+      font-size: inherit;
+      font-weight: inherit;
+      color: var(--color-foreground-secondary);
+      margin-right: 3px;
+    }
+
+    .stat-cell-value .amount-digits {
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+
+    .stat-cell-value .amount-scale {
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font-sans);
+      color: var(--color-primary);
+      margin: 0 1px;
+      line-height: 1;
+    }
+
+    .stat-cell-value .amount-fraction {
+      color: var(--color-foreground-secondary);
+    }
+
+    .stat-cell-value.pending { color: var(--color-primary); }
+    .stat-cell-value.pending .amount-scale { color: var(--color-primary); }
+
+    /* ── Filter Bar ───────────────────────────────────────── */
+    .filter-bar {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .filter-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-muted);
+    }
+
+    .filter-input {
+      height: 36px;
+      padding: 0 10px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: var(--color-bg);
+      color: var(--color-foreground);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      transition: border-color var(--transition-fast);
+      -webkit-appearance: none;
+    }
+
+    .filter-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+
+    .filter-input::placeholder {
+      color: var(--color-muted);
+    }
+
+    .filter-input[type="date"] {
+      font-family: var(--font-mono);
+      width: 140px;
+    }
+
+    .filter-input[type="text"] {
+      width: 160px;
+    }
+
+    .filter-input.select {
+      width: 120px;
+      cursor: pointer;
+    }
+
+    .filter-actions {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      margin-left: auto;
+    }
+
+    .btn {
+      height: 36px;
+      padding: 0 16px;
+      border-radius: var(--radius-sm);
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all var(--transition-fast);
+    }
+
+    .btn svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-primary);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-ghost:hover {
+      background: var(--color-border-light);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+      color: var(--color-on-primary);
+    }
+
+    .btn-primary:hover { opacity: 0.9; }
+
+    .btn-add {
+      background: transparent;
+      color: var(--color-foreground-secondary);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-add:hover {
+      background: var(--color-border-light);
+      color: var(--color-foreground);
+    }
+
+    /* ── Data Table ───────────────────────────────────────── */
+    .table-section {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .table-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .table-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .table-count {
+      font-size: 12px;
+      color: var(--color-muted);
+      margin-left: 8px;
+      font-weight: 400;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    thead {
+      background: var(--color-bg);
+    }
+
+    th {
+      padding: 10px 16px;
+      text-align: left;
+      font-weight: 500;
+      color: var(--color-muted);
+      font-size: 12px;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-border-light);
+      white-space: nowrap;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    tr:hover td {
+      background: var(--color-surface-hover);
+    }
+
+    .tx-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .tx-type-badge svg {
+      width: 12px;
+      height: 12px;
+      stroke-width: 2.5;
+    }
+
+    .tx-type-badge.income {
+      background: var(--color-income-bg);
+      color: var(--color-income);
+    }
+
+    .tx-type-badge.expense {
+      background: var(--color-expense-bg);
+      color: var(--color-expense);
+    }
+
+    .tx-mono {
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+
+    .tx-amount-cell {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .tx-amount-cell.income { color: var(--color-income); }
+    .tx-amount-cell.expense { color: var(--color-expense); }
+
+    .tx-balance {
+      font-family: var(--font-mono);
+      color: var(--color-foreground-secondary);
+      text-align: right;
+    }
+
+    .status-badge {
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .status-badge.success {
+      background: var(--color-expense-bg);
+      color: var(--color-expense);
+    }
+
+    .status-badge.pending {
+      background: rgba(245, 158, 11, 0.08);
+      color: #B45309;
+    }
+
+    /* Pagination */
+    .table-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .pagination-info {
+      font-size: 12px;
+      color: var(--color-muted);
+    }
+
+    .pagination {
+      display: flex;
+      gap: 4px;
+    }
+
+    .page-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-foreground-secondary);
+      font-size: 13px;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-fast);
+    }
+
+    .page-btn:hover {
+      background: var(--color-border-light);
+    }
+
+    .page-btn.active {
+      background: var(--color-foreground);
+      color: var(--color-surface);
+      border-color: var(--color-foreground);
+    }
+
+    .page-btn:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    /* ── Modal ─────────────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition-base), visibility var(--transition-base);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      width: 440px;
+      max-width: calc(100vw - 32px);
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+      transform: translateY(12px) scale(0.98);
+      transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px 0;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: transparent;
+      color: var(--color-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .modal-close:hover {
+      background: var(--color-bg);
+      color: var(--color-foreground);
+    }
+
+    .modal-close:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .modal-close svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+    }
+
+    .modal-body {
+      padding: 20px 24px 24px;
+    }
+
+    .type-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .type-btn {
+      height: 44px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--color-border);
+      background: transparent;
+      color: var(--color-muted);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .type-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2.5;
+    }
+
+    .type-btn.income-btn.active {
+      border-color: var(--color-income);
+      background: var(--color-income-bg);
+      color: var(--color-income);
+    }
+
+    .type-btn.expense-btn.active {
+      border-color: var(--color-expense);
+      background: var(--color-expense-bg);
+      color: var(--color-expense);
+    }
+
+    .type-btn:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-muted);
+      margin-bottom: 5px;
+    }
+
+    .form-input {
+      width: 100%;
+      height: 40px;
+      padding: 0 12px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: var(--color-bg);
+      color: var(--color-foreground);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      transition: border-color var(--transition-fast);
+      -webkit-appearance: none;
+    }
+
+    .form-input.text-input {
+      font-family: var(--font-sans);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+
+    .form-input::placeholder {
+      color: var(--color-muted);
+      font-family: var(--font-sans);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-error {
+      font-size: 12px;
+      color: var(--color-income);
+      margin-top: 3px;
+      min-height: 16px;
+    }
+
+    .form-submit {
+      width: 100%;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+      color: var(--color-on-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: opacity var(--transition-fast);
+    }
+
+    .form-submit:hover { opacity: 0.9; }
+    .form-submit:focus-visible {
+      outline: 2px solid var(--color-foreground);
+      outline-offset: 3px;
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .topbar { padding: 0 16px; }
+      .main { padding: 16px; }
+      .topbar-breadcrumb { display: none; }
+      .account-card { padding: 20px; }
+      .filter-bar { flex-direction: column; align-items: stretch; }
+      .filter-input[type="date"],
+      .filter-input[type="text"],
+      .filter-input.select { width: 100%; }
+      .filter-actions { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo">
+        <div class="topbar-logo-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+          </svg>
+        </div>
+        <span class="topbar-logo-text">Money</span>
+      </div>
+      <div class="topbar-breadcrumb">
+        资金管理 <span>/</span> <span>账户总览</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button class="icon-btn" aria-label="通知">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+        </svg>
+      </button>
+      <div class="topbar-user">
+        <div class="topbar-avatar">张</div>
+        <span>张三</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Tabs -->
+    <nav class="tab-bar" aria-label="账户类型">
+      <button class="tab-item active" data-tab="cny">人民币账户 (CNY)</button>
+      <button class="tab-item" data-tab="usd">外汇账户 (USD)</button>
+      <button class="tab-item" data-tab="eur">外汇账户 (EUR)</button>
+      <button class="tab-item" data-tab="hk">外汇账户 (HKD)</button>
+      <button class="tab-item" data-tab="smart">智能账户</button>
+      <button class="tab-item" data-tab="unionpay">银联支付</button>
+    </nav>
+
+    <!-- Account Card -->
+    <div class="account-card" id="accountCard">
+      <!-- Rendered by JS -->
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="filter-group">
+        <label class="filter-label" for="filterDateStart">起始日期</label>
+        <input class="filter-input" type="date" id="filterDateStart" value="2026-06-01">
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="filterDateEnd">截止日期</label>
+        <input class="filter-input" type="date" id="filterDateEnd" value="2026-06-30">
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="filterSearch">交易描述</label>
+        <input class="filter-input" type="text" id="filterSearch" placeholder="搜索交易...">
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="filterType">类型</label>
+        <select class="filter-input select" id="filterType">
+          <option value="">全部</option>
+          <option value="income">收入</option>
+          <option value="expense">支出</option>
+        </select>
+      </div>
+      <div class="filter-actions">
+        <button class="btn btn-ghost" id="btnReset">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.992 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182" />
+          </svg>
+          重置
+        </button>
+        <button class="btn btn-ghost" id="btnExport">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+          </svg>
+          导出
+        </button>
+        <button class="btn btn-add" id="btnAdd">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+          记一笔
+        </button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-section">
+      <div class="table-header">
+        <div style="display:flex;align-items:center;">
+          <span class="table-title">交易明细</span>
+          <span class="table-count" id="tableCount"></span>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>日期</th>
+              <th>交易号</th>
+              <th>描述</th>
+              <th>类型</th>
+              <th>状态</th>
+              <th style="text-align:right" id="thAmount">金额 (CNY)</th>
+              <th style="text-align:right" id="thBalance">余额 (CNY)</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Rendered by JS -->
+          </tbody>
+        </table>
+      </div>
+      <div class="table-footer">
+        <span class="pagination-info" id="paginationInfo"></span>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="添加流水">
+    <div class="modal">
+      <div class="modal-head">
+        <h2 class="modal-title">记一笔</h2>
+        <button class="modal-close" id="modalClose" aria-label="关闭">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="type-toggle">
+          <button type="button" class="type-btn income-btn active" id="typeIncome" aria-pressed="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0-6.75 6.75M12 4.5l6.75 6.75" />
+            </svg>
+            收入
+          </button>
+          <button type="button" class="type-btn expense-btn" id="typeExpense" aria-pressed="false">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m0 0 6.75-6.75M12 19.5l-6.75-6.75" />
+            </svg>
+            支出
+          </button>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputAmount">金额</label>
+          <input class="form-input" id="inputAmount" type="number" step="0.01" min="0.01" placeholder="0.00" inputmode="decimal" autocomplete="off">
+          <p class="form-error" id="errorAmount"></p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputDesc">备注</label>
+          <input class="form-input text-input" id="inputDesc" type="text" placeholder="例如：工资、餐饮、交通" maxlength="30" autocomplete="off">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="inputDate">日期</label>
+            <input class="form-input text-input" id="inputDate" type="date">
+          </div>
+          <div class="form-group">
+            <label class="form-label">&nbsp;</label>
+            <div style="height:40px;display:flex;align-items:center;font-size:13px;color:var(--color-foreground-secondary)" id="modalAccountName"></div>
+          </div>
+        </div>
+        <button class="form-submit" id="btnSubmit" type="button">确认添加</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ── Data: one account per TAB ─────────────────────────── */
+    var tabs = {
+      cny: {
+        account: { name: '人民币储蓄卡', tag: 'CNY', number: '6217 0038 **** 2345', balance: 4485741533.02, currency: 'CNY', symbol: '¥', locale: 'zh-CN', withdrawn: 2150000.00, settled: 3280000.00, pending: 856200.00 },
+        transactions: [
+          { type: 'income',  name: '项目结算',   amount: 52800.00,  date: '2026-06-02 14:30', status: 'success', txNo: 'TX202606020014' },
+          { type: 'expense', name: '办公室租金', amount: 12000.00,  date: '2026-06-02 10:15', status: 'success', txNo: 'TX202606020013' },
+          { type: 'income',  name: '客户回款',   amount: 85000.00,  date: '2026-06-01 16:42', status: 'success', txNo: 'TX202606010012' },
+          { type: 'expense', name: '员工工资',   amount: 156000.00, date: '2026-06-01 09:00', status: 'success', txNo: 'TX202606010011' },
+          { type: 'expense', name: '服务器费用', amount: 3280.00,   date: '2026-05-31 11:20', status: 'success', txNo: 'TX202605310010' },
+          { type: 'income',  name: '投资收益',   amount: 12400.00,  date: '2026-05-30 18:00', status: 'success', txNo: 'TX202605300009' },
+          { type: 'expense', name: '差旅报销',   amount: 4560.00,   date: '2026-05-30 14:33', status: 'success', txNo: 'TX202605300008' },
+          { type: 'income',  name: '咨询服务费', amount: 36000.00,  date: '2026-05-29 10:05', status: 'success', txNo: 'TX202605290007' },
+          { type: 'expense', name: '设备采购',   amount: 28900.00,  date: '2026-05-28 15:48', status: 'success', txNo: 'TX202605280006' },
+          { type: 'income',  name: '退款到账',   amount: 1500.00,   date: '2026-05-28 09:12', status: 'success', txNo: 'TX202605280005' },
+          { type: 'expense', name: '水电费',     amount: 890.00,    date: '2026-05-27 08:30', status: 'success', txNo: 'TX202605270004' },
+          { type: 'income',  name: '利息收入',   amount: 5623.41,   date: '2026-05-27 00:00', status: 'success', txNo: 'TX202605270003' },
+          { type: 'expense', name: '物流配送',   amount: 1200.00,   date: '2026-05-26 16:20', status: 'pending', txNo: 'TX202605260002' },
+          { type: 'income',  name: '销售收入',   amount: 98700.00,  date: '2026-05-26 11:30', status: 'success', txNo: 'TX202605260001' }
+        ]
+      },
+      usd: {
+        account: { name: '美元支票账户', tag: 'USD', number: '3304 5519 **** 6789', balance: 512487.55, currency: 'USD', symbol: '$', locale: 'en-US', withdrawn: 85000.00, settled: 142000.00, pending: 32450.00 },
+        transactions: [
+          { type: 'income',  name: '海外汇入',   amount: 25000.00, date: '2026-06-01 20:15', status: 'success', txNo: 'TX202606010022' },
+          { type: 'expense', name: 'AWS 月费',    amount: 1842.30,  date: '2026-05-31 12:00', status: 'success', txNo: 'TX202605310021' },
+          { type: 'income',  name: 'SaaS 订阅',   amount: 499.00,   date: '2026-05-30 09:30', status: 'success', txNo: 'TX202605300020' },
+          { type: 'expense', name: '软件授权',     amount: 2999.00,  date: '2026-05-28 14:10', status: 'success', txNo: 'TX202605280019' },
+          { type: 'income',  name: '广告收入',     amount: 8750.00,  date: '2026-05-27 18:00', status: 'success', txNo: 'TX202605270018' }
+        ]
+      },
+      eur: {
+        account: { name: '欧元结算账户', tag: 'EUR', number: 'DE89 3704 0044 **** 1234', balance: 185320.80, currency: 'EUR', symbol: '€', locale: 'en-US', withdrawn: 28000.00, settled: 56000.00, pending: 12400.00 },
+        transactions: [
+          { type: 'income',  name: '欧盟客户付款', amount: 32000.00, date: '2026-06-02 11:00', status: 'success', txNo: 'TX202606020032' },
+          { type: 'expense', name: '欧洲办公室',   amount: 4800.00,  date: '2026-05-30 10:00', status: 'success', txNo: 'TX202605300031' },
+          { type: 'income',  name: '退税到账',     amount: 1250.00,  date: '2026-05-28 15:30', status: 'success', txNo: 'TX202605280030' }
+        ]
+      },
+      hk: {
+        account: { name: '港币账户', tag: 'HKD', number: '8821 0077 **** 9012', balance: 2856410.78, currency: 'HKD', symbol: 'HK$', locale: 'zh-CN', withdrawn: 980000.00, settled: 1250000.00, pending: 210000.00 },
+        transactions: [
+          { type: 'income',  name: '港股分红',   amount: 45000.00,  date: '2026-06-01 16:00', status: 'success', txNo: 'TX202606010042' },
+          { type: 'expense', name: '保险缴费',   amount: 8900.00,   date: '2026-05-29 09:00', status: 'success', txNo: 'TX202605290041' },
+          { type: 'income',  name: '租金收入',   amount: 22000.00,  date: '2026-05-28 08:00', status: 'success', txNo: 'TX202605280040' }
+        ]
+      },
+      smart: {
+        account: { name: '智能活期', tag: 'CNY', number: '7720 8833 **** 5566', balance: 98650.12, currency: 'CNY', symbol: '¥', locale: 'zh-CN', withdrawn: 25000.00, settled: 42000.00, pending: 8600.00 },
+        transactions: [
+          { type: 'income',  name: '理财收益',   amount: 186.50,   date: '2026-06-02 00:00', status: 'success', txNo: 'TX202606020052' },
+          { type: 'expense', name: '自动转入定存', amount: 5000.00, date: '2026-06-01 00:00', status: 'success', txNo: 'TX202606010051' },
+          { type: 'income',  name: '理财收益',   amount: 162.30,   date: '2026-06-01 00:00', status: 'success', txNo: 'TX202606010050' }
+        ]
+      },
+      unionpay: {
+        account: { name: '银联支付', tag: 'CNY', number: '6228 4800 **** 3310', balance: 3256.80, currency: 'CNY', symbol: '¥', locale: 'zh-CN', withdrawn: 12000.00, settled: 8600.00, pending: 2100.00 },
+        transactions: [
+          { type: 'expense', name: '便利店',   amount: 32.50,    date: '2026-06-02 08:45', status: 'success', txNo: 'TX202606020062' },
+          { type: 'expense', name: '地铁充值', amount: 100.00,   date: '2026-06-01 07:30', status: 'success', txNo: 'TX202606010061' },
+          { type: 'income',  name: '红包收款', amount: 200.00,   date: '2026-05-31 12:20', status: 'success', txNo: 'TX202605310060' }
+        ]
+      }
+    };
+
+    var activeTab = 'cny';
+    var currentType = 'income';
+
+    function getAcc() { return tabs[activeTab].account; }
+    function getTx()  { return tabs[activeTab].transactions; }
+
+    /* ── Amount Formatting ────────────────────────────────── */
+    function formatScaledAmount(num, locale) {
+      var isCn = (!locale || locale === 'zh-CN' || locale === 'zh-TW');
+      var parts = num.toFixed(2).split('.');
+      var fraction = '.' + parts[1];
+      var intNum = parseInt(parts[0], 10);
+      return isCn ? fmtCn(intNum, fraction) : fmtWestern(intNum, fraction);
+    }
+
+    function fmtCn(n, f) {
+      if (n < 10000) return d(n.toLocaleString('en-US')) + fr(f);
+      var yi = Math.floor(n / 100000000), rem = n % 100000000;
+      var wan = Math.floor(rem / 10000), ge = rem % 10000;
+      var h = '';
+      if (yi > 0) h += d(yi.toLocaleString('en-US')) + s('亿');
+      if (wan > 0) { var w = yi > 0 ? String(wan).padStart(4, '0') : wan.toLocaleString('en-US'); h += d(w) + s('万'); }
+      if (ge > 0) { var g = (yi > 0 || wan > 0) ? String(ge).padStart(4, '0') : ge.toLocaleString('en-US'); h += d(g); }
+      return h + fr(f);
+    }
+
+    function fmtWestern(n, f) {
+      if (n < 1000) return d(n.toLocaleString('en-US')) + fr(f);
+      var b = Math.floor(n / 1e9), r1 = n % 1e9, m = Math.floor(r1 / 1e6), r2 = r1 % 1e6, k = Math.floor(r2 / 1e3), ge = r2 % 1e3;
+      var h = '';
+      if (b > 0) h += d(b.toLocaleString('en-US')) + s('B');
+      if (m > 0) { h += d(b > 0 ? String(m).padStart(3, '0') : m.toLocaleString('en-US')) + s('M'); }
+      if (k > 0) { h += d((b > 0 || m > 0) ? String(k).padStart(3, '0') : k.toLocaleString('en-US')) + s('K'); }
+      if (ge > 0) { h += d((b > 0 || m > 0 || k > 0) ? String(ge).padStart(3, '0') : ge.toLocaleString('en-US')); }
+      return h + fr(f);
+    }
+
+    function d(v) { return '<span class="amount-digits">' + v + '</span>'; }
+    function s(v) { return '<span class="amount-scale">' + v + '</span>'; }
+    function fr(v) { return '<span class="amount-fraction">' + v + '</span>'; }
+
+    function formatMoney(n) {
+      return n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    // Full scaled format with HTML markup (same as balance display)
+    function formatScaledHTML(num, locale, symbol) {
+      return '<span class="currency-symbol">' + symbol + '</span>' +
+             formatScaledAmount(num, locale);
+    }
+
+    /* ── Monthly Stats ────────────────────────────────────── */
+    function monthlyStats() {
+      var now = new Date();
+      var ym = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+      var inc = 0, exp = 0;
+      getTx().forEach(function (tx) {
+        if (tx.date.substring(0, 7) === ym) {
+          if (tx.type === 'income') inc += tx.amount;
+          else exp += tx.amount;
+        }
+      });
+      return { income: inc, expense: exp };
+    }
+
+    /* ── Render Account Card ──────────────────────────────── */
+    var accountCard = document.getElementById('accountCard');
+
+    function renderAccount() {
+      var acc = getAcc();
+      var stats = monthlyStats();
+      accountCard.innerHTML =
+        '<div class="account-card-top">' +
+          '<div class="account-card-info">' +
+            '<div class="account-name">' + acc.name + ' <span class="tag">' + acc.tag + '</span></div>' +
+            '<div class="account-number">' + acc.number + '</div>' +
+          '</div>' +
+          '<div class="account-card-balance-area">' +
+            '<div class="account-balance">' +
+              '<div class="amount-row" id="balanceRow">' +
+                '<span class="currency-symbol">' + acc.symbol + '</span>' +
+                formatScaledAmount(acc.balance, acc.locale) +
+                '<span class="currency-code">' + acc.currency + '</span>' +
+              '</div>' +
+              '<div class="balance-label-sm">可用余额</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="account-card-bottom">' +
+          '<div class="account-stat">' +
+            '<span class="account-stat-label">本月收入</span>' +
+            '<span class="account-stat-value income">+' + acc.symbol + formatMoney(stats.income) + '</span>' +
+          '</div>' +
+          '<div class="account-stat">' +
+            '<span class="account-stat-label">本月支出</span>' +
+            '<span class="account-stat-value expense">-' + acc.symbol + formatMoney(stats.expense) + '</span>' +
+          '</div>' +
+          '<div class="account-stat">' +
+            '<span class="account-stat-label">本月净额</span>' +
+            '<span class="account-stat-value ' + (stats.income - stats.expense >= 0 ? 'income' : 'expense') + '">' +
+              (stats.income - stats.expense >= 0 ? '+' : '') + acc.symbol + formatMoney(stats.income - stats.expense) +
+            '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="stat-row">' +
+          '<div class="stat-cell">' +
+            '<div class="stat-cell-header">已提现 <a class="detail-link" href="javascript:void(0)" onclick="alert(\'提现明细功能开发中\')" role="button">明细</a></div>' +
+            '<div class="stat-cell-value">' + formatScaledHTML(acc.withdrawn, acc.locale, acc.symbol) + '</div>' +
+          '</div>' +
+          '<div class="stat-cell">' +
+            '<div class="stat-cell-header">已结算</div>' +
+            '<div class="stat-cell-value">' + formatScaledHTML(acc.settled, acc.locale, acc.symbol) + '</div>' +
+          '</div>' +
+          '<div class="stat-cell">' +
+            '<div class="stat-cell-header">待结算</div>' +
+            '<div class="stat-cell-value pending">' + formatScaledHTML(acc.pending, acc.locale, acc.symbol) + '</div>' +
+          '</div>' +
+        '</div>';
+    }
+
+    /* ── Render Table ─────────────────────────────────────── */
+    var tableBody = document.getElementById('tableBody');
+    var tableCount = document.getElementById('tableCount');
+    var paginationInfo = document.getElementById('paginationInfo');
+    var thAmount = document.getElementById('thAmount');
+    var thBalance = document.getElementById('thBalance');
+
+    function renderTable(data) {
+      var acc = getAcc();
+      var cur = acc.currency;
+      thAmount.textContent = '金额 (' + cur + ')';
+      thBalance.textContent = '余额 (' + cur + ')';
+      tableCount.textContent = '共 ' + data.length + ' 条';
+      paginationInfo.textContent = '显示 1-' + data.length + ' 条，共 ' + data.length + ' 条';
+
+      // Compute running balance
+      var bal = acc.balance;
+      var balances = [];
+      for (var i = 0; i < data.length; i++) {
+        balances[i] = bal;
+        if (data[i].type === 'income') bal -= data[i].amount;
+        else bal += data[i].amount;
+      }
+
+      tableBody.innerHTML = data.map(function (tx, idx) {
+        var typeLabel = tx.type === 'income' ? '收入' : '支出';
+        var arrow = tx.type === 'income'
+          ? '<path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0-6.75 6.75M12 4.5l6.75 6.75" />'
+          : '<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m0 0 6.75-6.75M12 19.5l-6.75-6.75" />';
+        var prefix = tx.type === 'income' ? '+' : '-';
+        var statusLabel = tx.status === 'success' ? '已完成' : '处理中';
+        return '<tr>' +
+          '<td class="tx-mono">' + tx.date + '</td>' +
+          '<td class="tx-mono" style="color:var(--color-foreground-secondary)">' + tx.txNo + '</td>' +
+          '<td>' + tx.name + '</td>' +
+          '<td><span class="tx-type-badge ' + tx.type + '"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">' + arrow + '</svg>' + typeLabel + '</span></td>' +
+          '<td><span class="status-badge ' + tx.status + '">' + statusLabel + '</span></td>' +
+          '<td class="tx-amount-cell ' + tx.type + '">' + prefix + acc.symbol + formatMoney(tx.amount) + '</td>' +
+          '<td class="tx-balance">' + acc.symbol + formatMoney(balances[idx]) + '</td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    /* ── Tab Switching ─────────────────────────────────────── */
+    document.querySelectorAll('.tab-item').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        document.querySelector('.tab-item.active').classList.remove('active');
+        this.classList.add('active');
+        activeTab = this.dataset.tab;
+        renderAccount();
+        applyFilter();
+      });
+    });
+
+    /* ── Filter ────────────────────────────────────────────── */
+    var filterType = document.getElementById('filterType');
+    var filterSearch = document.getElementById('filterSearch');
+    var filterDateStart = document.getElementById('filterDateStart');
+    var filterDateEnd = document.getElementById('filterDateEnd');
+
+    function applyFilter() {
+      var type = filterType.value;
+      var search = filterSearch.value.trim().toLowerCase();
+      var start = filterDateStart.value;
+      var end = filterDateEnd.value;
+      var filtered = getTx().filter(function (tx) {
+        if (type && tx.type !== type) return false;
+        if (search && tx.name.toLowerCase().indexOf(search) === -1) return false;
+        var d = tx.date.substring(0, 10);
+        if (start && d < start) return false;
+        if (end && d > end) return false;
+        return true;
+      });
+      renderTable(filtered);
+    }
+
+    filterType.addEventListener('change', applyFilter);
+    filterSearch.addEventListener('input', applyFilter);
+    filterDateStart.addEventListener('change', applyFilter);
+    filterDateEnd.addEventListener('change', applyFilter);
+
+    document.getElementById('btnReset').addEventListener('click', function () {
+      filterType.value = '';
+      filterSearch.value = '';
+      filterDateStart.value = '2026-06-01';
+      filterDateEnd.value = '2026-06-30';
+      applyFilter();
+    });
+
+    /* ── Modal ─────────────────────────────────────────────── */
+    var modalOverlay = document.getElementById('modalOverlay');
+    var typeIncome = document.getElementById('typeIncome');
+    var typeExpense = document.getElementById('typeExpense');
+    var inputAmount = document.getElementById('inputAmount');
+    var inputDesc = document.getElementById('inputDesc');
+    var inputDate = document.getElementById('inputDate');
+    var modalAccountName = document.getElementById('modalAccountName');
+    var btnSubmit = document.getElementById('btnSubmit');
+    var errorAmount = document.getElementById('errorAmount');
+
+    function openModal(presetType) {
+      currentType = presetType || 'income';
+      updateTypeToggle();
+      inputAmount.value = '';
+      inputDesc.value = '';
+      inputDate.value = new Date().toISOString().split('T')[0];
+      var acc = getAcc();
+      modalAccountName.textContent = acc.name + ' (' + acc.tag + ')';
+      errorAmount.textContent = '';
+      modalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () { inputAmount.focus(); }, 300);
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function updateTypeToggle() {
+      typeIncome.classList.toggle('active', currentType === 'income');
+      typeExpense.classList.toggle('active', currentType === 'expense');
+      typeIncome.setAttribute('aria-pressed', currentType === 'income');
+      typeExpense.setAttribute('aria-pressed', currentType === 'expense');
+    }
+
+    document.getElementById('btnAdd').addEventListener('click', function () { openModal('income'); });
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', function (e) { if (e.target === modalOverlay) closeModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal(); });
+
+    typeIncome.addEventListener('click', function () { currentType = 'income'; updateTypeToggle(); });
+    typeExpense.addEventListener('click', function () { currentType === 'expense'; updateTypeToggle(); });
+
+    btnSubmit.addEventListener('click', function () {
+      var amount = parseFloat(inputAmount.value);
+      if (!amount || amount <= 0) { errorAmount.textContent = '请输入有效金额'; inputAmount.focus(); return; }
+      errorAmount.textContent = '';
+      var desc = inputDesc.value.trim() || (currentType === 'income' ? '收入' : '支出');
+      var date = inputDate.value || new Date().toISOString().split('T')[0];
+      var acc = getAcc();
+
+      if (currentType === 'income') acc.balance += amount;
+      else acc.balance -= amount;
+
+      getTx().unshift({
+        type: currentType,
+        name: desc,
+        amount: amount,
+        date: date + ' ' + new Date().toTimeString().substring(0, 5),
+        status: 'success',
+        txNo: 'TX' + date.replace(/-/g, '') + String(getTx().length + 1).padStart(3, '0')
+      });
+
+      renderAccount();
+      applyFilter();
+      closeModal();
+    });
+
+    /* ── Initial Render ───────────────────────────────────── */
+    renderAccount();
+    applyFilter();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资金账户</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Design Tokens ────────────────────────────────────── */
+    :root {
+      --color-primary: #F59E0B;
+      --color-on-primary: #0F172A;
+      --color-secondary: #FBBF24;
+      --color-accent: #8B5CF6;
+      --color-background: #0F172A;
+      --color-foreground: #F8FAFC;
+      --color-card: #1A1F2E;
+      --color-card-hover: #222735;
+      --color-muted: #272F42;
+      --color-muted-foreground: #94A3B8;
+      --color-border: #334155;
+      --color-income: #EF4444;
+      --color-income-bg: rgba(239, 68, 68, 0.1);
+      --color-expense: #22C55E;
+      --color-expense-bg: rgba(34, 197, 94, 0.1);
+
+      --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+
+      --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 0 40px rgba(245, 158, 11, 0.08);
+
+      --transition-fast: 150ms ease;
+      --transition-base: 250ms ease;
+    }
+
+    /* ── Reset & Base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-background);
+      color: var(--color-foreground);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 100px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Layout ───────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ── Header ───────────────────────────────────────────── */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px;
+    }
+
+    .header-title {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+      background: var(--color-card);
+      color: var(--color-muted-foreground);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .icon-btn:hover {
+      background: var(--color-card-hover);
+      border-color: var(--color-muted-foreground);
+    }
+
+    .icon-btn:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .icon-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+    }
+
+    /* ── Bank Card ────────────────────────────────────────── */
+    .bank-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(145deg, #1E293B 0%, #0F172A 50%, #1A1530 100%);
+      padding: 28px 28px 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card), var(--shadow-glow);
+      border: 1px solid rgba(245, 158, 11, 0.12);
+      cursor: default;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .bank-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 60px rgba(245, 158, 11, 0.12);
+    }
+
+    .bank-card::before,
+    .bank-card::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .bank-card::before {
+      width: 280px;
+      height: 280px;
+      top: -100px;
+      right: -80px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
+    }
+
+    .bank-card::after {
+      width: 200px;
+      height: 200px;
+      bottom: -60px;
+      left: -40px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--color-primary), #D97706);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-logo-icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--color-on-primary);
+      stroke-width: 2.5;
+    }
+
+    .card-logo-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-foreground);
+      letter-spacing: 0.02em;
+    }
+
+    .card-type {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-muted-foreground);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border: 1px solid var(--color-border);
+      border-radius: 100px;
+    }
+
+    .card-number-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-number {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--color-foreground);
+      user-select: all;
+    }
+
+    .card-number .dot-group {
+      color: var(--color-muted-foreground);
+      margin-right: 4px;
+    }
+
+    .copy-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--color-muted-foreground);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .copy-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--color-foreground);
+    }
+
+    .copy-btn:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .copy-btn svg {
+      width: 15px;
+      height: 15px;
+      stroke-width: 2;
+    }
+
+    .card-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-holder {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-muted-foreground);
+    }
+
+    .card-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-foreground);
+      letter-spacing: 0.02em;
+    }
+
+    .card-expiry {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-align: right;
+    }
+
+    /* ── Balance Section ──────────────────────────────────── */
+    .balance-section {
+      background: var(--color-card);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 1px solid var(--color-border);
+    }
+
+    .balance-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .balance-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-muted-foreground);
+    }
+
+    .balance-visibility {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: transparent;
+      color: var(--color-muted-foreground);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: color var(--transition-fast);
+    }
+
+    .balance-visibility:hover { color: var(--color-foreground); }
+    .balance-visibility:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .balance-visibility svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+    }
+
+    .balance-amount {
+      font-family: var(--font-mono);
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--color-foreground);
+      line-height: 1.2;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: baseline;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      overflow: hidden;
+      gap: 0;
+    }
+
+    .balance-amount .currency-symbol {
+      font-size: 0.55em;
+      font-weight: 600;
+      color: var(--color-foreground);
+      margin-right: 0.12em;
+      position: relative;
+      top: -0.03em;
+    }
+
+    .balance-amount .amount-body {
+      display: inline-flex;
+      align-items: baseline;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    .balance-amount .amount-digits {
+      letter-spacing: 0.01em;
+    }
+
+    .balance-amount .amount-scale {
+      font-size: 0.44em;
+      font-weight: 700;
+      font-family: var(--font-sans);
+      color: var(--color-secondary);
+      margin: 0 0.04em;
+      position: relative;
+      top: -0.03em;
+    }
+
+    .balance-amount .amount-fraction {
+      color: var(--color-muted-foreground);
+    }
+
+    .balance-amount .currency-code {
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      letter-spacing: 0.08em;
+      color: var(--color-muted-foreground);
+      background: var(--color-muted);
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-left: 0.3em;
+      position: relative;
+      top: -0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Hidden state */
+    .balance-amount.hidden-balance .amount-body,
+    .balance-amount.hidden-balance .currency-code {
+      filter: blur(12px);
+      user-select: none;
+      transition: filter var(--transition-base);
+    }
+
+    .balance-amount:not(.hidden-balance) .amount-body,
+    .balance-amount:not(.hidden-balance) .currency-code {
+      transition: filter var(--transition-base);
+    }
+
+    .balance-sub {
+      font-size: 13px;
+      color: var(--color-muted-foreground);
+    }
+
+    .balance-sub .income-text {
+      color: var(--color-income);
+      font-weight: 500;
+    }
+
+    /* ── Quick Actions ────────────────────────────────────── */
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .action-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 8px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-card);
+      color: var(--color-foreground);
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+      font-family: var(--font-sans);
+    }
+
+    .action-btn:hover {
+      background: var(--color-card-hover);
+      border-color: var(--color-muted-foreground);
+      transform: translateY(-1px);
+    }
+
+    .action-btn:active { transform: translateY(0); }
+
+    .action-btn:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .action-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .action-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2;
+    }
+
+    .action-icon.transfer {
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--color-primary);
+    }
+
+    .action-icon.topup {
+      background: rgba(239, 68, 68, 0.12);
+      color: var(--color-income);
+    }
+
+    .action-icon.withdraw {
+      background: rgba(34, 197, 94, 0.12);
+      color: var(--color-expense);
+    }
+
+    .action-icon.bills {
+      background: rgba(56, 189, 248, 0.12);
+      color: #38BDF8;
+    }
+
+    .action-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-muted-foreground);
+      white-space: nowrap;
+    }
+
+    /* ── Recent Transactions ──────────────────────────────── */
+    .transactions {
+      background: var(--color-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+    }
+
+    .transactions-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px 16px;
+    }
+
+    .transactions-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .transactions-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-primary);
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity var(--transition-fast);
+    }
+
+    .transactions-link:hover { opacity: 0.8; }
+    .transactions-link:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .transaction-list {
+      list-style: none;
+    }
+
+    .transaction-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 24px;
+      transition: background var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .transaction-item:hover { background: rgba(255, 255, 255, 0.02); }
+
+    .transaction-item + .transaction-item {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .tx-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .tx-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+    }
+
+    .tx-icon.income {
+      background: var(--color-income-bg);
+      color: var(--color-income);
+    }
+
+    .tx-icon.expense {
+      background: var(--color-expense-bg);
+      color: var(--color-expense);
+    }
+
+    .tx-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .tx-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-foreground);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tx-date {
+      font-size: 12px;
+      color: var(--color-muted-foreground);
+      margin-top: 2px;
+    }
+
+    .tx-amount {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .tx-amount.income { color: var(--color-income); }
+    .tx-amount.expense { color: var(--color-expense); }
+
+    /* ── FAB (Floating Action Button) ─────────────────────── */
+    .fab {
+      position: fixed;
+      bottom: 24px;
+      right: calc(50% - 240px + 20px);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--color-primary), #D97706);
+      color: var(--color-on-primary);
+      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      z-index: 50;
+    }
+
+    .fab:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(245, 158, 11, 0.45);
+    }
+
+    .fab:active { transform: scale(0.95); }
+
+    .fab:focus-visible {
+      outline: 2px solid var(--color-foreground);
+      outline-offset: 3px;
+    }
+
+    .fab svg {
+      width: 26px;
+      height: 26px;
+      stroke-width: 2.5;
+    }
+
+    @media (max-width: 520px) {
+      .fab { right: 20px; }
+    }
+
+    /* ── Modal Overlay ────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 100;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition-base), visibility var(--transition-base);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-sheet {
+      width: 100%;
+      max-width: 480px;
+      background: var(--color-card);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      padding: 8px 24px 32px;
+      transform: translateY(100%);
+      transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-overlay.open .modal-sheet {
+      transform: translateY(0);
+    }
+
+    .modal-handle {
+      width: 36px;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--color-border);
+      margin: 0 auto 20px;
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    /* ── Form ─────────────────────────────────────────────── */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-muted-foreground);
+      margin-bottom: 6px;
+    }
+
+    .form-input {
+      width: 100%;
+      height: 48px;
+      padding: 0 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      background: var(--color-background);
+      color: var(--color-foreground);
+      font-family: var(--font-mono);
+      font-size: 16px;
+      transition: border-color var(--transition-fast);
+      -webkit-appearance: none;
+    }
+
+    .form-input::placeholder {
+      color: var(--color-muted);
+      font-family: var(--font-sans);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+
+    .form-input.text-input {
+      font-family: var(--font-sans);
+    }
+
+    /* Type toggle */
+    .type-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .type-btn {
+      height: 48px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--color-border);
+      background: transparent;
+      color: var(--color-muted-foreground);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .type-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2.5;
+    }
+
+    .type-btn.income-btn.active {
+      border-color: var(--color-income);
+      background: var(--color-income-bg);
+      color: var(--color-income);
+    }
+
+    .type-btn.expense-btn.active {
+      border-color: var(--color-expense);
+      background: var(--color-expense-bg);
+      color: var(--color-expense);
+    }
+
+    .type-btn:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    /* Submit */
+    .form-submit {
+      width: 100%;
+      height: 50px;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: linear-gradient(135deg, var(--color-primary), #D97706);
+      color: var(--color-on-primary);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity var(--transition-fast);
+    }
+
+    .form-submit:hover { opacity: 0.9; }
+    .form-submit:active { opacity: 0.8; }
+    .form-submit:focus-visible {
+      outline: 2px solid var(--color-foreground);
+      outline-offset: 3px;
+    }
+
+    .form-error {
+      font-size: 12px;
+      color: var(--color-income);
+      margin-top: 4px;
+      min-height: 18px;
+    }
+
+    /* ── Animations ───────────────────────────────────────── */
+    @media (prefers-reduced-motion: no-preference) {
+      .bank-card {
+        animation: cardEntry 600ms ease-out;
+      }
+
+      @keyframes cardEntry {
+        from {
+          opacity: 0;
+          transform: translateY(20px) scale(0.97);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .balance-section {
+        animation: fadeUp 500ms ease-out 100ms both;
+      }
+
+      .actions-grid {
+        animation: fadeUp 500ms ease-out 200ms both;
+      }
+
+      .transactions {
+        animation: fadeUp 500ms ease-out 300ms both;
+      }
+
+      .transaction-item.new-entry {
+        animation: slideIn 350ms ease-out;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (min-width: 768px) {
+      body { padding: 48px 24px 100px; }
+
+      .container { max-width: 420px; }
+
+      .card-number { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <h1 class="header-title">我的账户</h1>
+      <div class="header-actions">
+        <button class="icon-btn" aria-label="通知">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+          </svg>
+        </button>
+        <button class="icon-btn" aria-label="设置">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Bank Card -->
+    <article class="bank-card" aria-label="银行账户卡片">
+      <div class="card-top">
+        <div class="card-logo">
+          <div class="card-logo-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+            </svg>
+          </div>
+          <span class="card-logo-text">Money</span>
+        </div>
+        <span class="card-type">储蓄卡</span>
+      </div>
+
+      <div class="card-number-row">
+        <p class="card-number" aria-label="卡号 6217 0038 0001 2345 678">
+          <span class="dot-group" aria-hidden="true">•••• •••• ••••</span> 2345 678
+        </p>
+        <button class="copy-btn" aria-label="复制完整卡号" title="复制卡号">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9.75a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="card-bottom">
+        <div class="card-holder">
+          <span class="card-label">持卡人</span>
+          <span class="card-value">张三</span>
+        </div>
+        <div class="card-expiry">
+          <span class="card-label">有效期</span>
+          <span class="card-value">12/28</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Balance -->
+    <section class="balance-section" aria-label="账户余额">
+      <div class="balance-header">
+        <span class="balance-label">可用余额</span>
+        <button class="balance-visibility" aria-label="切换余额显示" id="toggleBalance">
+          <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+          </svg>
+        </button>
+      </div>
+      <div class="balance-amount" id="balanceDisplay" data-amount="4485741533.02">
+        <!-- Rendered by JS -->
+      </div>
+      <p class="balance-sub" id="balanceSub">
+        <!-- Rendered by JS -->
+      </p>
+    </section>
+
+    <!-- Quick Actions -->
+    <nav class="actions-grid" aria-label="快捷操作">
+      <button class="action-btn" aria-label="转账">
+        <div class="action-icon transfer">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+          </svg>
+        </div>
+        <span class="action-label">转账</span>
+      </button>
+      <button class="action-btn" aria-label="收入" id="btnIncome">
+        <div class="action-icon topup">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0-6.75 6.75M12 4.5l6.75 6.75" />
+          </svg>
+        </div>
+        <span class="action-label">收入</span>
+      </button>
+      <button class="action-btn" aria-label="支出" id="btnExpense">
+        <div class="action-icon withdraw">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m0 0 6.75-6.75M12 19.5l-6.75-6.75" />
+          </svg>
+        </div>
+        <span class="action-label">支出</span>
+      </button>
+      <button class="action-btn" aria-label="账单">
+        <div class="action-icon bills">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+          </svg>
+        </div>
+        <span class="action-label">账单</span>
+      </button>
+    </nav>
+
+    <!-- Recent Transactions -->
+    <section class="transactions" aria-label="最近交易">
+      <div class="transactions-header">
+        <h2 class="transactions-title">最近交易</h2>
+        <a href="#" class="transactions-link" role="button">查看全部</a>
+      </div>
+      <ul class="transaction-list" id="transactionList">
+        <!-- Rendered by JS -->
+      </ul>
+    </section>
+
+  </div>
+
+  <!-- FAB -->
+  <button class="fab" aria-label="记一笔" id="fabAdd">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+    </svg>
+  </button>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="添加流水">
+    <div class="modal-sheet">
+      <div class="modal-handle"></div>
+      <h2 class="modal-title">记一笔</h2>
+
+      <div class="type-toggle">
+        <button type="button" class="type-btn income-btn active" id="typeIncome" aria-pressed="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0-6.75 6.75M12 4.5l6.75 6.75" />
+          </svg>
+          收入
+        </button>
+        <button type="button" class="type-btn expense-btn" id="typeExpense" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m0 0 6.75-6.75M12 19.5l-6.75-6.75" />
+          </svg>
+          支出
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="inputAmount">金额</label>
+        <input class="form-input" id="inputAmount" type="number" step="0.01" min="0.01" placeholder="0.00" inputmode="decimal" autocomplete="off">
+        <p class="form-error" id="errorAmount"></p>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="inputDesc">备注</label>
+        <input class="form-input text-input" id="inputDesc" type="text" placeholder="例如：工资、餐饮、交通" maxlength="30" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="inputDate">日期</label>
+        <input class="form-input text-input" id="inputDate" type="date">
+      </div>
+
+      <button class="form-submit" id="btnSubmit" type="button">确认添加</button>
+    </div>
+  </div>
+
+  <script>
+    /* ── Data Store ────────────────────────────────────────── */
+    var state = {
+      balance: 4485741533.02,
+      monthlyIncome: 0,
+      monthlyExpense: 0,
+      type: 'income',
+      transactions: [
+        { type: 'income',  name: '工资收入', amount: 12800.00, date: '2026-06-01' },
+        { type: 'expense', name: '超市消费', amount: 356.80,   date: '2026-05-30' },
+        { type: 'expense', name: '餐饮消费', amount: 89.50,    date: '2026-05-29' },
+        { type: 'income',  name: '退款到账', amount: 199.00,   date: '2026-05-28' }
+      ]
+    };
+
+    // Compute monthly totals
+    function computeMonthly() {
+      var now = new Date();
+      var ym = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+      state.monthlyIncome = 0;
+      state.monthlyExpense = 0;
+      state.transactions.forEach(function (tx) {
+        if (tx.date.substring(0, 7) === ym) {
+          if (tx.type === 'income') state.monthlyIncome += tx.amount;
+          else state.monthlyExpense += tx.amount;
+        }
+      });
+    }
+
+    /* ── Amount Formatting ────────────────────────────────── */
+    function formatScaledAmount(num, locale) {
+      var isCn = (!locale || locale === 'zh-CN' || locale === 'zh-TW');
+      var parts = num.toFixed(2).split('.');
+      var fraction = '.' + parts[1];
+      var intNum = parseInt(parts[0], 10);
+      return isCn ? formatCnScale(intNum, fraction) : formatWesternScale(intNum, fraction);
+    }
+
+    function formatCnScale(intNum, fraction) {
+      if (intNum < 10000) {
+        return '<span class="amount-digits">' + intNum.toLocaleString('en-US') + '</span>' +
+               '<span class="amount-fraction">' + fraction + '</span>';
+      }
+      var yi = Math.floor(intNum / 100000000);
+      var rem = intNum % 100000000;
+      var wan = Math.floor(rem / 10000);
+      var ge = rem % 10000;
+      var html = '';
+      if (yi > 0) {
+        html += '<span class="amount-digits">' + yi.toLocaleString('en-US') + '</span>' +
+                '<span class="amount-scale">亿</span>';
+      }
+      if (wan > 0) {
+        var wanStr = yi > 0 ? String(wan).padStart(4, '0') : wan.toLocaleString('en-US');
+        html += '<span class="amount-digits">' + wanStr + '</span>' +
+                '<span class="amount-scale">万</span>';
+      }
+      if (ge > 0) {
+        var geStr = (yi > 0 || wan > 0) ? String(ge).padStart(4, '0') : ge.toLocaleString('en-US');
+        html += '<span class="amount-digits">' + geStr + '</span>';
+      }
+      html += '<span class="amount-fraction">' + fraction + '</span>';
+      return html;
+    }
+
+    function formatWesternScale(intNum, fraction) {
+      if (intNum < 1000) {
+        return '<span class="amount-digits">' + intNum.toLocaleString('en-US') + '</span>' +
+               '<span class="amount-fraction">' + fraction + '</span>';
+      }
+      var b = Math.floor(intNum / 1000000000);
+      var rem1 = intNum % 1000000000;
+      var m = Math.floor(rem1 / 1000000);
+      var rem2 = rem1 % 1000000;
+      var k = Math.floor(rem2 / 1000);
+      var ge = rem2 % 1000;
+      var html = '';
+      if (b > 0) {
+        html += '<span class="amount-digits">' + b.toLocaleString('en-US') + '</span>' +
+                '<span class="amount-scale">B</span>';
+      }
+      if (m > 0) {
+        var mStr = b > 0 ? String(m).padStart(3, '0') : m.toLocaleString('en-US');
+        html += '<span class="amount-digits">' + mStr + '</span>' +
+                '<span class="amount-scale">M</span>';
+      }
+      if (k > 0) {
+        var kStr = (b > 0 || m > 0) ? String(k).padStart(3, '0') : k.toLocaleString('en-US');
+        html += '<span class="amount-digits">' + kStr + '</span>' +
+                '<span class="amount-scale">K</span>';
+      }
+      if (ge > 0) {
+        var geStr = (b > 0 || m > 0 || k > 0) ? String(ge).padStart(3, '0') : ge.toLocaleString('en-US');
+        html += '<span class="amount-digits">' + geStr + '</span>';
+      }
+      html += '<span class="amount-fraction">' + fraction + '</span>';
+      return html;
+    }
+
+    function formatMoney(n) {
+      return n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    /* ── Render Functions ─────────────────────────────────── */
+    var balanceDisplay = document.getElementById('balanceDisplay');
+    var balanceSub = document.getElementById('balanceSub');
+    var transactionList = document.getElementById('transactionList');
+
+    function renderBalance() {
+      var absBalance = Math.abs(state.balance);
+      var sign = state.balance < 0 ? '-' : '';
+      balanceDisplay.innerHTML =
+        '<span class="currency-symbol">¥</span>' +
+        '<span class="amount-body">' + sign + formatScaledAmount(absBalance, 'zh-CN') + '</span>' +
+        '<span class="currency-code">CNY</span>';
+      autoFitBalance();
+    }
+
+    function renderSub() {
+      computeMonthly();
+      var parts = [];
+      if (state.monthlyIncome > 0) {
+        parts.push('本月收入 <span class="income-text">+¥' + formatMoney(state.monthlyIncome) + '</span>');
+      }
+      if (state.monthlyExpense > 0) {
+        parts.push('本月支出 <span style="color:var(--color-expense);font-weight:500">-¥' + formatMoney(state.monthlyExpense) + '</span>');
+      }
+      balanceSub.innerHTML = parts.join('　') || '本月暂无交易';
+    }
+
+    function renderTransactions(highlightFirst) {
+      var html = '';
+      state.transactions.forEach(function (tx, i) {
+        var cls = tx.type;
+        var arrow = tx.type === 'income'
+          ? '<path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0-6.75 6.75M12 4.5l6.75 6.75" />'
+          : '<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m0 0 6.75-6.75M12 19.5l-6.75-6.75" />';
+        var prefix = tx.type === 'income' ? '+' : '-';
+        var newClass = (highlightFirst && i === 0) ? ' new-entry' : '';
+        html += '<li class="transaction-item' + newClass + '" tabindex="0">' +
+          '<div class="tx-icon ' + cls + '" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">' + arrow + '</svg></div>' +
+          '<div class="tx-info"><p class="tx-name">' + tx.name + '</p><p class="tx-date">' + tx.date + '</p></div>' +
+          '<span class="tx-amount ' + cls + '">' + prefix + '¥' + formatMoney(tx.amount) + '</span>' +
+          '</li>';
+      });
+      transactionList.innerHTML = html;
+    }
+
+    function renderAll(highlightFirst) {
+      renderBalance();
+      renderSub();
+      renderTransactions(highlightFirst);
+    }
+
+    /* ── Auto-fit Balance ─────────────────────────────────── */
+    function autoFitBalance() {
+      var el = balanceDisplay;
+      var maxSize = 40;
+      var minSize = 18;
+      var parent = el.parentElement;
+      var style = getComputedStyle(parent);
+      var availableWidth = parent.clientWidth
+        - parseFloat(style.paddingLeft)
+        - parseFloat(style.paddingRight);
+
+      var lo = minSize, hi = maxSize, best = maxSize;
+      el.style.fontSize = hi + 'px';
+      while (lo <= hi) {
+        var mid = Math.round((lo + hi) / 2);
+        el.style.fontSize = mid + 'px';
+        if (el.scrollWidth <= availableWidth) {
+          best = mid; lo = mid + 1;
+        } else {
+          hi = mid - 1;
+        }
+      }
+      el.style.fontSize = best + 'px';
+    }
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        balanceDisplay.style.fontSize = '';
+        autoFitBalance();
+      }, 150);
+    });
+
+    /* ── Toggle Balance Visibility ────────────────────────── */
+    var toggleBtn = document.getElementById('toggleBalance');
+    var eyeIcon = document.getElementById('eyeIcon');
+    var isHidden = false;
+
+    toggleBtn.addEventListener('click', function () {
+      isHidden = !isHidden;
+      balanceDisplay.classList.toggle('hidden-balance', isHidden);
+      if (isHidden) {
+        eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12c1.292 4.338 5.31 7.5 10.066 7.5.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />';
+        toggleBtn.setAttribute('aria-label', '显示余额');
+      } else {
+        eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />';
+        toggleBtn.setAttribute('aria-label', '隐藏余额');
+      }
+    });
+
+    /* ── Copy Card Number ─────────────────────────────────── */
+    document.querySelector('.copy-btn').addEventListener('click', function () {
+      var cardNumber = '6217 0038 0001 2345 678';
+      var btn = this;
+      navigator.clipboard.writeText(cardNumber.replace(/\s/g, '')).then(function () {
+        var orig = btn.getAttribute('title');
+        btn.setAttribute('title', '已复制!');
+        btn.style.color = 'var(--color-expense)';
+        setTimeout(function () {
+          btn.setAttribute('title', orig);
+          btn.style.color = '';
+        }, 1500);
+      });
+    });
+
+    /* ── Modal Logic ──────────────────────────────────────── */
+    var modalOverlay = document.getElementById('modalOverlay');
+    var fabAdd = document.getElementById('fabAdd');
+    var btnIncome = document.getElementById('btnIncome');
+    var btnExpense = document.getElementById('btnExpense');
+    var typeIncome = document.getElementById('typeIncome');
+    var typeExpense = document.getElementById('typeExpense');
+    var inputAmount = document.getElementById('inputAmount');
+    var inputDesc = document.getElementById('inputDesc');
+    var inputDate = document.getElementById('inputDate');
+    var btnSubmit = document.getElementById('btnSubmit');
+    var errorAmount = document.getElementById('errorAmount');
+
+    function openModal(presetType) {
+      state.type = presetType || 'income';
+      updateTypeToggle();
+      inputAmount.value = '';
+      inputDesc.value = '';
+      inputDate.value = new Date().toISOString().split('T')[0];
+      errorAmount.textContent = '';
+      modalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () { inputAmount.focus(); }, 350);
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function updateTypeToggle() {
+      typeIncome.classList.toggle('active', state.type === 'income');
+      typeExpense.classList.toggle('active', state.type === 'expense');
+      typeIncome.setAttribute('aria-pressed', state.type === 'income');
+      typeExpense.setAttribute('aria-pressed', state.type === 'expense');
+    }
+
+    // Open from FAB
+    fabAdd.addEventListener('click', function () { openModal('income'); });
+
+    // Open from quick action buttons
+    btnIncome.addEventListener('click', function () { openModal('income'); });
+    btnExpense.addEventListener('click', function () { openModal('expense'); });
+
+    // Type toggle
+    typeIncome.addEventListener('click', function () {
+      state.type = 'income';
+      updateTypeToggle();
+    });
+    typeExpense.addEventListener('click', function () {
+      state.type = 'expense';
+      updateTypeToggle();
+    });
+
+    // Close on overlay click
+    modalOverlay.addEventListener('click', function (e) {
+      if (e.target === modalOverlay) closeModal();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
+    });
+
+    // Submit
+    btnSubmit.addEventListener('click', function () {
+      var amount = parseFloat(inputAmount.value);
+      if (!amount || amount <= 0) {
+        errorAmount.textContent = '请输入有效金额';
+        inputAmount.focus();
+        return;
+      }
+      errorAmount.textContent = '';
+
+      var desc = inputDesc.value.trim() || (state.type === 'income' ? '收入' : '支出');
+      var date = inputDate.value || new Date().toISOString().split('T')[0];
+
+      // Update balance
+      if (state.type === 'income') {
+        state.balance += amount;
+      } else {
+        state.balance -= amount;
+      }
+
+      // Add transaction at the top
+      state.transactions.unshift({
+        type: state.type,
+        name: desc,
+        amount: amount,
+        date: date
+      });
+
+      renderAll(true);
+      closeModal();
+    });
+
+    /* ── Initial Render ───────────────────────────────────── */
+    renderAll(false);
+  </script>
+
+</body>
+</html>
