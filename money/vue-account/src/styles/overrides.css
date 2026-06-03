@@ -1,0 +1,53 @@
+/* ── Design Tokens ──────────────────────────────────────── */
+:root {
+  --money-radius-sm: 6px;
+  --money-radius-md: 10px;
+  --money-radius-lg: 14px;
+}
+
+/* ── Card: outlined variant ─────────────────────────────── */
+.v-card--variant-outlined {
+  border-color: rgb(var(--v-theme-border)) !important;
+  background: rgb(var(--v-theme-surface)) !important;
+}
+
+.account-card.v-card--variant-outlined:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ── Border Radius Overrides ────────────────────────────── */
+.v-card.rounded-lg {
+  border-radius: var(--money-radius-lg) !important;
+}
+
+.v-card.rounded-md {
+  border-radius: var(--money-radius-md) !important;
+}
+
+/* ── Dialog ─────────────────────────────────────────────── */
+.v-overlay .v-overlay__content {
+  border-radius: var(--money-radius-lg) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15) !important;
+}
+
+.v-overlay--active .v-overlay__scrim {
+  backdrop-filter: blur(4px);
+}
+
+/* ── Data Table ─────────────────────────────────────────── */
+.v-data-table {
+  background: transparent !important;
+}
+
+.v-data-table__tr:hover > .v-data-table__td {
+  background: rgb(var(--v-theme-surface-hover)) !important;
+}
+
+/* ── Btn toggle ─────────────────────────────────────────── */
+.v-btn-toggle--variant-outlined {
+  border-color: rgb(var(--v-theme-border)) !important;
+}
+
+.v-btn-toggle--variant-outlined .v-btn {
+  border-color: rgb(var(--v-theme-border)) !important;
+}

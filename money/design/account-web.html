@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>资金账户 - Web</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <style>
     /* ── Design Tokens ────────────────────────────────────── */
     :root {
@@ -44,7 +47,13 @@
     }
 
     /* ── Reset ─────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: var(--font-sans);
@@ -111,7 +120,9 @@
       gap: 8px;
     }
 
-    .topbar-breadcrumb span { color: var(--color-foreground-secondary); }
+    .topbar-breadcrumb span {
+      color: var(--color-foreground-secondary);
+    }
 
     .topbar-right {
       display: flex;
@@ -185,9 +196,15 @@
       margin-bottom: 24px;
       overflow-x: auto;
       scrollbar-width: none;
+      position: sticky;
+      top: 56px;
+      z-index: 40;
+      background: var(--color-bg);
     }
 
-    .tab-bar::-webkit-scrollbar { display: none; }
+    .tab-bar::-webkit-scrollbar {
+      display: none;
+    }
 
     .tab-item {
       padding: 12px 20px;
@@ -293,7 +310,7 @@
     }
 
     .amount-row .currency-symbol {
-      font-size: 16px;
+      /* font-size: 16px; */
       font-weight: 600;
       color: var(--color-foreground-secondary);
       margin-right: 3px;
@@ -366,8 +383,13 @@
       font-weight: 500;
     }
 
-    .account-stat-value.income { color: var(--color-income); }
-    .account-stat-value.expense { color: var(--color-expense); }
+    .account-stat-value.income {
+      color: var(--color-income);
+    }
+
+    .account-stat-value.expense {
+      color: var(--color-expense);
+    }
 
     .stat-row {
       display: flex;
@@ -385,7 +407,7 @@
       padding: 8px 0;
     }
 
-    .stat-cell + .stat-cell {
+    .stat-cell+.stat-cell {
       border-left: 1px solid var(--color-border-light);
       padding-left: 20px;
     }
@@ -411,8 +433,15 @@
       transition: opacity var(--transition-fast);
     }
 
-    .stat-cell-header .detail-link:hover { opacity: 0.7; }
-    .stat-cell-header .detail-link:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 1px; border-radius: 2px; }
+    .stat-cell-header .detail-link:hover {
+      opacity: 0.7;
+    }
+
+    .stat-cell-header .detail-link:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 1px;
+      border-radius: 2px;
+    }
 
     .stat-cell-value {
       font-family: var(--font-mono);
@@ -434,7 +463,7 @@
 
     .stat-cell-value .amount-digits {
       letter-spacing: 0.01em;
-      line-height: 1;
+      /* line-height: 1; */
     }
 
     .stat-cell-value .amount-scale {
@@ -450,8 +479,13 @@
       color: var(--color-foreground-secondary);
     }
 
-    .stat-cell-value.pending { color: var(--color-primary); }
-    .stat-cell-value.pending .amount-scale { color: var(--color-primary); }
+    .stat-cell-value.pending {
+      color: var(--color-primary);
+    }
+
+    .stat-cell-value.pending .amount-scale {
+      color: var(--color-primary);
+    }
 
     /* ── Filter Bar ───────────────────────────────────────── */
     .filter-bar {
@@ -563,7 +597,9 @@
       color: var(--color-on-primary);
     }
 
-    .btn-primary:hover { opacity: 0.9; }
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
 
     .btn-add {
       background: transparent;
@@ -634,7 +670,9 @@
       white-space: nowrap;
     }
 
-    tr:last-child td { border-bottom: none; }
+    tr:last-child td {
+      border-bottom: none;
+    }
 
     tr:hover td {
       background: var(--color-surface-hover);
@@ -677,8 +715,13 @@
       text-align: right;
     }
 
-    .tx-amount-cell.income { color: var(--color-income); }
-    .tx-amount-cell.expense { color: var(--color-expense); }
+    .tx-amount-cell.income {
+      color: var(--color-income);
+    }
+
+    .tx-amount-cell.expense {
+      color: var(--color-expense);
+    }
 
     .tx-balance {
       font-family: var(--font-mono);
@@ -948,7 +991,10 @@
       transition: opacity var(--transition-fast);
     }
 
-    .form-submit:hover { opacity: 0.9; }
+    .form-submit:hover {
+      opacity: 0.9;
+    }
+
     .form-submit:focus-visible {
       outline: 2px solid var(--color-foreground);
       outline-offset: 3px;
@@ -956,18 +1002,40 @@
 
     /* ── Responsive ───────────────────────────────────────── */
     @media (max-width: 768px) {
-      .topbar { padding: 0 16px; }
-      .main { padding: 16px; }
-      .topbar-breadcrumb { display: none; }
-      .account-card { padding: 20px; }
-      .filter-bar { flex-direction: column; align-items: stretch; }
+      .topbar {
+        padding: 0 16px;
+      }
+
+      .main {
+        padding: 16px;
+      }
+
+      .topbar-breadcrumb {
+        display: none;
+      }
+
+      .account-card {
+        padding: 20px;
+      }
+
+      .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
       .filter-input[type="date"],
       .filter-input[type="text"],
-      .filter-input.select { width: 100%; }
-      .filter-actions { margin-left: 0; }
+      .filter-input.select {
+        width: 100%;
+      }
+
+      .filter-actions {
+        margin-left: 0;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Top Bar -->
@@ -976,7 +1044,8 @@
       <div class="topbar-logo">
         <div class="topbar-logo-icon" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
           </svg>
         </div>
         <span class="topbar-logo-text">Money</span>
@@ -988,7 +1057,8 @@
     <div class="topbar-right">
       <button class="icon-btn" aria-label="通知">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
         </svg>
       </button>
       <div class="topbar-user">
@@ -1041,13 +1111,15 @@
       <div class="filter-actions">
         <button class="btn btn-ghost" id="btnReset">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.992 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182" />
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.992 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182" />
           </svg>
           重置
         </button>
         <button class="btn btn-ghost" id="btnExport">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
           </svg>
           导出
         </button>
@@ -1122,12 +1194,14 @@
         </div>
         <div class="form-group">
           <label class="form-label" for="inputAmount">金额</label>
-          <input class="form-input" id="inputAmount" type="number" step="0.01" min="0.01" placeholder="0.00" inputmode="decimal" autocomplete="off">
+          <input class="form-input" id="inputAmount" type="number" step="0.01" min="0.01" placeholder="0.00"
+            inputmode="decimal" autocomplete="off">
           <p class="form-error" id="errorAmount"></p>
         </div>
         <div class="form-group">
           <label class="form-label" for="inputDesc">备注</label>
-          <input class="form-input text-input" id="inputDesc" type="text" placeholder="例如：工资、餐饮、交通" maxlength="30" autocomplete="off">
+          <input class="form-input text-input" id="inputDesc" type="text" placeholder="例如：工资、餐饮、交通" maxlength="30"
+            autocomplete="off">
         </div>
         <div class="form-row">
           <div class="form-group">
@@ -1136,7 +1210,9 @@
           </div>
           <div class="form-group">
             <label class="form-label">&nbsp;</label>
-            <div style="height:40px;display:flex;align-items:center;font-size:13px;color:var(--color-foreground-secondary)" id="modalAccountName"></div>
+            <div
+              style="height:40px;display:flex;align-items:center;font-size:13px;color:var(--color-foreground-secondary)"
+              id="modalAccountName"></div>
           </div>
         </div>
         <button class="form-submit" id="btnSubmit" type="button">确认添加</button>
@@ -1150,62 +1226,62 @@
       cny: {
         account: { name: '人民币储蓄卡', tag: 'CNY', number: '6217 0038 **** 2345', balance: 4485741533.02, currency: 'CNY', symbol: '¥', locale: 'zh-CN', withdrawn: 2150000.00, settled: 3280000.00, pending: 856200.00 },
         transactions: [
-          { type: 'income',  name: '项目结算',   amount: 52800.00,  date: '2026-06-02 14:30', status: 'success', txNo: 'TX202606020014' },
-          { type: 'expense', name: '办公室租金', amount: 12000.00,  date: '2026-06-02 10:15', status: 'success', txNo: 'TX202606020013' },
-          { type: 'income',  name: '客户回款',   amount: 85000.00,  date: '2026-06-01 16:42', status: 'success', txNo: 'TX202606010012' },
-          { type: 'expense', name: '员工工资',   amount: 156000.00, date: '2026-06-01 09:00', status: 'success', txNo: 'TX202606010011' },
-          { type: 'expense', name: '服务器费用', amount: 3280.00,   date: '2026-05-31 11:20', status: 'success', txNo: 'TX202605310010' },
-          { type: 'income',  name: '投资收益',   amount: 12400.00,  date: '2026-05-30 18:00', status: 'success', txNo: 'TX202605300009' },
-          { type: 'expense', name: '差旅报销',   amount: 4560.00,   date: '2026-05-30 14:33', status: 'success', txNo: 'TX202605300008' },
-          { type: 'income',  name: '咨询服务费', amount: 36000.00,  date: '2026-05-29 10:05', status: 'success', txNo: 'TX202605290007' },
-          { type: 'expense', name: '设备采购',   amount: 28900.00,  date: '2026-05-28 15:48', status: 'success', txNo: 'TX202605280006' },
-          { type: 'income',  name: '退款到账',   amount: 1500.00,   date: '2026-05-28 09:12', status: 'success', txNo: 'TX202605280005' },
-          { type: 'expense', name: '水电费',     amount: 890.00,    date: '2026-05-27 08:30', status: 'success', txNo: 'TX202605270004' },
-          { type: 'income',  name: '利息收入',   amount: 5623.41,   date: '2026-05-27 00:00', status: 'success', txNo: 'TX202605270003' },
-          { type: 'expense', name: '物流配送',   amount: 1200.00,   date: '2026-05-26 16:20', status: 'pending', txNo: 'TX202605260002' },
-          { type: 'income',  name: '销售收入',   amount: 98700.00,  date: '2026-05-26 11:30', status: 'success', txNo: 'TX202605260001' }
+          { type: 'income', name: '项目结算', amount: 52800.00, date: '2026-06-02 14:30', status: 'success', txNo: 'TX202606020014' },
+          { type: 'expense', name: '办公室租金', amount: 12000.00, date: '2026-06-02 10:15', status: 'success', txNo: 'TX202606020013' },
+          { type: 'income', name: '客户回款', amount: 85000.00, date: '2026-06-01 16:42', status: 'success', txNo: 'TX202606010012' },
+          { type: 'expense', name: '员工工资', amount: 156000.00, date: '2026-06-01 09:00', status: 'success', txNo: 'TX202606010011' },
+          { type: 'expense', name: '服务器费用', amount: 3280.00, date: '2026-05-31 11:20', status: 'success', txNo: 'TX202605310010' },
+          { type: 'income', name: '投资收益', amount: 12400.00, date: '2026-05-30 18:00', status: 'success', txNo: 'TX202605300009' },
+          { type: 'expense', name: '差旅报销', amount: 4560.00, date: '2026-05-30 14:33', status: 'success', txNo: 'TX202605300008' },
+          { type: 'income', name: '咨询服务费', amount: 36000.00, date: '2026-05-29 10:05', status: 'success', txNo: 'TX202605290007' },
+          { type: 'expense', name: '设备采购', amount: 28900.00, date: '2026-05-28 15:48', status: 'success', txNo: 'TX202605280006' },
+          { type: 'income', name: '退款到账', amount: 1500.00, date: '2026-05-28 09:12', status: 'success', txNo: 'TX202605280005' },
+          { type: 'expense', name: '水电费', amount: 890.00, date: '2026-05-27 08:30', status: 'success', txNo: 'TX202605270004' },
+          { type: 'income', name: '利息收入', amount: 5623.41, date: '2026-05-27 00:00', status: 'success', txNo: 'TX202605270003' },
+          { type: 'expense', name: '物流配送', amount: 1200.00, date: '2026-05-26 16:20', status: 'pending', txNo: 'TX202605260002' },
+          { type: 'income', name: '销售收入', amount: 98700.00, date: '2026-05-26 11:30', status: 'success', txNo: 'TX202605260001' }
         ]
       },
       usd: {
         account: { name: '美元支票账户', tag: 'USD', number: '3304 5519 **** 6789', balance: 512487.55, currency: 'USD', symbol: '$', locale: 'en-US', withdrawn: 85000.00, settled: 142000.00, pending: 32450.00 },
         transactions: [
-          { type: 'income',  name: '海外汇入',   amount: 25000.00, date: '2026-06-01 20:15', status: 'success', txNo: 'TX202606010022' },
-          { type: 'expense', name: 'AWS 月费',    amount: 1842.30,  date: '2026-05-31 12:00', status: 'success', txNo: 'TX202605310021' },
-          { type: 'income',  name: 'SaaS 订阅',   amount: 499.00,   date: '2026-05-30 09:30', status: 'success', txNo: 'TX202605300020' },
-          { type: 'expense', name: '软件授权',     amount: 2999.00,  date: '2026-05-28 14:10', status: 'success', txNo: 'TX202605280019' },
-          { type: 'income',  name: '广告收入',     amount: 8750.00,  date: '2026-05-27 18:00', status: 'success', txNo: 'TX202605270018' }
+          { type: 'income', name: '海外汇入', amount: 25000.00, date: '2026-06-01 20:15', status: 'success', txNo: 'TX202606010022' },
+          { type: 'expense', name: 'AWS 月费', amount: 1842.30, date: '2026-05-31 12:00', status: 'success', txNo: 'TX202605310021' },
+          { type: 'income', name: 'SaaS 订阅', amount: 499.00, date: '2026-05-30 09:30', status: 'success', txNo: 'TX202605300020' },
+          { type: 'expense', name: '软件授权', amount: 2999.00, date: '2026-05-28 14:10', status: 'success', txNo: 'TX202605280019' },
+          { type: 'income', name: '广告收入', amount: 8750.00, date: '2026-05-27 18:00', status: 'success', txNo: 'TX202605270018' }
         ]
       },
       eur: {
         account: { name: '欧元结算账户', tag: 'EUR', number: 'DE89 3704 0044 **** 1234', balance: 185320.80, currency: 'EUR', symbol: '€', locale: 'en-US', withdrawn: 28000.00, settled: 56000.00, pending: 12400.00 },
         transactions: [
-          { type: 'income',  name: '欧盟客户付款', amount: 32000.00, date: '2026-06-02 11:00', status: 'success', txNo: 'TX202606020032' },
-          { type: 'expense', name: '欧洲办公室',   amount: 4800.00,  date: '2026-05-30 10:00', status: 'success', txNo: 'TX202605300031' },
-          { type: 'income',  name: '退税到账',     amount: 1250.00,  date: '2026-05-28 15:30', status: 'success', txNo: 'TX202605280030' }
+          { type: 'income', name: '欧盟客户付款', amount: 32000.00, date: '2026-06-02 11:00', status: 'success', txNo: 'TX202606020032' },
+          { type: 'expense', name: '欧洲办公室', amount: 4800.00, date: '2026-05-30 10:00', status: 'success', txNo: 'TX202605300031' },
+          { type: 'income', name: '退税到账', amount: 1250.00, date: '2026-05-28 15:30', status: 'success', txNo: 'TX202605280030' }
         ]
       },
       hk: {
         account: { name: '港币账户', tag: 'HKD', number: '8821 0077 **** 9012', balance: 2856410.78, currency: 'HKD', symbol: 'HK$', locale: 'zh-CN', withdrawn: 980000.00, settled: 1250000.00, pending: 210000.00 },
         transactions: [
-          { type: 'income',  name: '港股分红',   amount: 45000.00,  date: '2026-06-01 16:00', status: 'success', txNo: 'TX202606010042' },
-          { type: 'expense', name: '保险缴费',   amount: 8900.00,   date: '2026-05-29 09:00', status: 'success', txNo: 'TX202605290041' },
-          { type: 'income',  name: '租金收入',   amount: 22000.00,  date: '2026-05-28 08:00', status: 'success', txNo: 'TX202605280040' }
+          { type: 'income', name: '港股分红', amount: 45000.00, date: '2026-06-01 16:00', status: 'success', txNo: 'TX202606010042' },
+          { type: 'expense', name: '保险缴费', amount: 8900.00, date: '2026-05-29 09:00', status: 'success', txNo: 'TX202605290041' },
+          { type: 'income', name: '租金收入', amount: 22000.00, date: '2026-05-28 08:00', status: 'success', txNo: 'TX202605280040' }
         ]
       },
       smart: {
         account: { name: '智能活期', tag: 'CNY', number: '7720 8833 **** 5566', balance: 98650.12, currency: 'CNY', symbol: '¥', locale: 'zh-CN', withdrawn: 25000.00, settled: 42000.00, pending: 8600.00 },
         transactions: [
-          { type: 'income',  name: '理财收益',   amount: 186.50,   date: '2026-06-02 00:00', status: 'success', txNo: 'TX202606020052' },
+          { type: 'income', name: '理财收益', amount: 186.50, date: '2026-06-02 00:00', status: 'success', txNo: 'TX202606020052' },
           { type: 'expense', name: '自动转入定存', amount: 5000.00, date: '2026-06-01 00:00', status: 'success', txNo: 'TX202606010051' },
-          { type: 'income',  name: '理财收益',   amount: 162.30,   date: '2026-06-01 00:00', status: 'success', txNo: 'TX202606010050' }
+          { type: 'income', name: '理财收益', amount: 162.30, date: '2026-06-01 00:00', status: 'success', txNo: 'TX202606010050' }
         ]
       },
       unionpay: {
         account: { name: '银联支付', tag: 'CNY', number: '6228 4800 **** 3310', balance: 3256.80, currency: 'CNY', symbol: '¥', locale: 'zh-CN', withdrawn: 12000.00, settled: 8600.00, pending: 2100.00 },
         transactions: [
-          { type: 'expense', name: '便利店',   amount: 32.50,    date: '2026-06-02 08:45', status: 'success', txNo: 'TX202606020062' },
-          { type: 'expense', name: '地铁充值', amount: 100.00,   date: '2026-06-01 07:30', status: 'success', txNo: 'TX202606010061' },
-          { type: 'income',  name: '红包收款', amount: 200.00,   date: '2026-05-31 12:20', status: 'success', txNo: 'TX202605310060' }
+          { type: 'expense', name: '便利店', amount: 32.50, date: '2026-06-02 08:45', status: 'success', txNo: 'TX202606020062' },
+          { type: 'expense', name: '地铁充值', amount: 100.00, date: '2026-06-01 07:30', status: 'success', txNo: 'TX202606010061' },
+          { type: 'income', name: '红包收款', amount: 200.00, date: '2026-05-31 12:20', status: 'success', txNo: 'TX202605310060' }
         ]
       }
     };
@@ -1214,7 +1290,7 @@
     var currentType = 'income';
 
     function getAcc() { return tabs[activeTab].account; }
-    function getTx()  { return tabs[activeTab].transactions; }
+    function getTx() { return tabs[activeTab].transactions; }
 
     /* ── Amount Formatting ────────────────────────────────── */
     function formatScaledAmount(num, locale) {
@@ -1258,7 +1334,7 @@
     // Full scaled format with HTML markup (same as balance display)
     function formatScaledHTML(num, locale, symbol) {
       return '<span class="currency-symbol">' + symbol + '</span>' +
-             formatScaledAmount(num, locale);
+        formatScaledAmount(num, locale);
     }
 
     /* ── Monthly Stats ────────────────────────────────────── */
@@ -1283,50 +1359,50 @@
       var stats = monthlyStats();
       accountCard.innerHTML =
         '<div class="account-card-top">' +
-          '<div class="account-card-info">' +
-            '<div class="account-name">' + acc.name + ' <span class="tag">' + acc.tag + '</span></div>' +
-            '<div class="account-number">' + acc.number + '</div>' +
-          '</div>' +
-          '<div class="account-card-balance-area">' +
-            '<div class="account-balance">' +
-              '<div class="amount-row" id="balanceRow">' +
-                '<span class="currency-symbol">' + acc.symbol + '</span>' +
-                formatScaledAmount(acc.balance, acc.locale) +
-                '<span class="currency-code">' + acc.currency + '</span>' +
-              '</div>' +
-              '<div class="balance-label-sm">可用余额</div>' +
-            '</div>' +
-          '</div>' +
+        '<div class="account-card-info">' +
+        '<div class="account-name">' + acc.name + ' <span class="tag">' + acc.tag + '</span></div>' +
+        '<div class="account-number">' + acc.number + '</div>' +
+        '</div>' +
+        '<div class="account-card-balance-area">' +
+        '<div class="account-balance">' +
+        '<div class="amount-row" id="balanceRow">' +
+        '<span class="currency-symbol">' + acc.symbol + '</span>' +
+        formatScaledAmount(acc.balance, acc.locale) +
+        '<span class="currency-code">' + acc.currency + '</span>' +
+        '</div>' +
+        '<div class="balance-label-sm">可用余额</div>' +
+        '</div>' +
+        '</div>' +
         '</div>' +
         '<div class="account-card-bottom">' +
-          '<div class="account-stat">' +
-            '<span class="account-stat-label">本月收入</span>' +
-            '<span class="account-stat-value income">+' + acc.symbol + formatMoney(stats.income) + '</span>' +
-          '</div>' +
-          '<div class="account-stat">' +
-            '<span class="account-stat-label">本月支出</span>' +
-            '<span class="account-stat-value expense">-' + acc.symbol + formatMoney(stats.expense) + '</span>' +
-          '</div>' +
-          '<div class="account-stat">' +
-            '<span class="account-stat-label">本月净额</span>' +
-            '<span class="account-stat-value ' + (stats.income - stats.expense >= 0 ? 'income' : 'expense') + '">' +
-              (stats.income - stats.expense >= 0 ? '+' : '') + acc.symbol + formatMoney(stats.income - stats.expense) +
-            '</span>' +
-          '</div>' +
+        '<div class="account-stat">' +
+        '<span class="account-stat-label">本月收入</span>' +
+        '<span class="account-stat-value income">+' + acc.symbol + formatMoney(stats.income) + '</span>' +
+        '</div>' +
+        '<div class="account-stat">' +
+        '<span class="account-stat-label">本月支出</span>' +
+        '<span class="account-stat-value expense">-' + acc.symbol + formatMoney(stats.expense) + '</span>' +
+        '</div>' +
+        '<div class="account-stat">' +
+        '<span class="account-stat-label">本月净额</span>' +
+        '<span class="account-stat-value ' + (stats.income - stats.expense >= 0 ? 'income' : 'expense') + '">' +
+        (stats.income - stats.expense >= 0 ? '+' : '') + acc.symbol + formatMoney(stats.income - stats.expense) +
+        '</span>' +
+        '</div>' +
         '</div>' +
         '<div class="stat-row">' +
-          '<div class="stat-cell">' +
-            '<div class="stat-cell-header">已提现 <a class="detail-link" href="javascript:void(0)" onclick="alert(\'提现明细功能开发中\')" role="button">明细</a></div>' +
-            '<div class="stat-cell-value">' + formatScaledHTML(acc.withdrawn, acc.locale, acc.symbol) + '</div>' +
-          '</div>' +
-          '<div class="stat-cell">' +
-            '<div class="stat-cell-header">已结算</div>' +
-            '<div class="stat-cell-value">' + formatScaledHTML(acc.settled, acc.locale, acc.symbol) + '</div>' +
-          '</div>' +
-          '<div class="stat-cell">' +
-            '<div class="stat-cell-header">待结算</div>' +
-            '<div class="stat-cell-value pending">' + formatScaledHTML(acc.pending, acc.locale, acc.symbol) + '</div>' +
-          '</div>' +
+        '<div class="stat-cell">' +
+        '<div class="stat-cell-header">已提现 <a class="detail-link" href="javascript:void(0)" onclick="alert(\'提现明细功能开发中\')" role="button">明细</a></div>' +
+        '<div class="stat-cell-value">' + formatScaledHTML(acc.withdrawn, acc.locale, acc.symbol) + '</div>' +
+        '</div>' +
+        '<div class="stat-cell">' +
+        '<div class="stat-cell-header">已结算</div>' +
+        '<div class="stat-cell-value">' + formatScaledHTML(acc.settled, acc.locale, acc.symbol) + '</div>' +
+        '</div>' +
+        '<div class="stat-cell">' +
+        '<div class="stat-cell-header">待结算</div>' +
+        '<div class="stat-cell-value pending">' + formatScaledHTML(acc.pending, acc.locale, acc.symbol) + '</div>' +
+        '</div>' +
         '</div>';
     }
 
@@ -1369,7 +1445,7 @@
           '<td><span class="status-badge ' + tx.status + '">' + statusLabel + '</span></td>' +
           '<td class="tx-amount-cell ' + tx.type + '">' + prefix + acc.symbol + formatMoney(tx.amount) + '</td>' +
           '<td class="tx-balance">' + acc.symbol + formatMoney(balances[idx]) + '</td>' +
-        '</tr>';
+          '</tr>';
       }).join('');
     }
 
@@ -1495,4 +1571,5 @@
   </script>
 
 </body>
+
 </html>
