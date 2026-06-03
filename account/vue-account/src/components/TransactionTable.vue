@@ -236,7 +236,7 @@ function typeLabel(t: string): string {
 }
 
 .money-table :deep(thead) {
-  background: rgb(var(--v-theme-background));
+  background: rgb(var(--v-theme-surface));
 }
 
 .money-table :deep(thead th) {

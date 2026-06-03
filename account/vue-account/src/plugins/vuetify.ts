@@ -1,8 +1,18 @@
 import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.css'
 import { createVuetify } from 'vuetify'
+import { zhHans } from 'vuetify/locale'
+import { VDateInput } from 'vuetify/labs/VDateInput'
 
 export default createVuetify({
+  components: {
+    VDateInput,
+  },
+  locale: {
+    locale: 'zhHans',
+    fallback: 'zhHans',
+    messages: { zhHans },
+  },
   theme: {
     defaultTheme: 'moneyTheme',
     themes: {

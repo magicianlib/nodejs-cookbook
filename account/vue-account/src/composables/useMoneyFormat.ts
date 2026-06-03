@@ -3,8 +3,9 @@ import type { ScaledPart } from '@/types/account'
 export function useMoneyFormat() {
   function formatScaledAmount(num: number, locale: string): ScaledPart[] {
     const isCn = !locale || locale === 'zh-CN' || locale === 'zh-TW'
-    const [intStr, decRaw] = num.toFixed(2).split('.')
-    const fraction = '.' + decRaw
+    const parts = num.toFixed(2).split('.')
+    const intStr = parts[0]!
+    const fraction = '.' + parts[1]!
     const intNum = parseInt(intStr, 10)
     return isCn ? fmtCn(intNum, fraction) : fmtWestern(intNum, fraction)
   }
