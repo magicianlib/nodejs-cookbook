@@ -1,0 +1,1978 @@
+[
+  {
+    "type": "expense",
+    "name": "客服系统",
+    "amount": 10006.06,
+    "date": "2026-06-03 11:02",
+    "status": "success",
+    "txNo": "TX202606030001"
+  },
+  {
+    "type": "income",
+    "name": "软件销售",
+    "amount": 30768.7,
+    "date": "2026-06-02 21:20",
+    "status": "success",
+    "txNo": "TX202606020002"
+  },
+  {
+    "type": "expense",
+    "name": "文档协作",
+    "amount": 23699.49,
+    "date": "2026-06-02 11:22",
+    "status": "success",
+    "txNo": "TX202606020003"
+  },
+  {
+    "type": "expense",
+    "name": "项目管理",
+    "amount": 34021.17,
+    "date": "2026-06-01 22:03",
+    "status": "success",
+    "txNo": "TX202606010004"
+  },
+  {
+    "type": "expense",
+    "name": "文档协作",
+    "amount": 18319.31,
+    "date": "2026-05-31 20:20",
+    "status": "success",
+    "txNo": "TX202605310005"
+  },
+  {
+    "type": "expense",
+    "name": "CDN 费用",
+    "amount": 9917.99,
+    "date": "2026-05-29 20:04",
+    "status": "success",
+    "txNo": "TX202605290006"
+  },
+  {
+    "type": "expense",
+    "name": "AWS 月费",
+    "amount": 12297.38,
+    "date": "2026-05-29 15:14",
+    "status": "success",
+    "txNo": "TX202605290007"
+  },
+  {
+    "type": "expense",
+    "name": "CI/CD 服务",
+    "amount": 5710.71,
+    "date": "2026-05-29 15:11",
+    "status": "success",
+    "txNo": "TX202605290008"
+  },
+  {
+    "type": "expense",
+    "name": "软件授权",
+    "amount": 21113.37,
+    "date": "2026-05-28 23:51",
+    "status": "success",
+    "txNo": "TX202605280009"
+  },
+  {
+    "type": "expense",
+    "name": "数据库托管",
+    "amount": 39843.69,
+    "date": "2026-05-27 14:56",
+    "status": "success",
+    "txNo": "TX202605270010"
+  },
+  {
+    "type": "income",
+    "name": "专利授权",
+    "amount": 75002.78,
+    "date": "2026-05-20 13:14",
+    "status": "success",
+    "txNo": "TX202605200011"
+  },
+  {
+    "type": "expense",
+    "name": "远程协作",
+    "amount": 14529.7,
+    "date": "2026-05-19 11:57",
+    "status": "success",
+    "txNo": "TX202605190012"
+  },
+  {
+    "type": "expense",
+    "name": "CI/CD 服务",
+    "amount": 19810.46,
+    "date": "2026-05-18 08:50",
+    "status": "pending",
+    "txNo": "TX202605180013"
+  },
+  {
+    "type": "expense",
+    "name": "设计工具",
+    "amount": 7059.75,
+    "date": "2026-05-17 22:09",
+    "status": "success",
+    "txNo": "TX202605170014"
+  },
+  {
+    "type": "expense",
+    "name": "代码托管",
+    "amount": 36301.85,
+    "date": "2026-05-15 13:40",
+    "status": "pending",
+    "txNo": "TX202605150015"
+  },
+  {
+    "type": "income",
+    "name": "专利授权",
+    "amount": 37494.5,
+    "date": "2026-05-08 02:50",
+    "status": "success",
+    "txNo": "TX202605070016"
+  },
+  {
+    "type": "income",
+    "name": "API 调用费",
+    "amount": 40381.13,
+    "date": "2026-05-07 00:21",
+    "status": "success",
+    "txNo": "TX202605060017"
+  },
+  {
+    "type": "expense",
+    "name": "VPN 订阅",
+    "amount": 8217.56,
+    "date": "2026-05-06 11:56",
+    "status": "success",
+    "txNo": "TX202605060018"
+  },
+  {
+    "type": "expense",
+    "name": "项目管理",
+    "amount": 21315.44,
+    "date": "2026-05-05 16:58",
+    "status": "success",
+    "txNo": "TX202605050019"
+  },
+  {
+    "type": "expense",
+    "name": "监控告警",
+    "amount": 28657.65,
+    "date": "2026-05-02 14:56",
+    "status": "success",
+    "txNo": "TX202605020020"
+  },
+  {
+    "type": "expense",
+    "name": "视频会议",
+    "amount": 28303.51,
+    "date": "2026-05-01 20:42",
+    "status": "success",
+    "txNo": "TX202605010021"
+  },
+  {
+    "type": "income",
+    "name": "专利授权",
+    "amount": 59272.04,
+    "date": "2026-04-30 15:02",
+    "status": "success",
+    "txNo": "TX202604300022"
+  },
+  {
+    "type": "expense",
+    "name": "办公租赁",
+    "amount": 26698.66,
+    "date": "2026-04-29 03:30",
+    "status": "success",
+    "txNo": "TX202604280023"
+  },
+  {
+    "type": "income",
+    "name": "平台分成",
+    "amount": 53510.26,
+    "date": "2026-04-23 21:23",
+    "status": "success",
+    "txNo": "TX202604230024"
+  },
+  {
+    "type": "expense",
+    "name": "CI/CD 服务",
+    "amount": 9067.23,
+    "date": "2026-04-22 22:35",
+    "status": "success",
+    "txNo": "TX202604220025"
+  },
+  {
+    "type": "expense",
+    "name": "数据库托管",
+    "amount": 13892.83,
+    "date": "2026-04-22 13:54",
+    "status": "success",
+    "txNo": "TX202604220026"
+  },
+  {
+    "type": "expense",
+    "name": "云存储",
+    "amount": 30326.71,
+    "date": "2026-04-22 05:15",
+    "status": "success",
+    "txNo": "TX202604210027"
+  },
+  {
+    "type": "expense",
+    "name": "AWS 月费",
+    "amount": 24529.14,
+    "date": "2026-04-21 06:17",
+    "status": "success",
+    "txNo": "TX202604200028"
+  },
+  {
+    "type": "expense",
+    "name": "数据分析",
+    "amount": 14172.76,
+    "date": "2026-04-21 04:34",
+    "status": "success",
+    "txNo": "TX202604200029"
+  },
+  {
+    "type": "income",
+    "name": "广告收入",
+    "amount": 56594.06,
+    "date": "2026-04-20 01:53",
+    "status": "success",
+    "txNo": "TX202604190030"
+  },
+  {
+    "type": "expense",
+    "name": "背景调查",
+    "amount": 15901.94,
+    "date": "2026-04-20 01:22",
+    "status": "success",
+    "txNo": "TX202604190031"
+  },
+  {
+    "type": "expense",
+    "name": "邮件服务",
+    "amount": 15574.85,
+    "date": "2026-04-19 02:29",
+    "status": "success",
+    "txNo": "TX202604180032"
+  },
+  {
+    "type": "expense",
+    "name": "代码托管",
+    "amount": 12455.43,
+    "date": "2026-04-13 23:55",
+    "status": "success",
+    "txNo": "TX202604130033"
+  },
+  {
+    "type": "income",
+    "name": "云服务收入",
+    "amount": 51026.06,
+    "date": "2026-04-13 20:11",
+    "status": "success",
+    "txNo": "TX202604130034"
+  },
+  {
+    "type": "expense",
+    "name": "客服系统",
+    "amount": 27178.72,
+    "date": "2026-04-13 12:42",
+    "status": "success",
+    "txNo": "TX202604130035"
+  },
+  {
+    "type": "income",
+    "name": "合作分成",
+    "amount": 11873.11,
+    "date": "2026-04-11 18:32",
+    "status": "success",
+    "txNo": "TX202604110036"
+  },
+  {
+    "type": "income",
+    "name": "国际结算",
+    "amount": 10791.84,
+    "date": "2026-04-11 00:23",
+    "status": "success",
+    "txNo": "TX202604100037"
+  },
+  {
+    "type": "expense",
+    "name": "VPN 订阅",
+    "amount": 33178.49,
+    "date": "2026-04-09 01:57",
+    "status": "success",
+    "txNo": "TX202604080038"
+  },
+  {
+    "type": "expense",
+    "name": "安全扫描",
+    "amount": 35879.37,
+    "date": "2026-04-08 08:16",
+    "status": "pending",
+    "txNo": "TX202604080039"
+  },
+  {
+    "type": "income",
+    "name": "退税到账",
+    "amount": 13639.76,
+    "date": "2026-04-07 19:21",
+    "status": "success",
+    "txNo": "TX202604070040"
+  },
+  {
+    "type": "expense",
+    "name": "邮件服务",
+    "amount": 1223.46,
+    "date": "2026-04-04 07:25",
+    "status": "success",
+    "txNo": "TX202604030041"
+  },
+  {
+    "type": "expense",
+    "name": "CDN 费用",
+    "amount": 33710.53,
+    "date": "2026-04-03 04:34",
+    "status": "success",
+    "txNo": "TX202604020042"
+  },
+  {
+    "type": "income",
+    "name": "专利授权",
+    "amount": 2223.8,
+    "date": "2026-04-02 05:02",
+    "status": "success",
+    "txNo": "TX202604010043"
+  },
+  {
+    "type": "expense",
+    "name": "CDN 费用",
+    "amount": 34615.56,
+    "date": "2026-03-31 21:17",
+    "status": "success",
+    "txNo": "TX202603310044"
+  },
+  {
+    "type": "expense",
+    "name": "监控告警",
+    "amount": 23162.73,
+    "date": "2026-03-27 23:30",
+    "status": "success",
+    "txNo": "TX202603270045"
+  },
+  {
+    "type": "income",
+    "name": "API 调用费",
+    "amount": 50467.01,
+    "date": "2026-03-25 21:19",
+    "status": "success",
+    "txNo": "TX202603250046"
+  },
+  {
+    "type": "expense",
+    "name": "邮件服务",
+    "amount": 38922.1,
+    "date": "2026-03-25 16:58",
+    "status": "success",
+    "txNo": "TX202603250047"
+  },
+  {
+    "type": "expense",
+    "name": "SSL 证书",
+    "amount": 14408.15,
+    "date": "2026-03-21 12:37",
+    "status": "success",
+    "txNo": "TX202603210048"
+  },
+  {
+    "type": "expense",
+    "name": "安全扫描",
+    "amount": 37760.32,
+    "date": "2026-03-18 05:43",
+    "status": "success",
+    "txNo": "TX202603170049"
+  },
+  {
+    "type": "expense",
+    "name": "数据库托管",
+    "amount": 29094.2,
+    "date": "2026-03-18 04:38",
+    "status": "success",
+    "txNo": "TX202603170050"
+  },
+  {
+    "type": "expense",
+    "name": "设计工具",
+    "amount": 7987.92,
+    "date": "2026-03-16 09:33",
+    "status": "success",
+    "txNo": "TX202603160051"
+  },
+  {
+    "type": "expense",
+    "name": "客服系统",
+    "amount": 17104.76,
+    "date": "2026-03-15 09:39",
+    "status": "success",
+    "txNo": "TX202603150052"
+  },
+  {
+    "type": "income",
+    "name": "咨询服务",
+    "amount": 18316.9,
+    "date": "2026-03-13 18:33",
+    "status": "success",
+    "txNo": "TX202603130053"
+  },
+  {
+    "type": "income",
+    "name": "API 调用费",
+    "amount": 74132.5,
+    "date": "2026-03-11 16:45",
+    "status": "success",
+    "txNo": "TX202603110054"
+  },
+  {
+    "type": "income",
+    "name": "合作分成",
+    "amount": 11336.37,
+    "date": "2026-03-07 23:35",
+    "status": "success",
+    "txNo": "TX202603070055"
+  },
+  {
+    "type": "income",
+    "name": "增值服务",
+    "amount": 24273.49,
+    "date": "2026-03-07 17:05",
+    "status": "success",
+    "txNo": "TX202603070056"
+  },
+  {
+    "type": "income",
+    "name": "数据服务",
+    "amount": 47649.16,
+    "date": "2026-03-07 09:05",
+    "status": "success",
+    "txNo": "TX202603070057"
+  },
+  {
+    "type": "expense",
+    "name": "短信服务",
+    "amount": 34843.32,
+    "date": "2026-03-07 03:25",
+    "status": "success",
+    "txNo": "TX202603060058"
+  },
+  {
+    "type": "expense",
+    "name": "背景调查",
+    "amount": 11790.12,
+    "date": "2026-03-06 19:01",
+    "status": "success",
+    "txNo": "TX202603060059"
+  },
+  {
+    "type": "expense",
+    "name": "域名续费",
+    "amount": 15989.27,
+    "date": "2026-03-05 18:17",
+    "status": "success",
+    "txNo": "TX202603050060"
+  },
+  {
+    "type": "expense",
+    "name": "视频会议",
+    "amount": 27594.8,
+    "date": "2026-03-04 14:53",
+    "status": "success",
+    "txNo": "TX202603040061"
+  },
+  {
+    "type": "income",
+    "name": "技术出口",
+    "amount": 13163.82,
+    "date": "2026-03-04 10:25",
+    "status": "success",
+    "txNo": "TX202603040062"
+  },
+  {
+    "type": "income",
+    "name": "技术支持",
+    "amount": 53634.01,
+    "date": "2026-03-04 06:53",
+    "status": "success",
+    "txNo": "TX202603030063"
+  },
+  {
+    "type": "expense",
+    "name": "SSL 证书",
+    "amount": 19443.76,
+    "date": "2026-03-02 04:36",
+    "status": "success",
+    "txNo": "TX202603010064"
+  },
+  {
+    "type": "expense",
+    "name": "邮件服务",
+    "amount": 26181.98,
+    "date": "2026-02-28 22:57",
+    "status": "success",
+    "txNo": "TX202602280065"
+  },
+  {
+    "type": "expense",
+    "name": "监控告警",
+    "amount": 29469.29,
+    "date": "2026-02-28 00:18",
+    "status": "success",
+    "txNo": "TX202602270066"
+  },
+  {
+    "type": "expense",
+    "name": "代码托管",
+    "amount": 26729,
+    "date": "2026-02-27 19:06",
+    "status": "success",
+    "txNo": "TX202602270067"
+  },
+  {
+    "type": "expense",
+    "name": "CDN 费用",
+    "amount": 11756.52,
+    "date": "2026-02-26 05:36",
+    "status": "success",
+    "txNo": "TX202602250068"
+  },
+  {
+    "type": "income",
+    "name": "国际结算",
+    "amount": 20434.11,
+    "date": "2026-02-17 19:34",
+    "status": "success",
+    "txNo": "TX202602170069"
+  },
+  {
+    "type": "income",
+    "name": "退税到账",
+    "amount": 2175.95,
+    "date": "2026-02-17 07:04",
+    "status": "success",
+    "txNo": "TX202602160070"
+  },
+  {
+    "type": "expense",
+    "name": "视频会议",
+    "amount": 39531.69,
+    "date": "2026-02-17 01:55",
+    "status": "success",
+    "txNo": "TX202602160071"
+  },
+  {
+    "type": "expense",
+    "name": "办公租赁",
+    "amount": 6650.39,
+    "date": "2026-02-15 10:51",
+    "status": "success",
+    "txNo": "TX202602150072"
+  },
+  {
+    "type": "expense",
+    "name": "SSL 证书",
+    "amount": 29651.82,
+    "date": "2026-02-15 05:23",
+    "status": "success",
+    "txNo": "TX202602140073"
+  },
+  {
+    "type": "income",
+    "name": "安全审计",
+    "amount": 75677.88,
+    "date": "2026-02-13 17:53",
+    "status": "success",
+    "txNo": "TX202602130074"
+  },
+  {
+    "type": "expense",
+    "name": "短信服务",
+    "amount": 8327.03,
+    "date": "2026-02-12 16:08",
+    "status": "pending",
+    "txNo": "TX202602120075"
+  },
+  {
+    "type": "expense",
+    "name": "视频会议",
+    "amount": 36147,
+    "date": "2026-02-09 04:21",
+    "status": "success",
+    "txNo": "TX202602080076"
+  },
+  {
+    "type": "income",
+    "name": "数据服务",
+    "amount": 57147.16,
+    "date": "2026-02-08 20:30",
+    "status": "success",
+    "txNo": "TX202602080077"
+  },
+  {
+    "type": "expense",
+    "name": "SSL 证书",
+    "amount": 6641.15,
+    "date": "2026-02-07 13:59",
+    "status": "success",
+    "txNo": "TX202602070078"
+  },
+  {
+    "type": "income",
+    "name": "订阅续费",
+    "amount": 25579.33,
+    "date": "2026-02-06 14:02",
+    "status": "success",
+    "txNo": "TX202602060079"
+  },
+  {
+    "type": "income",
+    "name": "API 调用费",
+    "amount": 35645.38,
+    "date": "2026-02-02 09:32",
+    "status": "success",
+    "txNo": "TX202602020080"
+  },
+  {
+    "type": "expense",
+    "name": "代码托管",
+    "amount": 39657.2,
+    "date": "2026-02-02 08:27",
+    "status": "success",
+    "txNo": "TX202602020081"
+  },
+  {
+    "type": "income",
+    "name": "海外汇入",
+    "amount": 73399.38,
+    "date": "2026-01-31 22:56",
+    "status": "pending",
+    "txNo": "TX202601310082"
+  },
+  {
+    "type": "income",
+    "name": "汇兑收益",
+    "amount": 59587.79,
+    "date": "2026-01-31 18:44",
+    "status": "success",
+    "txNo": "TX202601310083"
+  },
+  {
+    "type": "expense",
+    "name": "短信服务",
+    "amount": 39915.88,
+    "date": "2026-01-30 11:33",
+    "status": "success",
+    "txNo": "TX202601300084"
+  },
+  {
+    "type": "expense",
+    "name": "VPN 订阅",
+    "amount": 8217.7,
+    "date": "2026-01-30 05:04",
+    "status": "success",
+    "txNo": "TX202601290085"
+  },
+  {
+    "type": "expense",
+    "name": "视频会议",
+    "amount": 19182.82,
+    "date": "2026-01-26 13:39",
+    "status": "success",
+    "txNo": "TX202601260086"
+  },
+  {
+    "type": "expense",
+    "name": "文档协作",
+    "amount": 28154.37,
+    "date": "2026-01-26 12:02",
+    "status": "success",
+    "txNo": "TX202601260087"
+  },
+  {
+    "type": "expense",
+    "name": "短信服务",
+    "amount": 1744.57,
+    "date": "2026-01-26 04:56",
+    "status": "success",
+    "txNo": "TX202601250088"
+  },
+  {
+    "type": "expense",
+    "name": "知识库",
+    "amount": 21754.31,
+    "date": "2026-01-24 14:36",
+    "status": "success",
+    "txNo": "TX202601240089"
+  },
+  {
+    "type": "expense",
+    "name": "AWS 月费",
+    "amount": 35011.83,
+    "date": "2026-01-23 04:30",
+    "status": "success",
+    "txNo": "TX202601220090"
+  },
+  {
+    "type": "expense",
+    "name": "办公租赁",
+    "amount": 22643.41,
+    "date": "2026-01-22 20:42",
+    "status": "success",
+    "txNo": "TX202601220091"
+  },
+  {
+    "type": "expense",
+    "name": "SSL 证书",
+    "amount": 33204.44,
+    "date": "2026-01-21 19:01",
+    "status": "success",
+    "txNo": "TX202601210092"
+  },
+  {
+    "type": "expense",
+    "name": "知识库",
+    "amount": 31408.63,
+    "date": "2026-01-19 01:52",
+    "status": "success",
+    "txNo": "TX202601180093"
+  },
+  {
+    "type": "income",
+    "name": "API 调用费",
+    "amount": 1874,
+    "date": "2026-01-18 02:31",
+    "status": "success",
+    "txNo": "TX202601170094"
+  },
+  {
+    "type": "expense",
+    "name": "云存储",
+    "amount": 7930.06,
+    "date": "2026-01-17 12:11",
+    "status": "success",
+    "txNo": "TX202601170095"
+  },
+  {
+    "type": "expense",
+    "name": "监控告警",
+    "amount": 29027.55,
+    "date": "2026-01-15 04:47",
+    "status": "success",
+    "txNo": "TX202601140096"
+  },
+  {
+    "type": "income",
+    "name": "许可收入",
+    "amount": 10587.46,
+    "date": "2026-01-14 18:04",
+    "status": "success",
+    "txNo": "TX202601140097"
+  },
+  {
+    "type": "expense",
+    "name": "数据库托管",
+    "amount": 981,
+    "date": "2026-01-13 18:31",
+    "status": "success",
+    "txNo": "TX202601130098"
+  },
+  {
+    "type": "expense",
+    "name": "数据库托管",
+    "amount": 20652.7,
+    "date": "2026-01-11 07:07",
+    "status": "success",
+    "txNo": "TX202601100099"
+  },
+  {
+    "type": "expense",
+    "name": "远程协作",
+    "amount": 38370.33,
+    "date": "2026-01-07 10:02",
+    "status": "success",
+    "txNo": "TX202601070100"
+  },
+  {
+    "type": "income",
+    "name": "SaaS 订阅",
+    "amount": 13735.39,
+    "date": "2026-01-07 08:55",
+    "status": "success",
+    "txNo": "TX202601070101"
+  },
+  {
+    "type": "expense",
+    "name": "软件授权",
+    "amount": 10867.38,
+    "date": "2026-01-05 17:40",
+    "status": "success",
+    "txNo": "TX202601050102"
+  },
+  {
+    "type": "expense",
+    "name": "CI/CD 服务",
+    "amount": 7382.86,
+    "date": "2026-01-04 22:11",
+    "status": "success",
+    "txNo": "TX202601040103"
+  },
+  {
+    "type": "income",
+    "name": "API 调用费",
+    "amount": 67109.27,
+    "date": "2026-01-03 00:19",
+    "status": "success",
+    "txNo": "TX202601020104"
+  },
+  {
+    "type": "income",
+    "name": "汇兑收益",
+    "amount": 50029.69,
+    "date": "2026-01-01 09:47",
+    "status": "success",
+    "txNo": "TX202601010105"
+  },
+  {
+    "type": "expense",
+    "name": "监控告警",
+    "amount": 30165.75,
+    "date": "2026-01-01 00:56",
+    "status": "success",
+    "txNo": "TX202512310106"
+  },
+  {
+    "type": "income",
+    "name": "订阅续费",
+    "amount": 64648.96,
+    "date": "2025-12-30 07:49",
+    "status": "success",
+    "txNo": "TX202512290107"
+  },
+  {
+    "type": "expense",
+    "name": "数据分析",
+    "amount": 27513.24,
+    "date": "2025-12-28 09:32",
+    "status": "success",
+    "txNo": "TX202512280108"
+  },
+  {
+    "type": "income",
+    "name": "云服务收入",
+    "amount": 2812.96,
+    "date": "2025-12-23 00:01",
+    "status": "success",
+    "txNo": "TX202512220109"
+  },
+  {
+    "type": "expense",
+    "name": "SSL 证书",
+    "amount": 11503.94,
+    "date": "2025-12-20 12:31",
+    "status": "success",
+    "txNo": "TX202512200110"
+  },
+  {
+    "type": "expense",
+    "name": "代码托管",
+    "amount": 23272.1,
+    "date": "2025-12-19 20:30",
+    "status": "success",
+    "txNo": "TX202512190111"
+  },
+  {
+    "type": "income",
+    "name": "退税到账",
+    "amount": 60313.46,
+    "date": "2025-12-19 16:23",
+    "status": "success",
+    "txNo": "TX202512190112"
+  },
+  {
+    "type": "expense",
+    "name": "远程协作",
+    "amount": 38705.66,
+    "date": "2025-12-19 15:15",
+    "status": "success",
+    "txNo": "TX202512190113"
+  },
+  {
+    "type": "expense",
+    "name": "邮件服务",
+    "amount": 10066.29,
+    "date": "2025-12-19 09:53",
+    "status": "success",
+    "txNo": "TX202512190114"
+  },
+  {
+    "type": "expense",
+    "name": "客服系统",
+    "amount": 22513.8,
+    "date": "2025-12-19 02:53",
+    "status": "success",
+    "txNo": "TX202512180115"
+  },
+  {
+    "type": "expense",
+    "name": "远程协作",
+    "amount": 27728.83,
+    "date": "2025-12-18 23:41",
+    "status": "success",
+    "txNo": "TX202512180116"
+  },
+  {
+    "type": "expense",
+    "name": "数据分析",
+    "amount": 22326.97,
+    "date": "2025-12-15 18:08",
+    "status": "success",
+    "txNo": "TX202512150117"
+  },
+  {
+    "type": "income",
+    "name": "合作分成",
+    "amount": 50631.32,
+    "date": "2025-12-15 07:13",
+    "status": "success",
+    "txNo": "TX202512140118"
+  },
+  {
+    "type": "expense",
+    "name": "客服系统",
+    "amount": 6439.98,
+    "date": "2025-12-13 13:05",
+    "status": "success",
+    "txNo": "TX202512130119"
+  },
+  {
+    "type": "expense",
+    "name": "CDN 费用",
+    "amount": 31556.24,
+    "date": "2025-12-12 17:18",
+    "status": "success",
+    "txNo": "TX202512120120"
+  },
+  {
+    "type": "income",
+    "name": "云服务收入",
+    "amount": 14071.93,
+    "date": "2025-12-12 15:29",
+    "status": "success",
+    "txNo": "TX202512120121"
+  },
+  {
+    "type": "income",
+    "name": "技术出口",
+    "amount": 51740.54,
+    "date": "2025-12-11 22:16",
+    "status": "success",
+    "txNo": "TX202512110122"
+  },
+  {
+    "type": "expense",
+    "name": "客服系统",
+    "amount": 2135.61,
+    "date": "2025-12-10 06:40",
+    "status": "success",
+    "txNo": "TX202512090123"
+  },
+  {
+    "type": "expense",
+    "name": "代码托管",
+    "amount": 27287.88,
+    "date": "2025-12-10 02:19",
+    "status": "success",
+    "txNo": "TX202512090124"
+  },
+  {
+    "type": "expense",
+    "name": "CI/CD 服务",
+    "amount": 36613.24,
+    "date": "2025-12-09 10:07",
+    "status": "success",
+    "txNo": "TX202512090125"
+  },
+  {
+    "type": "income",
+    "name": "数据服务",
+    "amount": 55221.73,
+    "date": "2025-12-09 07:10",
+    "status": "success",
+    "txNo": "TX202512080126"
+  },
+  {
+    "type": "income",
+    "name": "增值服务",
+    "amount": 13107.53,
+    "date": "2025-12-09 06:38",
+    "status": "success",
+    "txNo": "TX202512080127"
+  },
+  {
+    "type": "expense",
+    "name": "数据分析",
+    "amount": 34560.29,
+    "date": "2025-12-09 03:57",
+    "status": "success",
+    "txNo": "TX202512080128"
+  },
+  {
+    "type": "income",
+    "name": "咨询服务",
+    "amount": 14019.67,
+    "date": "2025-12-07 10:27",
+    "status": "success",
+    "txNo": "TX202512070129"
+  },
+  {
+    "type": "expense",
+    "name": "AWS 月费",
+    "amount": 6400.15,
+    "date": "2025-12-04 00:31",
+    "status": "success",
+    "txNo": "TX202512030130"
+  },
+  {
+    "type": "expense",
+    "name": "办公租赁",
+    "amount": 17758.71,
+    "date": "2025-12-02 10:18",
+    "status": "success",
+    "txNo": "TX202512020131"
+  },
+  {
+    "type": "expense",
+    "name": "CDN 费用",
+    "amount": 13722.09,
+    "date": "2025-11-30 02:02",
+    "status": "pending",
+    "txNo": "TX202511290132"
+  },
+  {
+    "type": "expense",
+    "name": "VPN 订阅",
+    "amount": 11452.13,
+    "date": "2025-11-29 11:42",
+    "status": "success",
+    "txNo": "TX202511290133"
+  },
+  {
+    "type": "expense",
+    "name": "短信服务",
+    "amount": 25049.62,
+    "date": "2025-11-28 23:47",
+    "status": "success",
+    "txNo": "TX202511280134"
+  },
+  {
+    "type": "income",
+    "name": "数据服务",
+    "amount": 78939.59,
+    "date": "2025-11-22 07:31",
+    "status": "success",
+    "txNo": "TX202511210135"
+  },
+  {
+    "type": "income",
+    "name": "设计服务",
+    "amount": 44507.23,
+    "date": "2025-11-20 09:29",
+    "status": "success",
+    "txNo": "TX202511200136"
+  },
+  {
+    "type": "expense",
+    "name": "云存储",
+    "amount": 15531.56,
+    "date": "2025-11-19 20:59",
+    "status": "success",
+    "txNo": "TX202511190137"
+  },
+  {
+    "type": "income",
+    "name": "技术出口",
+    "amount": 51344.92,
+    "date": "2025-11-19 02:16",
+    "status": "success",
+    "txNo": "TX202511180138"
+  },
+  {
+    "type": "expense",
+    "name": "项目管理",
+    "amount": 12596.48,
+    "date": "2025-11-17 13:27",
+    "status": "success",
+    "txNo": "TX202511170139"
+  },
+  {
+    "type": "expense",
+    "name": "项目管理",
+    "amount": 8677.29,
+    "date": "2025-11-16 00:34",
+    "status": "pending",
+    "txNo": "TX202511150140"
+  },
+  {
+    "type": "income",
+    "name": "平台分成",
+    "amount": 23850.03,
+    "date": "2025-11-13 03:30",
+    "status": "success",
+    "txNo": "TX202511120141"
+  },
+  {
+    "type": "expense",
+    "name": "监控告警",
+    "amount": 6589.37,
+    "date": "2025-11-12 03:41",
+    "status": "success",
+    "txNo": "TX202511110142"
+  },
+  {
+    "type": "income",
+    "name": "SaaS 订阅",
+    "amount": 77029.32,
+    "date": "2025-11-11 18:22",
+    "status": "success",
+    "txNo": "TX202511110143"
+  },
+  {
+    "type": "expense",
+    "name": "VPN 订阅",
+    "amount": 38804.37,
+    "date": "2025-11-11 14:09",
+    "status": "success",
+    "txNo": "TX202511110144"
+  },
+  {
+    "type": "income",
+    "name": "海外汇入",
+    "amount": 57065.24,
+    "date": "2025-11-09 09:22",
+    "status": "success",
+    "txNo": "TX202511090145"
+  },
+  {
+    "type": "income",
+    "name": "设计服务",
+    "amount": 69312.44,
+    "date": "2025-11-09 06:15",
+    "status": "success",
+    "txNo": "TX202511080146"
+  },
+  {
+    "type": "expense",
+    "name": "安全扫描",
+    "amount": 23446.76,
+    "date": "2025-11-08 19:17",
+    "status": "success",
+    "txNo": "TX202511080147"
+  },
+  {
+    "type": "income",
+    "name": "国际结算",
+    "amount": 78775.48,
+    "date": "2025-11-08 08:44",
+    "status": "success",
+    "txNo": "TX202511080148"
+  },
+  {
+    "type": "expense",
+    "name": "文档协作",
+    "amount": 10659.41,
+    "date": "2025-11-07 16:48",
+    "status": "success",
+    "txNo": "TX202511070149"
+  },
+  {
+    "type": "income",
+    "name": "平台分成",
+    "amount": 75801.9,
+    "date": "2025-11-06 14:19",
+    "status": "success",
+    "txNo": "TX202511060150"
+  },
+  {
+    "type": "expense",
+    "name": "云存储",
+    "amount": 11066.34,
+    "date": "2025-11-05 14:54",
+    "status": "success",
+    "txNo": "TX202511050151"
+  },
+  {
+    "type": "expense",
+    "name": "代码托管",
+    "amount": 25211.14,
+    "date": "2025-11-04 17:58",
+    "status": "success",
+    "txNo": "TX202511040152"
+  },
+  {
+    "type": "expense",
+    "name": "数据分析",
+    "amount": 5200.81,
+    "date": "2025-11-01 09:36",
+    "status": "success",
+    "txNo": "TX202511010153"
+  },
+  {
+    "type": "expense",
+    "name": "软件授权",
+    "amount": 7076.42,
+    "date": "2025-10-31 15:45",
+    "status": "success",
+    "txNo": "TX202510310154"
+  },
+  {
+    "type": "expense",
+    "name": "人才招聘",
+    "amount": 9001.7,
+    "date": "2025-10-31 09:18",
+    "status": "success",
+    "txNo": "TX202510310155"
+  },
+  {
+    "type": "income",
+    "name": "API 调用费",
+    "amount": 50335.33,
+    "date": "2025-10-31 04:30",
+    "status": "success",
+    "txNo": "TX202510300156"
+  },
+  {
+    "type": "expense",
+    "name": "邮件服务",
+    "amount": 37865.34,
+    "date": "2025-10-28 19:50",
+    "status": "success",
+    "txNo": "TX202510280157"
+  },
+  {
+    "type": "expense",
+    "name": "域名续费",
+    "amount": 21797.67,
+    "date": "2025-10-25 08:12",
+    "status": "success",
+    "txNo": "TX202510250158"
+  },
+  {
+    "type": "income",
+    "name": "增值服务",
+    "amount": 34922.81,
+    "date": "2025-10-21 22:29",
+    "status": "success",
+    "txNo": "TX202510210159"
+  },
+  {
+    "type": "expense",
+    "name": "软件授权",
+    "amount": 10277.51,
+    "date": "2025-10-21 20:36",
+    "status": "success",
+    "txNo": "TX202510210160"
+  },
+  {
+    "type": "expense",
+    "name": "项目管理",
+    "amount": 34638.98,
+    "date": "2025-10-21 13:33",
+    "status": "success",
+    "txNo": "TX202510210161"
+  },
+  {
+    "type": "expense",
+    "name": "代码托管",
+    "amount": 6396.49,
+    "date": "2025-10-11 23:59",
+    "status": "success",
+    "txNo": "TX202510110162"
+  },
+  {
+    "type": "expense",
+    "name": "背景调查",
+    "amount": 32961.78,
+    "date": "2025-10-11 19:25",
+    "status": "success",
+    "txNo": "TX202510110163"
+  },
+  {
+    "type": "expense",
+    "name": "监控告警",
+    "amount": 26032.5,
+    "date": "2025-10-11 15:40",
+    "status": "pending",
+    "txNo": "TX202510110164"
+  },
+  {
+    "type": "expense",
+    "name": "云存储",
+    "amount": 37371.86,
+    "date": "2025-10-11 04:55",
+    "status": "success",
+    "txNo": "TX202510100165"
+  },
+  {
+    "type": "expense",
+    "name": "短信服务",
+    "amount": 20560.52,
+    "date": "2025-10-10 23:53",
+    "status": "success",
+    "txNo": "TX202510100166"
+  },
+  {
+    "type": "expense",
+    "name": "软件授权",
+    "amount": 32885.6,
+    "date": "2025-10-10 14:11",
+    "status": "success",
+    "txNo": "TX202510100167"
+  },
+  {
+    "type": "income",
+    "name": "SaaS 订阅",
+    "amount": 40110.29,
+    "date": "2025-10-07 06:47",
+    "status": "success",
+    "txNo": "TX202510060168"
+  },
+  {
+    "type": "expense",
+    "name": "知识库",
+    "amount": 25919.1,
+    "date": "2025-10-06 04:37",
+    "status": "success",
+    "txNo": "TX202510050169"
+  },
+  {
+    "type": "expense",
+    "name": "数据库托管",
+    "amount": 8564.62,
+    "date": "2025-10-05 14:07",
+    "status": "success",
+    "txNo": "TX202510050170"
+  },
+  {
+    "type": "expense",
+    "name": "SSL 证书",
+    "amount": 36107.73,
+    "date": "2025-10-04 22:21",
+    "status": "success",
+    "txNo": "TX202510040171"
+  },
+  {
+    "type": "income",
+    "name": "设计服务",
+    "amount": 72337.07,
+    "date": "2025-10-04 00:42",
+    "status": "success",
+    "txNo": "TX202510030172"
+  },
+  {
+    "type": "expense",
+    "name": "项目管理",
+    "amount": 1255.58,
+    "date": "2025-10-02 09:29",
+    "status": "success",
+    "txNo": "TX202510020173"
+  },
+  {
+    "type": "expense",
+    "name": "项目管理",
+    "amount": 32127.54,
+    "date": "2025-09-26 11:39",
+    "status": "success",
+    "txNo": "TX202509260174"
+  },
+  {
+    "type": "expense",
+    "name": "AWS 月费",
+    "amount": 23986.75,
+    "date": "2025-09-24 02:06",
+    "status": "success",
+    "txNo": "TX202509230175"
+  },
+  {
+    "type": "expense",
+    "name": "办公租赁",
+    "amount": 15980.7,
+    "date": "2025-09-16 13:41",
+    "status": "success",
+    "txNo": "TX202509160176"
+  },
+  {
+    "type": "income",
+    "name": "代理佣金",
+    "amount": 66804.67,
+    "date": "2025-09-15 22:41",
+    "status": "success",
+    "txNo": "TX202509150177"
+  },
+  {
+    "type": "expense",
+    "name": "人才招聘",
+    "amount": 21073.58,
+    "date": "2025-09-15 20:57",
+    "status": "success",
+    "txNo": "TX202509150178"
+  },
+  {
+    "type": "expense",
+    "name": "SSL 证书",
+    "amount": 6217.09,
+    "date": "2025-09-13 05:01",
+    "status": "success",
+    "txNo": "TX202509120179"
+  },
+  {
+    "type": "income",
+    "name": "数据服务",
+    "amount": 13566.17,
+    "date": "2025-09-12 23:26",
+    "status": "success",
+    "txNo": "TX202509120180"
+  },
+  {
+    "type": "expense",
+    "name": "短信服务",
+    "amount": 20343.74,
+    "date": "2025-09-11 22:42",
+    "status": "success",
+    "txNo": "TX202509110181"
+  },
+  {
+    "type": "expense",
+    "name": "SSL 证书",
+    "amount": 11586.94,
+    "date": "2025-09-07 16:45",
+    "status": "success",
+    "txNo": "TX202509070182"
+  },
+  {
+    "type": "income",
+    "name": "退税到账",
+    "amount": 912.88,
+    "date": "2025-09-06 20:36",
+    "status": "success",
+    "txNo": "TX202509060183"
+  },
+  {
+    "type": "income",
+    "name": "培训收入",
+    "amount": 49106.47,
+    "date": "2025-09-06 01:52",
+    "status": "success",
+    "txNo": "TX202509050184"
+  },
+  {
+    "type": "expense",
+    "name": "邮件服务",
+    "amount": 11028.39,
+    "date": "2025-09-06 00:17",
+    "status": "success",
+    "txNo": "TX202509050185"
+  },
+  {
+    "type": "income",
+    "name": "汇兑收益",
+    "amount": 62965.04,
+    "date": "2025-09-01 05:02",
+    "status": "success",
+    "txNo": "TX202508310186"
+  },
+  {
+    "type": "income",
+    "name": "API 调用费",
+    "amount": 14804.55,
+    "date": "2025-08-31 00:20",
+    "status": "success",
+    "txNo": "TX202508300187"
+  },
+  {
+    "type": "expense",
+    "name": "远程协作",
+    "amount": 22439.98,
+    "date": "2025-08-28 21:05",
+    "status": "success",
+    "txNo": "TX202508280188"
+  },
+  {
+    "type": "income",
+    "name": "专利授权",
+    "amount": 15259.9,
+    "date": "2025-08-27 16:50",
+    "status": "success",
+    "txNo": "TX202508270189"
+  },
+  {
+    "type": "expense",
+    "name": "客服系统",
+    "amount": 21114.07,
+    "date": "2025-08-27 05:18",
+    "status": "success",
+    "txNo": "TX202508260190"
+  },
+  {
+    "type": "income",
+    "name": "专利授权",
+    "amount": 76159.57,
+    "date": "2025-08-26 04:03",
+    "status": "success",
+    "txNo": "TX202508250191"
+  },
+  {
+    "type": "income",
+    "name": "运维外包",
+    "amount": 60304.9,
+    "date": "2025-08-25 05:14",
+    "status": "success",
+    "txNo": "TX202508240192"
+  },
+  {
+    "type": "income",
+    "name": "培训收入",
+    "amount": 68419.3,
+    "date": "2025-08-25 00:30",
+    "status": "success",
+    "txNo": "TX202508240193"
+  },
+  {
+    "type": "income",
+    "name": "技术支持",
+    "amount": 20010.2,
+    "date": "2025-08-24 05:17",
+    "status": "success",
+    "txNo": "TX202508230194"
+  },
+  {
+    "type": "expense",
+    "name": "视频会议",
+    "amount": 14981.53,
+    "date": "2025-08-22 04:22",
+    "status": "success",
+    "txNo": "TX202508210195"
+  },
+  {
+    "type": "expense",
+    "name": "代码托管",
+    "amount": 31209.83,
+    "date": "2025-08-20 19:52",
+    "status": "success",
+    "txNo": "TX202508200196"
+  },
+  {
+    "type": "income",
+    "name": "合作分成",
+    "amount": 39050.17,
+    "date": "2025-08-20 15:11",
+    "status": "success",
+    "txNo": "TX202508200197"
+  },
+  {
+    "type": "expense",
+    "name": "AWS 月费",
+    "amount": 25256.09,
+    "date": "2025-08-20 10:16",
+    "status": "success",
+    "txNo": "TX202508200198"
+  },
+  {
+    "type": "expense",
+    "name": "域名续费",
+    "amount": 13357.81,
+    "date": "2025-08-17 16:52",
+    "status": "success",
+    "txNo": "TX202508170199"
+  },
+  {
+    "type": "expense",
+    "name": "项目管理",
+    "amount": 33357.2,
+    "date": "2025-08-13 21:34",
+    "status": "success",
+    "txNo": "TX202508130200"
+  },
+  {
+    "type": "expense",
+    "name": "数据分析",
+    "amount": 17567.47,
+    "date": "2025-08-13 00:05",
+    "status": "success",
+    "txNo": "TX202508120201"
+  },
+  {
+    "type": "expense",
+    "name": "CI/CD 服务",
+    "amount": 33678.51,
+    "date": "2025-08-12 06:20",
+    "status": "pending",
+    "txNo": "TX202508110202"
+  },
+  {
+    "type": "expense",
+    "name": "知识库",
+    "amount": 28565.99,
+    "date": "2025-08-09 13:19",
+    "status": "pending",
+    "txNo": "TX202508090203"
+  },
+  {
+    "type": "expense",
+    "name": "CI/CD 服务",
+    "amount": 39768.97,
+    "date": "2025-08-09 11:46",
+    "status": "success",
+    "txNo": "TX202508090204"
+  },
+  {
+    "type": "income",
+    "name": "专利授权",
+    "amount": 1640.66,
+    "date": "2025-08-08 10:40",
+    "status": "success",
+    "txNo": "TX202508080205"
+  },
+  {
+    "type": "expense",
+    "name": "人才招聘",
+    "amount": 23047.5,
+    "date": "2025-08-05 16:54",
+    "status": "success",
+    "txNo": "TX202508050206"
+  },
+  {
+    "type": "expense",
+    "name": "代码托管",
+    "amount": 20593.23,
+    "date": "2025-07-31 11:24",
+    "status": "success",
+    "txNo": "TX202507310207"
+  },
+  {
+    "type": "expense",
+    "name": "视频会议",
+    "amount": 5086.84,
+    "date": "2025-07-30 07:30",
+    "status": "success",
+    "txNo": "TX202507290208"
+  },
+  {
+    "type": "income",
+    "name": "平台分成",
+    "amount": 70263.64,
+    "date": "2025-07-25 22:22",
+    "status": "success",
+    "txNo": "TX202507250209"
+  },
+  {
+    "type": "income",
+    "name": "咨询服务",
+    "amount": 49329.94,
+    "date": "2025-07-24 16:11",
+    "status": "success",
+    "txNo": "TX202507240210"
+  },
+  {
+    "type": "expense",
+    "name": "监控告警",
+    "amount": 13009.88,
+    "date": "2025-07-24 13:56",
+    "status": "success",
+    "txNo": "TX202507240211"
+  },
+  {
+    "type": "expense",
+    "name": "邮件服务",
+    "amount": 12572.84,
+    "date": "2025-07-24 04:23",
+    "status": "success",
+    "txNo": "TX202507230212"
+  },
+  {
+    "type": "expense",
+    "name": "视频会议",
+    "amount": 14292.74,
+    "date": "2025-07-23 07:58",
+    "status": "success",
+    "txNo": "TX202507220213"
+  },
+  {
+    "type": "expense",
+    "name": "SSL 证书",
+    "amount": 2030.35,
+    "date": "2025-07-22 06:32",
+    "status": "success",
+    "txNo": "TX202507210214"
+  },
+  {
+    "type": "expense",
+    "name": "人才招聘",
+    "amount": 27626.85,
+    "date": "2025-07-20 15:14",
+    "status": "success",
+    "txNo": "TX202507200215"
+  },
+  {
+    "type": "expense",
+    "name": "CDN 费用",
+    "amount": 31164.42,
+    "date": "2025-07-20 05:20",
+    "status": "success",
+    "txNo": "TX202507190216"
+  },
+  {
+    "type": "income",
+    "name": "增值服务",
+    "amount": 15839.57,
+    "date": "2025-07-19 14:11",
+    "status": "success",
+    "txNo": "TX202507190217"
+  },
+  {
+    "type": "income",
+    "name": "增值服务",
+    "amount": 58292.71,
+    "date": "2025-07-18 01:59",
+    "status": "success",
+    "txNo": "TX202507170218"
+  },
+  {
+    "type": "income",
+    "name": "平台分成",
+    "amount": 3840.15,
+    "date": "2025-07-17 12:20",
+    "status": "success",
+    "txNo": "TX202507170219"
+  },
+  {
+    "type": "expense",
+    "name": "VPN 订阅",
+    "amount": 26818.36,
+    "date": "2025-07-16 12:40",
+    "status": "success",
+    "txNo": "TX202507160220"
+  },
+  {
+    "type": "income",
+    "name": "数据服务",
+    "amount": 72401.94,
+    "date": "2025-07-14 09:05",
+    "status": "success",
+    "txNo": "TX202507140221"
+  },
+  {
+    "type": "expense",
+    "name": "知识库",
+    "amount": 12295.54,
+    "date": "2025-07-14 03:39",
+    "status": "success",
+    "txNo": "TX202507130222"
+  },
+  {
+    "type": "expense",
+    "name": "云存储",
+    "amount": 10113.83,
+    "date": "2025-07-14 00:39",
+    "status": "success",
+    "txNo": "TX202507130223"
+  },
+  {
+    "type": "expense",
+    "name": "短信服务",
+    "amount": 3644.94,
+    "date": "2025-07-13 01:45",
+    "status": "success",
+    "txNo": "TX202507120224"
+  },
+  {
+    "type": "expense",
+    "name": "云存储",
+    "amount": 39577.66,
+    "date": "2025-07-12 19:24",
+    "status": "success",
+    "txNo": "TX202507120225"
+  },
+  {
+    "type": "expense",
+    "name": "AWS 月费",
+    "amount": 32085.54,
+    "date": "2025-07-08 20:55",
+    "status": "success",
+    "txNo": "TX202507080226"
+  },
+  {
+    "type": "expense",
+    "name": "SSL 证书",
+    "amount": 7207.91,
+    "date": "2025-07-08 18:58",
+    "status": "success",
+    "txNo": "TX202507080227"
+  },
+  {
+    "type": "expense",
+    "name": "远程协作",
+    "amount": 34310.13,
+    "date": "2025-07-08 10:13",
+    "status": "pending",
+    "txNo": "TX202507080228"
+  },
+  {
+    "type": "income",
+    "name": "培训收入",
+    "amount": 66460.37,
+    "date": "2025-07-05 22:31",
+    "status": "success",
+    "txNo": "TX202507050229"
+  },
+  {
+    "type": "income",
+    "name": "专利授权",
+    "amount": 37873.7,
+    "date": "2025-07-05 10:23",
+    "status": "success",
+    "txNo": "TX202507050230"
+  },
+  {
+    "type": "expense",
+    "name": "数据库托管",
+    "amount": 36656.2,
+    "date": "2025-07-04 08:06",
+    "status": "success",
+    "txNo": "TX202507040231"
+  },
+  {
+    "type": "income",
+    "name": "退税到账",
+    "amount": 52233.71,
+    "date": "2025-07-02 07:23",
+    "status": "success",
+    "txNo": "TX202507010232"
+  },
+  {
+    "type": "income",
+    "name": "退税到账",
+    "amount": 6435.52,
+    "date": "2025-06-28 20:53",
+    "status": "success",
+    "txNo": "TX202506280233"
+  },
+  {
+    "type": "expense",
+    "name": "办公租赁",
+    "amount": 16659.55,
+    "date": "2025-06-27 01:28",
+    "status": "success",
+    "txNo": "TX202506260234"
+  },
+  {
+    "type": "income",
+    "name": "安全审计",
+    "amount": 37144.21,
+    "date": "2025-06-25 04:11",
+    "status": "success",
+    "txNo": "TX202506240235"
+  },
+  {
+    "type": "expense",
+    "name": "远程协作",
+    "amount": 1098.54,
+    "date": "2025-06-23 16:25",
+    "status": "success",
+    "txNo": "TX202506230236"
+  },
+  {
+    "type": "income",
+    "name": "API 调用费",
+    "amount": 19126.81,
+    "date": "2025-06-23 03:40",
+    "status": "success",
+    "txNo": "TX202506220237"
+  },
+  {
+    "type": "expense",
+    "name": "办公租赁",
+    "amount": 31200.02,
+    "date": "2025-06-21 07:08",
+    "status": "success",
+    "txNo": "TX202506200238"
+  },
+  {
+    "type": "income",
+    "name": "API 调用费",
+    "amount": 29482.21,
+    "date": "2025-06-20 22:04",
+    "status": "success",
+    "txNo": "TX202506200239"
+  },
+  {
+    "type": "income",
+    "name": "汇兑收益",
+    "amount": 24683.71,
+    "date": "2025-06-18 00:45",
+    "status": "success",
+    "txNo": "TX202506170240"
+  },
+  {
+    "type": "expense",
+    "name": "VPN 订阅",
+    "amount": 34626.23,
+    "date": "2025-06-16 20:22",
+    "status": "success",
+    "txNo": "TX202506160241"
+  },
+  {
+    "type": "income",
+    "name": "SaaS 订阅",
+    "amount": 33973.71,
+    "date": "2025-06-16 10:13",
+    "status": "pending",
+    "txNo": "TX202506160242"
+  },
+  {
+    "type": "expense",
+    "name": "办公租赁",
+    "amount": 3548.15,
+    "date": "2025-06-15 03:13",
+    "status": "success",
+    "txNo": "TX202506140243"
+  },
+  {
+    "type": "income",
+    "name": "软件销售",
+    "amount": 68269.83,
+    "date": "2025-06-14 03:16",
+    "status": "success",
+    "txNo": "TX202506130244"
+  },
+  {
+    "type": "expense",
+    "name": "软件授权",
+    "amount": 14351.18,
+    "date": "2025-06-12 17:20",
+    "status": "success",
+    "txNo": "TX202506120245"
+  },
+  {
+    "type": "income",
+    "name": "SaaS 订阅",
+    "amount": 50241.23,
+    "date": "2025-06-06 23:35",
+    "status": "success",
+    "txNo": "TX202506060246"
+  },
+  {
+    "type": "income",
+    "name": "设计服务",
+    "amount": 74162.41,
+    "date": "2025-06-04 04:52",
+    "status": "success",
+    "txNo": "TX202506030247"
+  }
+]

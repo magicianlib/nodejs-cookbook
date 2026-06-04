@@ -1,0 +1,3090 @@
+[
+  {
+    "type": "income",
+    "name": "培训收入",
+    "amount": 380415.74,
+    "date": "2026-06-03 13:11",
+    "status": "success",
+    "txNo": "TX202606030001"
+  },
+  {
+    "type": "expense",
+    "name": "会议费用",
+    "amount": 165888.35,
+    "date": "2026-05-31 22:17",
+    "status": "success",
+    "txNo": "TX202605310002"
+  },
+  {
+    "type": "expense",
+    "name": "广告投放",
+    "amount": 299416.78,
+    "date": "2026-05-30 18:49",
+    "status": "success",
+    "txNo": "TX202605300003"
+  },
+  {
+    "type": "expense",
+    "name": "网络费",
+    "amount": 46837.16,
+    "date": "2026-05-30 16:24",
+    "status": "success",
+    "txNo": "TX202605300004"
+  },
+  {
+    "type": "income",
+    "name": "开发费",
+    "amount": 489388.07,
+    "date": "2026-05-30 09:44",
+    "status": "success",
+    "txNo": "TX202605300005"
+  },
+  {
+    "type": "income",
+    "name": "项目结算",
+    "amount": 17967.67,
+    "date": "2026-05-26 17:29",
+    "status": "success",
+    "txNo": "TX202605260006"
+  },
+  {
+    "type": "income",
+    "name": "退款到账",
+    "amount": 165294.6,
+    "date": "2026-05-26 12:07",
+    "status": "success",
+    "txNo": "TX202605260007"
+  },
+  {
+    "type": "expense",
+    "name": "商标注册",
+    "amount": 57824.59,
+    "date": "2026-05-26 11:16",
+    "status": "success",
+    "txNo": "TX202605260008"
+  },
+  {
+    "type": "income",
+    "name": "客户回款",
+    "amount": 497532.98,
+    "date": "2026-05-25 22:48",
+    "status": "success",
+    "txNo": "TX202605250009"
+  },
+  {
+    "type": "income",
+    "name": "技术服务费",
+    "amount": 355211.51,
+    "date": "2026-05-24 18:51",
+    "status": "pending",
+    "txNo": "TX202605240010"
+  },
+  {
+    "type": "expense",
+    "name": "市场推广",
+    "amount": 257410.16,
+    "date": "2026-05-23 11:55",
+    "status": "success",
+    "txNo": "TX202605230011"
+  },
+  {
+    "type": "expense",
+    "name": "加班餐费",
+    "amount": 230802.96,
+    "date": "2026-05-21 22:21",
+    "status": "success",
+    "txNo": "TX202605210012"
+  },
+  {
+    "type": "expense",
+    "name": "清洁费",
+    "amount": 121963.44,
+    "date": "2026-05-21 20:36",
+    "status": "success",
+    "txNo": "TX202605210013"
+  },
+  {
+    "type": "expense",
+    "name": "通讯费",
+    "amount": 240920.58,
+    "date": "2026-05-18 23:27",
+    "status": "success",
+    "txNo": "TX202605180014"
+  },
+  {
+    "type": "expense",
+    "name": "办公室租金",
+    "amount": 240660.27,
+    "date": "2026-05-13 08:56",
+    "status": "success",
+    "txNo": "TX202605130015"
+  },
+  {
+    "type": "income",
+    "name": "投资收益",
+    "amount": 228388.6,
+    "date": "2026-05-11 10:25",
+    "status": "success",
+    "txNo": "TX202605110016"
+  },
+  {
+    "type": "expense",
+    "name": "法律顾问",
+    "amount": 237292.6,
+    "date": "2026-05-11 02:50",
+    "status": "success",
+    "txNo": "TX202605100017"
+  },
+  {
+    "type": "income",
+    "name": "部署费",
+    "amount": 303996.32,
+    "date": "2026-05-09 16:39",
+    "status": "success",
+    "txNo": "TX202605090018"
+  },
+  {
+    "type": "expense",
+    "name": "办公室租金",
+    "amount": 265397.2,
+    "date": "2026-05-08 13:06",
+    "status": "success",
+    "txNo": "TX202605080019"
+  },
+  {
+    "type": "expense",
+    "name": "商标注册",
+    "amount": 64259,
+    "date": "2026-05-06 01:17",
+    "status": "success",
+    "txNo": "TX202605050020"
+  },
+  {
+    "type": "income",
+    "name": "开发费",
+    "amount": 79048.05,
+    "date": "2026-05-05 14:38",
+    "status": "success",
+    "txNo": "TX202605050021"
+  },
+  {
+    "type": "income",
+    "name": "合同尾款",
+    "amount": 262251.76,
+    "date": "2026-05-05 13:53",
+    "status": "success",
+    "txNo": "TX202605050022"
+  },
+  {
+    "type": "income",
+    "name": "代理佣金",
+    "amount": 89088.19,
+    "date": "2026-05-04 19:28",
+    "status": "success",
+    "txNo": "TX202605040023"
+  },
+  {
+    "type": "expense",
+    "name": "云服务",
+    "amount": 280464.19,
+    "date": "2026-05-03 17:03",
+    "status": "success",
+    "txNo": "TX202605030024"
+  },
+  {
+    "type": "expense",
+    "name": "法律顾问",
+    "amount": 2440.77,
+    "date": "2026-05-03 07:04",
+    "status": "success",
+    "txNo": "TX202605020025"
+  },
+  {
+    "type": "expense",
+    "name": "团建活动",
+    "amount": 168955.95,
+    "date": "2026-04-27 21:03",
+    "status": "success",
+    "txNo": "TX202604270026"
+  },
+  {
+    "type": "expense",
+    "name": "过路费",
+    "amount": 203333.16,
+    "date": "2026-04-27 05:47",
+    "status": "success",
+    "txNo": "TX202604260027"
+  },
+  {
+    "type": "expense",
+    "name": "服务器费用",
+    "amount": 259895.68,
+    "date": "2026-04-26 22:18",
+    "status": "pending",
+    "txNo": "TX202604260028"
+  },
+  {
+    "type": "expense",
+    "name": "审计费",
+    "amount": 190063.01,
+    "date": "2026-04-26 11:41",
+    "status": "success",
+    "txNo": "TX202604260029"
+  },
+  {
+    "type": "expense",
+    "name": "清洁费",
+    "amount": 210583.87,
+    "date": "2026-04-25 22:25",
+    "status": "success",
+    "txNo": "TX202604250030"
+  },
+  {
+    "type": "income",
+    "name": "政府补贴",
+    "amount": 483771.25,
+    "date": "2026-04-25 20:06",
+    "status": "success",
+    "txNo": "TX202604250031"
+  },
+  {
+    "type": "expense",
+    "name": "法律顾问",
+    "amount": 27800.17,
+    "date": "2026-04-25 07:11",
+    "status": "success",
+    "txNo": "TX202604240032"
+  },
+  {
+    "type": "income",
+    "name": "投资收益",
+    "amount": 154088.27,
+    "date": "2026-04-25 01:57",
+    "status": "success",
+    "txNo": "TX202604240033"
+  },
+  {
+    "type": "expense",
+    "name": "广告投放",
+    "amount": 242657.93,
+    "date": "2026-04-24 20:24",
+    "status": "success",
+    "txNo": "TX202604240034"
+  },
+  {
+    "type": "expense",
+    "name": "安保费",
+    "amount": 145643.12,
+    "date": "2026-04-24 12:08",
+    "status": "success",
+    "txNo": "TX202604240035"
+  },
+  {
+    "type": "income",
+    "name": "投资收益",
+    "amount": 338180.27,
+    "date": "2026-04-23 15:01",
+    "status": "success",
+    "txNo": "TX202604230036"
+  },
+  {
+    "type": "expense",
+    "name": "加班餐费",
+    "amount": 24445.61,
+    "date": "2026-04-21 22:13",
+    "status": "success",
+    "txNo": "TX202604210037"
+  },
+  {
+    "type": "income",
+    "name": "审计退款",
+    "amount": 141380.94,
+    "date": "2026-04-20 01:20",
+    "status": "success",
+    "txNo": "TX202604190038"
+  },
+  {
+    "type": "expense",
+    "name": "法律顾问",
+    "amount": 152530.91,
+    "date": "2026-04-19 01:40",
+    "status": "success",
+    "txNo": "TX202604180039"
+  },
+  {
+    "type": "expense",
+    "name": "水电费",
+    "amount": 77931.54,
+    "date": "2026-04-17 06:34",
+    "status": "success",
+    "txNo": "TX202604160040"
+  },
+  {
+    "type": "income",
+    "name": "广告收入",
+    "amount": 410593.39,
+    "date": "2026-04-16 19:51",
+    "status": "pending",
+    "txNo": "TX202604160041"
+  },
+  {
+    "type": "income",
+    "name": "开发费",
+    "amount": 230670.56,
+    "date": "2026-04-16 18:38",
+    "status": "success",
+    "txNo": "TX202604160042"
+  },
+  {
+    "type": "income",
+    "name": "维修服务",
+    "amount": 104445.97,
+    "date": "2026-04-15 17:34",
+    "status": "success",
+    "txNo": "TX202604150043"
+  },
+  {
+    "type": "expense",
+    "name": "服务器费用",
+    "amount": 229767.31,
+    "date": "2026-04-14 18:03",
+    "status": "success",
+    "txNo": "TX202604140044"
+  },
+  {
+    "type": "expense",
+    "name": "差旅报销",
+    "amount": 113216.34,
+    "date": "2026-04-14 12:25",
+    "status": "success",
+    "txNo": "TX202604140045"
+  },
+  {
+    "type": "expense",
+    "name": "社保缴纳",
+    "amount": 128906.07,
+    "date": "2026-04-14 11:38",
+    "status": "success",
+    "txNo": "TX202604140046"
+  },
+  {
+    "type": "expense",
+    "name": "会议费用",
+    "amount": 221731.12,
+    "date": "2026-04-14 09:07",
+    "status": "success",
+    "txNo": "TX202604140047"
+  },
+  {
+    "type": "income",
+    "name": "项目结算",
+    "amount": 449179.47,
+    "date": "2026-04-12 21:27",
+    "status": "success",
+    "txNo": "TX202604120048"
+  },
+  {
+    "type": "expense",
+    "name": "广告投放",
+    "amount": 236084.6,
+    "date": "2026-04-12 10:28",
+    "status": "success",
+    "txNo": "TX202604120049"
+  },
+  {
+    "type": "expense",
+    "name": "过路费",
+    "amount": 298500.02,
+    "date": "2026-04-11 13:38",
+    "status": "success",
+    "txNo": "TX202604110050"
+  },
+  {
+    "type": "income",
+    "name": "版权收入",
+    "amount": 490094.48,
+    "date": "2026-04-09 10:09",
+    "status": "pending",
+    "txNo": "TX202604090051"
+  },
+  {
+    "type": "expense",
+    "name": "网络费",
+    "amount": 138848.63,
+    "date": "2026-04-09 09:34",
+    "status": "success",
+    "txNo": "TX202604090052"
+  },
+  {
+    "type": "expense",
+    "name": "快递费",
+    "amount": 199319.15,
+    "date": "2026-04-09 07:02",
+    "status": "success",
+    "txNo": "TX202604080053"
+  },
+  {
+    "type": "expense",
+    "name": "网络费",
+    "amount": 32317.24,
+    "date": "2026-04-08 16:33",
+    "status": "success",
+    "txNo": "TX202604080054"
+  },
+  {
+    "type": "expense",
+    "name": "社保缴纳",
+    "amount": 28633.86,
+    "date": "2026-04-05 13:43",
+    "status": "success",
+    "txNo": "TX202604050055"
+  },
+  {
+    "type": "expense",
+    "name": "团建活动",
+    "amount": 6020.71,
+    "date": "2026-04-03 13:21",
+    "status": "success",
+    "txNo": "TX202604030056"
+  },
+  {
+    "type": "expense",
+    "name": "维修费",
+    "amount": 86097.37,
+    "date": "2026-04-03 11:34",
+    "status": "success",
+    "txNo": "TX202604030057"
+  },
+  {
+    "type": "income",
+    "name": "广告收入",
+    "amount": 109712.44,
+    "date": "2026-04-03 09:46",
+    "status": "success",
+    "txNo": "TX202604030058"
+  },
+  {
+    "type": "income",
+    "name": "销售收入",
+    "amount": 255702.7,
+    "date": "2026-04-02 19:36",
+    "status": "success",
+    "txNo": "TX202604020059"
+  },
+  {
+    "type": "income",
+    "name": "咨询服务费",
+    "amount": 445138.05,
+    "date": "2026-04-01 10:10",
+    "status": "success",
+    "txNo": "TX202604010060"
+  },
+  {
+    "type": "expense",
+    "name": "审计费",
+    "amount": 43371.47,
+    "date": "2026-03-31 20:36",
+    "status": "success",
+    "txNo": "TX202603310061"
+  },
+  {
+    "type": "expense",
+    "name": "设备采购",
+    "amount": 148241.47,
+    "date": "2026-03-30 06:09",
+    "status": "success",
+    "txNo": "TX202603290062"
+  },
+  {
+    "type": "expense",
+    "name": "水电费",
+    "amount": 89750.49,
+    "date": "2026-03-29 00:09",
+    "status": "success",
+    "txNo": "TX202603280063"
+  },
+  {
+    "type": "expense",
+    "name": "商标注册",
+    "amount": 291826.56,
+    "date": "2026-03-28 18:40",
+    "status": "pending",
+    "txNo": "TX202603280064"
+  },
+  {
+    "type": "expense",
+    "name": "水电费",
+    "amount": 217520.92,
+    "date": "2026-03-26 19:30",
+    "status": "success",
+    "txNo": "TX202603260065"
+  },
+  {
+    "type": "income",
+    "name": "合同尾款",
+    "amount": 58257.22,
+    "date": "2026-03-25 11:01",
+    "status": "success",
+    "txNo": "TX202603250066"
+  },
+  {
+    "type": "expense",
+    "name": "差旅报销",
+    "amount": 157553.89,
+    "date": "2026-03-24 18:12",
+    "status": "success",
+    "txNo": "TX202603240067"
+  },
+  {
+    "type": "income",
+    "name": "项目结算",
+    "amount": 22116.41,
+    "date": "2026-03-20 17:55",
+    "status": "success",
+    "txNo": "TX202603200068"
+  },
+  {
+    "type": "income",
+    "name": "代理佣金",
+    "amount": 281676.93,
+    "date": "2026-03-20 04:08",
+    "status": "success",
+    "txNo": "TX202603190069"
+  },
+  {
+    "type": "expense",
+    "name": "团建活动",
+    "amount": 126379.49,
+    "date": "2026-03-19 22:56",
+    "status": "success",
+    "txNo": "TX202603190070"
+  },
+  {
+    "type": "expense",
+    "name": "加班餐费",
+    "amount": 146278.08,
+    "date": "2026-03-19 01:58",
+    "status": "success",
+    "txNo": "TX202603180071"
+  },
+  {
+    "type": "expense",
+    "name": "专利申请",
+    "amount": 194219.68,
+    "date": "2026-03-18 07:24",
+    "status": "success",
+    "txNo": "TX202603170072"
+  },
+  {
+    "type": "income",
+    "name": "许可费收入",
+    "amount": 189480.24,
+    "date": "2026-03-17 23:39",
+    "status": "success",
+    "txNo": "TX202603170073"
+  },
+  {
+    "type": "income",
+    "name": "许可费收入",
+    "amount": 478921.48,
+    "date": "2026-03-15 11:51",
+    "status": "success",
+    "txNo": "TX202603150074"
+  },
+  {
+    "type": "expense",
+    "name": "通讯费",
+    "amount": 120867.51,
+    "date": "2026-03-15 06:51",
+    "status": "success",
+    "txNo": "TX202603140075"
+  },
+  {
+    "type": "income",
+    "name": "保险理赔",
+    "amount": 134879.15,
+    "date": "2026-03-14 13:44",
+    "status": "success",
+    "txNo": "TX202603140076"
+  },
+  {
+    "type": "expense",
+    "name": "水电费",
+    "amount": 78685.41,
+    "date": "2026-03-14 00:21",
+    "status": "success",
+    "txNo": "TX202603130077"
+  },
+  {
+    "type": "expense",
+    "name": "打印费",
+    "amount": 219175.4,
+    "date": "2026-03-13 22:19",
+    "status": "success",
+    "txNo": "TX202603130078"
+  },
+  {
+    "type": "income",
+    "name": "技术服务费",
+    "amount": 442327.92,
+    "date": "2026-03-11 20:15",
+    "status": "success",
+    "txNo": "TX202603110079"
+  },
+  {
+    "type": "expense",
+    "name": "加油费",
+    "amount": 240027.64,
+    "date": "2026-03-10 17:55",
+    "status": "success",
+    "txNo": "TX202603100080"
+  },
+  {
+    "type": "income",
+    "name": "版权收入",
+    "amount": 355180.32,
+    "date": "2026-03-09 16:04",
+    "status": "success",
+    "txNo": "TX202603090081"
+  },
+  {
+    "type": "income",
+    "name": "测试费",
+    "amount": 302228.49,
+    "date": "2026-03-09 05:30",
+    "status": "pending",
+    "txNo": "TX202603080082"
+  },
+  {
+    "type": "income",
+    "name": "审计退款",
+    "amount": 185584.6,
+    "date": "2026-03-08 18:20",
+    "status": "success",
+    "txNo": "TX202603080083"
+  },
+  {
+    "type": "income",
+    "name": "开发费",
+    "amount": 413424.98,
+    "date": "2026-03-06 18:29",
+    "status": "success",
+    "txNo": "TX202603060084"
+  },
+  {
+    "type": "expense",
+    "name": "税费",
+    "amount": 4650.69,
+    "date": "2026-03-06 02:54",
+    "status": "success",
+    "txNo": "TX202603050085"
+  },
+  {
+    "type": "expense",
+    "name": "保险费",
+    "amount": 26796.42,
+    "date": "2026-03-05 20:16",
+    "status": "success",
+    "txNo": "TX202603050086"
+  },
+  {
+    "type": "income",
+    "name": "保险理赔",
+    "amount": 489194.38,
+    "date": "2026-03-02 10:08",
+    "status": "success",
+    "txNo": "TX202603020087"
+  },
+  {
+    "type": "income",
+    "name": "设计费",
+    "amount": 71825.94,
+    "date": "2026-03-02 07:40",
+    "status": "success",
+    "txNo": "TX202603010088"
+  },
+  {
+    "type": "income",
+    "name": "销售收入",
+    "amount": 120156.66,
+    "date": "2026-02-28 16:12",
+    "status": "success",
+    "txNo": "TX202602280089"
+  },
+  {
+    "type": "expense",
+    "name": "专利申请",
+    "amount": 209596.87,
+    "date": "2026-02-27 02:48",
+    "status": "success",
+    "txNo": "TX202602260090"
+  },
+  {
+    "type": "expense",
+    "name": "培训费",
+    "amount": 180032.92,
+    "date": "2026-02-26 10:15",
+    "status": "success",
+    "txNo": "TX202602260091"
+  },
+  {
+    "type": "expense",
+    "name": "加油费",
+    "amount": 101357.33,
+    "date": "2026-02-26 09:36",
+    "status": "success",
+    "txNo": "TX202602260092"
+  },
+  {
+    "type": "income",
+    "name": "测试费",
+    "amount": 416329.53,
+    "date": "2026-02-25 15:38",
+    "status": "success",
+    "txNo": "TX202602250093"
+  },
+  {
+    "type": "expense",
+    "name": "物流配送",
+    "amount": 133300.99,
+    "date": "2026-02-25 07:30",
+    "status": "success",
+    "txNo": "TX202602240094"
+  },
+  {
+    "type": "expense",
+    "name": "物流配送",
+    "amount": 168289.16,
+    "date": "2026-02-23 20:40",
+    "status": "success",
+    "txNo": "TX202602230095"
+  },
+  {
+    "type": "expense",
+    "name": "差旅报销",
+    "amount": 135708.24,
+    "date": "2026-02-23 05:54",
+    "status": "success",
+    "txNo": "TX202602220096"
+  },
+  {
+    "type": "expense",
+    "name": "社保缴纳",
+    "amount": 86384.85,
+    "date": "2026-02-23 03:04",
+    "status": "success",
+    "txNo": "TX202602220097"
+  },
+  {
+    "type": "income",
+    "name": "代理佣金",
+    "amount": 352117.47,
+    "date": "2026-02-23 00:18",
+    "status": "success",
+    "txNo": "TX202602220098"
+  },
+  {
+    "type": "expense",
+    "name": "设备采购",
+    "amount": 157665.21,
+    "date": "2026-02-21 07:53",
+    "status": "success",
+    "txNo": "TX202602200099"
+  },
+  {
+    "type": "income",
+    "name": "合同尾款",
+    "amount": 10185.98,
+    "date": "2026-02-19 15:13",
+    "status": "success",
+    "txNo": "TX202602190100"
+  },
+  {
+    "type": "income",
+    "name": "运维费",
+    "amount": 487651.45,
+    "date": "2026-02-17 00:01",
+    "status": "success",
+    "txNo": "TX202602160101"
+  },
+  {
+    "type": "expense",
+    "name": "维修费",
+    "amount": 190403.26,
+    "date": "2026-02-14 23:32",
+    "status": "success",
+    "txNo": "TX202602140102"
+  },
+  {
+    "type": "expense",
+    "name": "安保费",
+    "amount": 214491.3,
+    "date": "2026-02-14 13:28",
+    "status": "success",
+    "txNo": "TX202602140103"
+  },
+  {
+    "type": "income",
+    "name": "押金退还",
+    "amount": 313217.89,
+    "date": "2026-02-14 06:06",
+    "status": "success",
+    "txNo": "TX202602130104"
+  },
+  {
+    "type": "income",
+    "name": "许可费收入",
+    "amount": 236472.1,
+    "date": "2026-02-10 22:00",
+    "status": "success",
+    "txNo": "TX202602100105"
+  },
+  {
+    "type": "expense",
+    "name": "市场推广",
+    "amount": 49168.5,
+    "date": "2026-02-08 19:04",
+    "status": "success",
+    "txNo": "TX202602080106"
+  },
+  {
+    "type": "income",
+    "name": "版权收入",
+    "amount": 79109.04,
+    "date": "2026-02-07 02:52",
+    "status": "success",
+    "txNo": "TX202602060107"
+  },
+  {
+    "type": "expense",
+    "name": "专利申请",
+    "amount": 2980.38,
+    "date": "2026-02-06 17:07",
+    "status": "success",
+    "txNo": "TX202602060108"
+  },
+  {
+    "type": "income",
+    "name": "项目结算",
+    "amount": 76411.43,
+    "date": "2026-02-06 08:15",
+    "status": "success",
+    "txNo": "TX202602060109"
+  },
+  {
+    "type": "expense",
+    "name": "加班餐费",
+    "amount": 120786.11,
+    "date": "2026-02-06 05:00",
+    "status": "success",
+    "txNo": "TX202602050110"
+  },
+  {
+    "type": "income",
+    "name": "审计退款",
+    "amount": 250099.55,
+    "date": "2026-02-06 02:26",
+    "status": "success",
+    "txNo": "TX202602050111"
+  },
+  {
+    "type": "income",
+    "name": "项目结算",
+    "amount": 318693,
+    "date": "2026-02-05 14:36",
+    "status": "success",
+    "txNo": "TX202602050112"
+  },
+  {
+    "type": "expense",
+    "name": "市场推广",
+    "amount": 123771.84,
+    "date": "2026-02-05 12:22",
+    "status": "success",
+    "txNo": "TX202602050113"
+  },
+  {
+    "type": "expense",
+    "name": "社保缴纳",
+    "amount": 78658.52,
+    "date": "2026-02-04 04:50",
+    "status": "success",
+    "txNo": "TX202602030114"
+  },
+  {
+    "type": "income",
+    "name": "版权收入",
+    "amount": 117771.78,
+    "date": "2026-02-03 18:31",
+    "status": "success",
+    "txNo": "TX202602030115"
+  },
+  {
+    "type": "expense",
+    "name": "办公室租金",
+    "amount": 87474,
+    "date": "2026-02-03 17:38",
+    "status": "success",
+    "txNo": "TX202602030116"
+  },
+  {
+    "type": "income",
+    "name": "版权收入",
+    "amount": 205568.95,
+    "date": "2026-02-03 13:57",
+    "status": "success",
+    "txNo": "TX202602030117"
+  },
+  {
+    "type": "expense",
+    "name": "安保费",
+    "amount": 69580.51,
+    "date": "2026-02-03 05:56",
+    "status": "success",
+    "txNo": "TX202602020118"
+  },
+  {
+    "type": "income",
+    "name": "政府补贴",
+    "amount": 130566.15,
+    "date": "2026-02-01 17:41",
+    "status": "success",
+    "txNo": "TX202602010119"
+  },
+  {
+    "type": "income",
+    "name": "维修服务",
+    "amount": 428772.78,
+    "date": "2026-01-31 20:46",
+    "status": "success",
+    "txNo": "TX202601310120"
+  },
+  {
+    "type": "income",
+    "name": "咨询服务费",
+    "amount": 278220.66,
+    "date": "2026-01-31 12:57",
+    "status": "success",
+    "txNo": "TX202601310121"
+  },
+  {
+    "type": "expense",
+    "name": "员工工资",
+    "amount": 82768.58,
+    "date": "2026-01-29 11:54",
+    "status": "success",
+    "txNo": "TX202601290122"
+  },
+  {
+    "type": "expense",
+    "name": "软件订阅",
+    "amount": 186887.25,
+    "date": "2026-01-27 14:31",
+    "status": "success",
+    "txNo": "TX202601270123"
+  },
+  {
+    "type": "expense",
+    "name": "员工工资",
+    "amount": 209501.92,
+    "date": "2026-01-27 10:36",
+    "status": "success",
+    "txNo": "TX202601270124"
+  },
+  {
+    "type": "expense",
+    "name": "打印费",
+    "amount": 257245.73,
+    "date": "2026-01-27 09:16",
+    "status": "success",
+    "txNo": "TX202601270125"
+  },
+  {
+    "type": "income",
+    "name": "销售收入",
+    "amount": 95859.19,
+    "date": "2026-01-26 12:54",
+    "status": "success",
+    "txNo": "TX202601260126"
+  },
+  {
+    "type": "expense",
+    "name": "维修费",
+    "amount": 249881.86,
+    "date": "2026-01-26 04:11",
+    "status": "success",
+    "txNo": "TX202601250127"
+  },
+  {
+    "type": "expense",
+    "name": "员工工资",
+    "amount": 68848.91,
+    "date": "2026-01-25 22:41",
+    "status": "success",
+    "txNo": "TX202601250128"
+  },
+  {
+    "type": "income",
+    "name": "咨询服务费",
+    "amount": 148594.85,
+    "date": "2026-01-25 18:03",
+    "status": "success",
+    "txNo": "TX202601250129"
+  },
+  {
+    "type": "expense",
+    "name": "设备采购",
+    "amount": 52464.17,
+    "date": "2026-01-25 13:10",
+    "status": "success",
+    "txNo": "TX202601250130"
+  },
+  {
+    "type": "income",
+    "name": "开发费",
+    "amount": 467362.48,
+    "date": "2026-01-25 01:17",
+    "status": "success",
+    "txNo": "TX202601240131"
+  },
+  {
+    "type": "expense",
+    "name": "软件订阅",
+    "amount": 59891.49,
+    "date": "2026-01-23 18:11",
+    "status": "success",
+    "txNo": "TX202601230132"
+  },
+  {
+    "type": "income",
+    "name": "维修服务",
+    "amount": 198229.83,
+    "date": "2026-01-22 08:37",
+    "status": "success",
+    "txNo": "TX202601220133"
+  },
+  {
+    "type": "expense",
+    "name": "加班餐费",
+    "amount": 193186.05,
+    "date": "2026-01-21 10:01",
+    "status": "success",
+    "txNo": "TX202601210134"
+  },
+  {
+    "type": "expense",
+    "name": "员工工资",
+    "amount": 233722.66,
+    "date": "2026-01-19 22:03",
+    "status": "success",
+    "txNo": "TX202601190135"
+  },
+  {
+    "type": "expense",
+    "name": "审计费",
+    "amount": 77773.35,
+    "date": "2026-01-18 14:50",
+    "status": "success",
+    "txNo": "TX202601180136"
+  },
+  {
+    "type": "expense",
+    "name": "办公室租金",
+    "amount": 25238.8,
+    "date": "2026-01-17 19:46",
+    "status": "success",
+    "txNo": "TX202601170137"
+  },
+  {
+    "type": "income",
+    "name": "审计退款",
+    "amount": 483660.79,
+    "date": "2026-01-17 15:16",
+    "status": "success",
+    "txNo": "TX202601170138"
+  },
+  {
+    "type": "expense",
+    "name": "社保缴纳",
+    "amount": 160794.03,
+    "date": "2026-01-17 10:45",
+    "status": "success",
+    "txNo": "TX202601170139"
+  },
+  {
+    "type": "expense",
+    "name": "通讯费",
+    "amount": 249925.03,
+    "date": "2026-01-17 03:50",
+    "status": "success",
+    "txNo": "TX202601160140"
+  },
+  {
+    "type": "income",
+    "name": "利息收入",
+    "amount": 277619.04,
+    "date": "2026-01-15 22:40",
+    "status": "success",
+    "txNo": "TX202601150141"
+  },
+  {
+    "type": "expense",
+    "name": "员工工资",
+    "amount": 64434.41,
+    "date": "2026-01-15 17:33",
+    "status": "success",
+    "txNo": "TX202601150142"
+  },
+  {
+    "type": "expense",
+    "name": "打印费",
+    "amount": 25438.99,
+    "date": "2026-01-15 06:15",
+    "status": "success",
+    "txNo": "TX202601140143"
+  },
+  {
+    "type": "income",
+    "name": "维修服务",
+    "amount": 367747.56,
+    "date": "2026-01-14 06:53",
+    "status": "success",
+    "txNo": "TX202601130144"
+  },
+  {
+    "type": "expense",
+    "name": "安保费",
+    "amount": 260491.5,
+    "date": "2026-01-12 21:54",
+    "status": "success",
+    "txNo": "TX202601120145"
+  },
+  {
+    "type": "expense",
+    "name": "商标注册",
+    "amount": 260791.87,
+    "date": "2026-01-12 02:38",
+    "status": "pending",
+    "txNo": "TX202601110146"
+  },
+  {
+    "type": "income",
+    "name": "平台分成",
+    "amount": 221586,
+    "date": "2026-01-11 16:26",
+    "status": "success",
+    "txNo": "TX202601110147"
+  },
+  {
+    "type": "income",
+    "name": "培训收入",
+    "amount": 84482.35,
+    "date": "2026-01-11 16:03",
+    "status": "success",
+    "txNo": "TX202601110148"
+  },
+  {
+    "type": "expense",
+    "name": "招待费",
+    "amount": 146942.32,
+    "date": "2026-01-11 10:35",
+    "status": "success",
+    "txNo": "TX202601110149"
+  },
+  {
+    "type": "expense",
+    "name": "招待费",
+    "amount": 55447.62,
+    "date": "2026-01-10 07:36",
+    "status": "success",
+    "txNo": "TX202601090150"
+  },
+  {
+    "type": "expense",
+    "name": "招待费",
+    "amount": 143522.44,
+    "date": "2026-01-08 20:53",
+    "status": "success",
+    "txNo": "TX202601080151"
+  },
+  {
+    "type": "income",
+    "name": "版权收入",
+    "amount": 319988.19,
+    "date": "2026-01-08 20:27",
+    "status": "success",
+    "txNo": "TX202601080152"
+  },
+  {
+    "type": "expense",
+    "name": "水电费",
+    "amount": 48440.67,
+    "date": "2026-01-08 10:27",
+    "status": "pending",
+    "txNo": "TX202601080153"
+  },
+  {
+    "type": "income",
+    "name": "开发费",
+    "amount": 92929.84,
+    "date": "2026-01-07 13:20",
+    "status": "success",
+    "txNo": "TX202601070154"
+  },
+  {
+    "type": "expense",
+    "name": "市场推广",
+    "amount": 245516.09,
+    "date": "2026-01-05 05:10",
+    "status": "success",
+    "txNo": "TX202601040155"
+  },
+  {
+    "type": "expense",
+    "name": "培训费",
+    "amount": 163832.36,
+    "date": "2026-01-04 17:19",
+    "status": "success",
+    "txNo": "TX202601040156"
+  },
+  {
+    "type": "expense",
+    "name": "员工工资",
+    "amount": 255026.58,
+    "date": "2026-01-01 10:10",
+    "status": "success",
+    "txNo": "TX202601010157"
+  },
+  {
+    "type": "expense",
+    "name": "清洁费",
+    "amount": 114418.47,
+    "date": "2026-01-01 03:39",
+    "status": "success",
+    "txNo": "TX202512310158"
+  },
+  {
+    "type": "expense",
+    "name": "过路费",
+    "amount": 142460.27,
+    "date": "2025-12-31 02:48",
+    "status": "success",
+    "txNo": "TX202512300159"
+  },
+  {
+    "type": "income",
+    "name": "咨询服务费",
+    "amount": 86759.45,
+    "date": "2025-12-30 10:23",
+    "status": "success",
+    "txNo": "TX202512300160"
+  },
+  {
+    "type": "expense",
+    "name": "专利申请",
+    "amount": 200901.23,
+    "date": "2025-12-29 13:33",
+    "status": "success",
+    "txNo": "TX202512290161"
+  },
+  {
+    "type": "expense",
+    "name": "过路费",
+    "amount": 184910.53,
+    "date": "2025-12-29 06:55",
+    "status": "success",
+    "txNo": "TX202512280162"
+  },
+  {
+    "type": "income",
+    "name": "保险理赔",
+    "amount": 24468.04,
+    "date": "2025-12-29 00:59",
+    "status": "success",
+    "txNo": "TX202512280163"
+  },
+  {
+    "type": "income",
+    "name": "维修服务",
+    "amount": 317832.56,
+    "date": "2025-12-28 16:28",
+    "status": "success",
+    "txNo": "TX202512280164"
+  },
+  {
+    "type": "expense",
+    "name": "社保缴纳",
+    "amount": 927.22,
+    "date": "2025-12-28 12:00",
+    "status": "success",
+    "txNo": "TX202512280165"
+  },
+  {
+    "type": "income",
+    "name": "租金收入",
+    "amount": 70814.85,
+    "date": "2025-12-28 06:52",
+    "status": "success",
+    "txNo": "TX202512270166"
+  },
+  {
+    "type": "income",
+    "name": "维修服务",
+    "amount": 467431.09,
+    "date": "2025-12-28 04:43",
+    "status": "success",
+    "txNo": "TX202512270167"
+  },
+  {
+    "type": "expense",
+    "name": "软件订阅",
+    "amount": 33691.32,
+    "date": "2025-12-27 23:15",
+    "status": "success",
+    "txNo": "TX202512270168"
+  },
+  {
+    "type": "expense",
+    "name": "团建活动",
+    "amount": 21396.08,
+    "date": "2025-12-27 13:44",
+    "status": "success",
+    "txNo": "TX202512270169"
+  },
+  {
+    "type": "income",
+    "name": "退款到账",
+    "amount": 164186.88,
+    "date": "2025-12-26 23:24",
+    "status": "pending",
+    "txNo": "TX202512260170"
+  },
+  {
+    "type": "income",
+    "name": "设计费",
+    "amount": 37537.17,
+    "date": "2025-12-26 12:02",
+    "status": "success",
+    "txNo": "TX202512260171"
+  },
+  {
+    "type": "expense",
+    "name": "广告投放",
+    "amount": 158926.81,
+    "date": "2025-12-26 10:17",
+    "status": "success",
+    "txNo": "TX202512260172"
+  },
+  {
+    "type": "expense",
+    "name": "加油费",
+    "amount": 132619.09,
+    "date": "2025-12-26 08:36",
+    "status": "success",
+    "txNo": "TX202512260173"
+  },
+  {
+    "type": "income",
+    "name": "开发费",
+    "amount": 353355,
+    "date": "2025-12-26 01:13",
+    "status": "success",
+    "txNo": "TX202512250174"
+  },
+  {
+    "type": "expense",
+    "name": "维修费",
+    "amount": 232394.53,
+    "date": "2025-12-22 09:19",
+    "status": "success",
+    "txNo": "TX202512220175"
+  },
+  {
+    "type": "income",
+    "name": "保险理赔",
+    "amount": 74676.96,
+    "date": "2025-12-21 02:57",
+    "status": "pending",
+    "txNo": "TX202512200176"
+  },
+  {
+    "type": "expense",
+    "name": "专利申请",
+    "amount": 119213.07,
+    "date": "2025-12-19 07:43",
+    "status": "success",
+    "txNo": "TX202512180177"
+  },
+  {
+    "type": "income",
+    "name": "平台分成",
+    "amount": 352375.82,
+    "date": "2025-12-19 00:09",
+    "status": "success",
+    "txNo": "TX202512180178"
+  },
+  {
+    "type": "expense",
+    "name": "软件订阅",
+    "amount": 186560.69,
+    "date": "2025-12-18 09:22",
+    "status": "success",
+    "txNo": "TX202512180179"
+  },
+  {
+    "type": "income",
+    "name": "维修服务",
+    "amount": 207817.06,
+    "date": "2025-12-16 11:43",
+    "status": "success",
+    "txNo": "TX202512160180"
+  },
+  {
+    "type": "expense",
+    "name": "快递费",
+    "amount": 222427.41,
+    "date": "2025-12-15 10:54",
+    "status": "success",
+    "txNo": "TX202512150181"
+  },
+  {
+    "type": "expense",
+    "name": "服务器费用",
+    "amount": 257518.43,
+    "date": "2025-12-15 06:54",
+    "status": "success",
+    "txNo": "TX202512140182"
+  },
+  {
+    "type": "expense",
+    "name": "市场推广",
+    "amount": 88786.93,
+    "date": "2025-12-14 22:17",
+    "status": "success",
+    "txNo": "TX202512140183"
+  },
+  {
+    "type": "income",
+    "name": "咨询服务费",
+    "amount": 10650.94,
+    "date": "2025-12-14 21:26",
+    "status": "success",
+    "txNo": "TX202512140184"
+  },
+  {
+    "type": "expense",
+    "name": "过路费",
+    "amount": 124596.93,
+    "date": "2025-12-14 16:01",
+    "status": "success",
+    "txNo": "TX202512140185"
+  },
+  {
+    "type": "income",
+    "name": "许可费收入",
+    "amount": 57736.34,
+    "date": "2025-12-10 20:55",
+    "status": "success",
+    "txNo": "TX202512100186"
+  },
+  {
+    "type": "income",
+    "name": "合作分成",
+    "amount": 412393.01,
+    "date": "2025-12-10 12:04",
+    "status": "success",
+    "txNo": "TX202512100187"
+  },
+  {
+    "type": "income",
+    "name": "投资收益",
+    "amount": 150967.34,
+    "date": "2025-12-09 19:28",
+    "status": "success",
+    "txNo": "TX202512090188"
+  },
+  {
+    "type": "income",
+    "name": "股权转让",
+    "amount": 50154.49,
+    "date": "2025-12-09 04:49",
+    "status": "success",
+    "txNo": "TX202512080189"
+  },
+  {
+    "type": "income",
+    "name": "代理佣金",
+    "amount": 159194.65,
+    "date": "2025-12-08 00:57",
+    "status": "success",
+    "txNo": "TX202512070190"
+  },
+  {
+    "type": "income",
+    "name": "代理佣金",
+    "amount": 350467.83,
+    "date": "2025-12-07 11:37",
+    "status": "success",
+    "txNo": "TX202512070191"
+  },
+  {
+    "type": "income",
+    "name": "审计退款",
+    "amount": 241063.45,
+    "date": "2025-12-04 02:14",
+    "status": "success",
+    "txNo": "TX202512030192"
+  },
+  {
+    "type": "income",
+    "name": "代理佣金",
+    "amount": 36111.8,
+    "date": "2025-12-03 14:24",
+    "status": "success",
+    "txNo": "TX202512030193"
+  },
+  {
+    "type": "income",
+    "name": "劳务报酬",
+    "amount": 436114.48,
+    "date": "2025-12-02 22:48",
+    "status": "success",
+    "txNo": "TX202512020194"
+  },
+  {
+    "type": "expense",
+    "name": "员工工资",
+    "amount": 58223.67,
+    "date": "2025-12-02 13:43",
+    "status": "success",
+    "txNo": "TX202512020195"
+  },
+  {
+    "type": "expense",
+    "name": "招待费",
+    "amount": 223489.42,
+    "date": "2025-12-02 11:13",
+    "status": "success",
+    "txNo": "TX202512020196"
+  },
+  {
+    "type": "expense",
+    "name": "通讯费",
+    "amount": 173941.14,
+    "date": "2025-12-02 10:01",
+    "status": "success",
+    "txNo": "TX202512020197"
+  },
+  {
+    "type": "expense",
+    "name": "法律顾问",
+    "amount": 269441.96,
+    "date": "2025-12-02 02:30",
+    "status": "success",
+    "txNo": "TX202512010198"
+  },
+  {
+    "type": "income",
+    "name": "股权转让",
+    "amount": 198900.74,
+    "date": "2025-12-01 03:41",
+    "status": "success",
+    "txNo": "TX202511300199"
+  },
+  {
+    "type": "income",
+    "name": "项目结算",
+    "amount": 289332.5,
+    "date": "2025-11-30 21:57",
+    "status": "success",
+    "txNo": "TX202511300200"
+  },
+  {
+    "type": "expense",
+    "name": "清洁费",
+    "amount": 65845.11,
+    "date": "2025-11-30 18:13",
+    "status": "success",
+    "txNo": "TX202511300201"
+  },
+  {
+    "type": "expense",
+    "name": "软件订阅",
+    "amount": 207669.58,
+    "date": "2025-11-30 09:47",
+    "status": "success",
+    "txNo": "TX202511300202"
+  },
+  {
+    "type": "expense",
+    "name": "培训费",
+    "amount": 258045.91,
+    "date": "2025-11-29 06:39",
+    "status": "success",
+    "txNo": "TX202511280203"
+  },
+  {
+    "type": "expense",
+    "name": "网络费",
+    "amount": 115861.1,
+    "date": "2025-11-28 05:23",
+    "status": "success",
+    "txNo": "TX202511270204"
+  },
+  {
+    "type": "expense",
+    "name": "办公室租金",
+    "amount": 284535.32,
+    "date": "2025-11-28 03:07",
+    "status": "success",
+    "txNo": "TX202511270205"
+  },
+  {
+    "type": "expense",
+    "name": "办公室租金",
+    "amount": 288365.93,
+    "date": "2025-11-27 18:59",
+    "status": "success",
+    "txNo": "TX202511270206"
+  },
+  {
+    "type": "expense",
+    "name": "加班餐费",
+    "amount": 239879.86,
+    "date": "2025-11-27 06:50",
+    "status": "success",
+    "txNo": "TX202511260207"
+  },
+  {
+    "type": "expense",
+    "name": "清洁费",
+    "amount": 139325.52,
+    "date": "2025-11-26 17:53",
+    "status": "success",
+    "txNo": "TX202511260208"
+  },
+  {
+    "type": "expense",
+    "name": "办公室租金",
+    "amount": 106572.23,
+    "date": "2025-11-25 15:57",
+    "status": "success",
+    "txNo": "TX202511250209"
+  },
+  {
+    "type": "income",
+    "name": "技术服务费",
+    "amount": 41913.35,
+    "date": "2025-11-25 12:13",
+    "status": "success",
+    "txNo": "TX202511250210"
+  },
+  {
+    "type": "income",
+    "name": "退款到账",
+    "amount": 49355.82,
+    "date": "2025-11-24 15:38",
+    "status": "success",
+    "txNo": "TX202511240211"
+  },
+  {
+    "type": "expense",
+    "name": "物流配送",
+    "amount": 129247.84,
+    "date": "2025-11-24 15:20",
+    "status": "success",
+    "txNo": "TX202511240212"
+  },
+  {
+    "type": "expense",
+    "name": "打印费",
+    "amount": 172988.13,
+    "date": "2025-11-23 09:47",
+    "status": "success",
+    "txNo": "TX202511230213"
+  },
+  {
+    "type": "income",
+    "name": "利息收入",
+    "amount": 50120.26,
+    "date": "2025-11-23 07:00",
+    "status": "success",
+    "txNo": "TX202511220214"
+  },
+  {
+    "type": "expense",
+    "name": "保险费",
+    "amount": 187434.85,
+    "date": "2025-11-22 01:58",
+    "status": "success",
+    "txNo": "TX202511210215"
+  },
+  {
+    "type": "expense",
+    "name": "培训费",
+    "amount": 228523.36,
+    "date": "2025-11-21 21:32",
+    "status": "success",
+    "txNo": "TX202511210216"
+  },
+  {
+    "type": "income",
+    "name": "培训收入",
+    "amount": 469016.86,
+    "date": "2025-11-21 20:39",
+    "status": "success",
+    "txNo": "TX202511210217"
+  },
+  {
+    "type": "expense",
+    "name": "办公室租金",
+    "amount": 186027.94,
+    "date": "2025-11-21 16:40",
+    "status": "success",
+    "txNo": "TX202511210218"
+  },
+  {
+    "type": "income",
+    "name": "合同尾款",
+    "amount": 96000.5,
+    "date": "2025-11-21 09:17",
+    "status": "success",
+    "txNo": "TX202511210219"
+  },
+  {
+    "type": "expense",
+    "name": "广告投放",
+    "amount": 68560.58,
+    "date": "2025-11-20 08:50",
+    "status": "success",
+    "txNo": "TX202511200220"
+  },
+  {
+    "type": "income",
+    "name": "销售收入",
+    "amount": 367059.59,
+    "date": "2025-11-18 05:13",
+    "status": "success",
+    "txNo": "TX202511170221"
+  },
+  {
+    "type": "expense",
+    "name": "差旅报销",
+    "amount": 61535.18,
+    "date": "2025-11-17 03:41",
+    "status": "success",
+    "txNo": "TX202511160222"
+  },
+  {
+    "type": "expense",
+    "name": "招待费",
+    "amount": 79007.06,
+    "date": "2025-11-15 21:50",
+    "status": "success",
+    "txNo": "TX202511150223"
+  },
+  {
+    "type": "expense",
+    "name": "设备采购",
+    "amount": 237153.1,
+    "date": "2025-11-13 12:16",
+    "status": "success",
+    "txNo": "TX202511130224"
+  },
+  {
+    "type": "income",
+    "name": "客户回款",
+    "amount": 444764.75,
+    "date": "2025-11-12 00:57",
+    "status": "success",
+    "txNo": "TX202511110225"
+  },
+  {
+    "type": "income",
+    "name": "运维费",
+    "amount": 120206.05,
+    "date": "2025-11-10 09:05",
+    "status": "success",
+    "txNo": "TX202511100226"
+  },
+  {
+    "type": "income",
+    "name": "审计退款",
+    "amount": 332793.24,
+    "date": "2025-11-10 06:49",
+    "status": "success",
+    "txNo": "TX202511090227"
+  },
+  {
+    "type": "expense",
+    "name": "招待费",
+    "amount": 283123.62,
+    "date": "2025-11-09 06:29",
+    "status": "success",
+    "txNo": "TX202511080228"
+  },
+  {
+    "type": "income",
+    "name": "开发费",
+    "amount": 351062.44,
+    "date": "2025-11-08 16:23",
+    "status": "success",
+    "txNo": "TX202511080229"
+  },
+  {
+    "type": "income",
+    "name": "培训收入",
+    "amount": 215875.01,
+    "date": "2025-11-07 04:20",
+    "status": "success",
+    "txNo": "TX202511060230"
+  },
+  {
+    "type": "income",
+    "name": "开发费",
+    "amount": 44529.98,
+    "date": "2025-11-07 01:10",
+    "status": "success",
+    "txNo": "TX202511060231"
+  },
+  {
+    "type": "income",
+    "name": "合作分成",
+    "amount": 120550.22,
+    "date": "2025-11-05 03:54",
+    "status": "success",
+    "txNo": "TX202511040232"
+  },
+  {
+    "type": "income",
+    "name": "维修服务",
+    "amount": 221221.25,
+    "date": "2025-11-02 14:22",
+    "status": "success",
+    "txNo": "TX202511020233"
+  },
+  {
+    "type": "income",
+    "name": "押金退还",
+    "amount": 88009.28,
+    "date": "2025-11-01 09:34",
+    "status": "pending",
+    "txNo": "TX202511010234"
+  },
+  {
+    "type": "expense",
+    "name": "维修费",
+    "amount": 114034,
+    "date": "2025-10-28 10:59",
+    "status": "success",
+    "txNo": "TX202510280235"
+  },
+  {
+    "type": "expense",
+    "name": "打印费",
+    "amount": 246688.53,
+    "date": "2025-10-28 09:21",
+    "status": "success",
+    "txNo": "TX202510280236"
+  },
+  {
+    "type": "income",
+    "name": "客户回款",
+    "amount": 196369.8,
+    "date": "2025-10-28 08:53",
+    "status": "success",
+    "txNo": "TX202510280237"
+  },
+  {
+    "type": "income",
+    "name": "技术服务费",
+    "amount": 244665.17,
+    "date": "2025-10-27 16:19",
+    "status": "success",
+    "txNo": "TX202510270238"
+  },
+  {
+    "type": "expense",
+    "name": "法律顾问",
+    "amount": 76197.96,
+    "date": "2025-10-26 21:36",
+    "status": "success",
+    "txNo": "TX202510260239"
+  },
+  {
+    "type": "income",
+    "name": "客户回款",
+    "amount": 103624.81,
+    "date": "2025-10-26 01:08",
+    "status": "success",
+    "txNo": "TX202510250240"
+  },
+  {
+    "type": "income",
+    "name": "押金退还",
+    "amount": 37885.34,
+    "date": "2025-10-25 09:08",
+    "status": "success",
+    "txNo": "TX202510250241"
+  },
+  {
+    "type": "expense",
+    "name": "打印费",
+    "amount": 251020.04,
+    "date": "2025-10-25 05:59",
+    "status": "success",
+    "txNo": "TX202510240242"
+  },
+  {
+    "type": "income",
+    "name": "押金退还",
+    "amount": 109119.13,
+    "date": "2025-10-21 22:50",
+    "status": "success",
+    "txNo": "TX202510210243"
+  },
+  {
+    "type": "expense",
+    "name": "设备采购",
+    "amount": 30672.78,
+    "date": "2025-10-20 13:48",
+    "status": "success",
+    "txNo": "TX202510200244"
+  },
+  {
+    "type": "income",
+    "name": "广告收入",
+    "amount": 186061.22,
+    "date": "2025-10-20 13:32",
+    "status": "success",
+    "txNo": "TX202510200245"
+  },
+  {
+    "type": "income",
+    "name": "投资收益",
+    "amount": 370277.24,
+    "date": "2025-10-20 07:58",
+    "status": "success",
+    "txNo": "TX202510190246"
+  },
+  {
+    "type": "income",
+    "name": "合作分成",
+    "amount": 152141.01,
+    "date": "2025-10-18 15:03",
+    "status": "success",
+    "txNo": "TX202510180247"
+  },
+  {
+    "type": "income",
+    "name": "技术服务费",
+    "amount": 343044.27,
+    "date": "2025-10-17 11:10",
+    "status": "success",
+    "txNo": "TX202510170248"
+  },
+  {
+    "type": "income",
+    "name": "合同尾款",
+    "amount": 419530.93,
+    "date": "2025-10-16 08:44",
+    "status": "success",
+    "txNo": "TX202510160249"
+  },
+  {
+    "type": "expense",
+    "name": "过路费",
+    "amount": 143832.33,
+    "date": "2025-10-15 17:16",
+    "status": "pending",
+    "txNo": "TX202510150250"
+  },
+  {
+    "type": "income",
+    "name": "平台分成",
+    "amount": 168744.87,
+    "date": "2025-10-15 00:52",
+    "status": "success",
+    "txNo": "TX202510140251"
+  },
+  {
+    "type": "expense",
+    "name": "保险费",
+    "amount": 143838.12,
+    "date": "2025-10-14 10:47",
+    "status": "success",
+    "txNo": "TX202510140252"
+  },
+  {
+    "type": "expense",
+    "name": "维修费",
+    "amount": 74001.12,
+    "date": "2025-10-13 22:18",
+    "status": "success",
+    "txNo": "TX202510130253"
+  },
+  {
+    "type": "expense",
+    "name": "福利发放",
+    "amount": 159847.76,
+    "date": "2025-10-13 08:55",
+    "status": "success",
+    "txNo": "TX202510130254"
+  },
+  {
+    "type": "income",
+    "name": "设计费",
+    "amount": 292219.68,
+    "date": "2025-10-11 19:27",
+    "status": "success",
+    "txNo": "TX202510110255"
+  },
+  {
+    "type": "income",
+    "name": "客户回款",
+    "amount": 162521.72,
+    "date": "2025-10-09 17:22",
+    "status": "success",
+    "txNo": "TX202510090256"
+  },
+  {
+    "type": "income",
+    "name": "项目结算",
+    "amount": 475064.61,
+    "date": "2025-10-07 23:27",
+    "status": "success",
+    "txNo": "TX202510070257"
+  },
+  {
+    "type": "income",
+    "name": "审计退款",
+    "amount": 150524.18,
+    "date": "2025-10-07 19:09",
+    "status": "pending",
+    "txNo": "TX202510070258"
+  },
+  {
+    "type": "expense",
+    "name": "快递费",
+    "amount": 151756.04,
+    "date": "2025-10-07 06:15",
+    "status": "success",
+    "txNo": "TX202510060259"
+  },
+  {
+    "type": "income",
+    "name": "测试费",
+    "amount": 353492.26,
+    "date": "2025-10-06 21:03",
+    "status": "success",
+    "txNo": "TX202510060260"
+  },
+  {
+    "type": "expense",
+    "name": "办公用品",
+    "amount": 275604.49,
+    "date": "2025-10-06 02:16",
+    "status": "success",
+    "txNo": "TX202510050261"
+  },
+  {
+    "type": "income",
+    "name": "股权转让",
+    "amount": 78023.07,
+    "date": "2025-10-05 08:43",
+    "status": "success",
+    "txNo": "TX202510050262"
+  },
+  {
+    "type": "expense",
+    "name": "通讯费",
+    "amount": 167810.24,
+    "date": "2025-10-05 05:09",
+    "status": "success",
+    "txNo": "TX202510040263"
+  },
+  {
+    "type": "income",
+    "name": "押金退还",
+    "amount": 209441.58,
+    "date": "2025-10-04 17:24",
+    "status": "success",
+    "txNo": "TX202510040264"
+  },
+  {
+    "type": "income",
+    "name": "客户回款",
+    "amount": 394017.96,
+    "date": "2025-10-04 14:48",
+    "status": "success",
+    "txNo": "TX202510040265"
+  },
+  {
+    "type": "income",
+    "name": "合作分成",
+    "amount": 462990.44,
+    "date": "2025-10-03 15:26",
+    "status": "success",
+    "txNo": "TX202510030266"
+  },
+  {
+    "type": "expense",
+    "name": "法律顾问",
+    "amount": 164077.43,
+    "date": "2025-10-02 03:58",
+    "status": "success",
+    "txNo": "TX202510010267"
+  },
+  {
+    "type": "income",
+    "name": "开发费",
+    "amount": 333076.35,
+    "date": "2025-10-01 18:45",
+    "status": "success",
+    "txNo": "TX202510010268"
+  },
+  {
+    "type": "expense",
+    "name": "市场推广",
+    "amount": 263610.32,
+    "date": "2025-10-01 14:48",
+    "status": "success",
+    "txNo": "TX202510010269"
+  },
+  {
+    "type": "expense",
+    "name": "加班餐费",
+    "amount": 274722.12,
+    "date": "2025-09-30 16:00",
+    "status": "success",
+    "txNo": "TX202509300270"
+  },
+  {
+    "type": "income",
+    "name": "投资收益",
+    "amount": 46546.26,
+    "date": "2025-09-28 07:02",
+    "status": "success",
+    "txNo": "TX202509270271"
+  },
+  {
+    "type": "expense",
+    "name": "网络费",
+    "amount": 111242.04,
+    "date": "2025-09-27 15:01",
+    "status": "success",
+    "txNo": "TX202509270272"
+  },
+  {
+    "type": "income",
+    "name": "利息收入",
+    "amount": 33432.65,
+    "date": "2025-09-26 11:01",
+    "status": "success",
+    "txNo": "TX202509260273"
+  },
+  {
+    "type": "income",
+    "name": "股权转让",
+    "amount": 481860.47,
+    "date": "2025-09-26 09:58",
+    "status": "success",
+    "txNo": "TX202509260274"
+  },
+  {
+    "type": "expense",
+    "name": "差旅报销",
+    "amount": 98889.31,
+    "date": "2025-09-26 00:07",
+    "status": "success",
+    "txNo": "TX202509250275"
+  },
+  {
+    "type": "income",
+    "name": "咨询服务费",
+    "amount": 10404.32,
+    "date": "2025-09-23 04:57",
+    "status": "success",
+    "txNo": "TX202509220276"
+  },
+  {
+    "type": "expense",
+    "name": "加油费",
+    "amount": 194022.69,
+    "date": "2025-09-22 05:18",
+    "status": "success",
+    "txNo": "TX202509210277"
+  },
+  {
+    "type": "income",
+    "name": "代理佣金",
+    "amount": 489868.91,
+    "date": "2025-09-22 00:46",
+    "status": "success",
+    "txNo": "TX202509210278"
+  },
+  {
+    "type": "expense",
+    "name": "会议费用",
+    "amount": 210356.68,
+    "date": "2025-09-21 19:25",
+    "status": "success",
+    "txNo": "TX202509210279"
+  },
+  {
+    "type": "expense",
+    "name": "员工工资",
+    "amount": 152578.51,
+    "date": "2025-09-21 00:44",
+    "status": "success",
+    "txNo": "TX202509200280"
+  },
+  {
+    "type": "expense",
+    "name": "加油费",
+    "amount": 189106.04,
+    "date": "2025-09-20 06:41",
+    "status": "success",
+    "txNo": "TX202509190281"
+  },
+  {
+    "type": "expense",
+    "name": "云服务",
+    "amount": 48891.55,
+    "date": "2025-09-19 22:17",
+    "status": "success",
+    "txNo": "TX202509190282"
+  },
+  {
+    "type": "expense",
+    "name": "培训费",
+    "amount": 40894.65,
+    "date": "2025-09-19 00:39",
+    "status": "success",
+    "txNo": "TX202509180283"
+  },
+  {
+    "type": "income",
+    "name": "技术服务费",
+    "amount": 121551.68,
+    "date": "2025-09-17 00:33",
+    "status": "success",
+    "txNo": "TX202509160284"
+  },
+  {
+    "type": "expense",
+    "name": "福利发放",
+    "amount": 276687.18,
+    "date": "2025-09-16 18:17",
+    "status": "success",
+    "txNo": "TX202509160285"
+  },
+  {
+    "type": "income",
+    "name": "许可费收入",
+    "amount": 27598.34,
+    "date": "2025-09-16 01:34",
+    "status": "success",
+    "txNo": "TX202509150286"
+  },
+  {
+    "type": "expense",
+    "name": "清洁费",
+    "amount": 276654.2,
+    "date": "2025-09-15 16:25",
+    "status": "success",
+    "txNo": "TX202509150287"
+  },
+  {
+    "type": "expense",
+    "name": "团建活动",
+    "amount": 17795.65,
+    "date": "2025-09-13 01:17",
+    "status": "success",
+    "txNo": "TX202509120288"
+  },
+  {
+    "type": "expense",
+    "name": "清洁费",
+    "amount": 104573.94,
+    "date": "2025-09-12 21:37",
+    "status": "success",
+    "txNo": "TX202509120289"
+  },
+  {
+    "type": "income",
+    "name": "部署费",
+    "amount": 369500.29,
+    "date": "2025-09-11 00:13",
+    "status": "pending",
+    "txNo": "TX202509100290"
+  },
+  {
+    "type": "expense",
+    "name": "停车费",
+    "amount": 11354.77,
+    "date": "2025-09-10 21:20",
+    "status": "success",
+    "txNo": "TX202509100291"
+  },
+  {
+    "type": "expense",
+    "name": "商标注册",
+    "amount": 129932.96,
+    "date": "2025-09-09 22:02",
+    "status": "success",
+    "txNo": "TX202509090292"
+  },
+  {
+    "type": "expense",
+    "name": "清洁费",
+    "amount": 42977.61,
+    "date": "2025-09-08 09:44",
+    "status": "success",
+    "txNo": "TX202509080293"
+  },
+  {
+    "type": "income",
+    "name": "版权收入",
+    "amount": 293131.3,
+    "date": "2025-09-06 00:20",
+    "status": "success",
+    "txNo": "TX202509050294"
+  },
+  {
+    "type": "expense",
+    "name": "专利申请",
+    "amount": 194683.12,
+    "date": "2025-09-05 18:56",
+    "status": "success",
+    "txNo": "TX202509050295"
+  },
+  {
+    "type": "expense",
+    "name": "员工工资",
+    "amount": 264726.18,
+    "date": "2025-09-05 17:17",
+    "status": "success",
+    "txNo": "TX202509050296"
+  },
+  {
+    "type": "expense",
+    "name": "水电费",
+    "amount": 155829.42,
+    "date": "2025-09-04 13:25",
+    "status": "success",
+    "txNo": "TX202509040297"
+  },
+  {
+    "type": "income",
+    "name": "劳务报酬",
+    "amount": 452974.95,
+    "date": "2025-09-04 08:11",
+    "status": "success",
+    "txNo": "TX202509040298"
+  },
+  {
+    "type": "expense",
+    "name": "税费",
+    "amount": 76107.1,
+    "date": "2025-09-03 03:57",
+    "status": "pending",
+    "txNo": "TX202509020299"
+  },
+  {
+    "type": "expense",
+    "name": "福利发放",
+    "amount": 265590.77,
+    "date": "2025-09-02 16:21",
+    "status": "success",
+    "txNo": "TX202509020300"
+  },
+  {
+    "type": "expense",
+    "name": "安保费",
+    "amount": 19408.87,
+    "date": "2025-09-02 06:40",
+    "status": "success",
+    "txNo": "TX202509010301"
+  },
+  {
+    "type": "expense",
+    "name": "社保缴纳",
+    "amount": 213419.83,
+    "date": "2025-09-01 06:00",
+    "status": "pending",
+    "txNo": "TX202508310302"
+  },
+  {
+    "type": "income",
+    "name": "政府补贴",
+    "amount": 151710.4,
+    "date": "2025-08-31 00:57",
+    "status": "success",
+    "txNo": "TX202508300303"
+  },
+  {
+    "type": "income",
+    "name": "股东注资",
+    "amount": 211961.33,
+    "date": "2025-08-29 12:24",
+    "status": "success",
+    "txNo": "TX202508290304"
+  },
+  {
+    "type": "expense",
+    "name": "网络费",
+    "amount": 127855.19,
+    "date": "2025-08-28 22:35",
+    "status": "success",
+    "txNo": "TX202508280305"
+  },
+  {
+    "type": "expense",
+    "name": "安保费",
+    "amount": 47575.02,
+    "date": "2025-08-26 00:31",
+    "status": "pending",
+    "txNo": "TX202508250306"
+  },
+  {
+    "type": "expense",
+    "name": "网络费",
+    "amount": 250865.31,
+    "date": "2025-08-25 21:09",
+    "status": "success",
+    "txNo": "TX202508250307"
+  },
+  {
+    "type": "income",
+    "name": "股东注资",
+    "amount": 164132.38,
+    "date": "2025-08-24 00:36",
+    "status": "success",
+    "txNo": "TX202508230308"
+  },
+  {
+    "type": "expense",
+    "name": "法律顾问",
+    "amount": 291978.02,
+    "date": "2025-08-22 15:36",
+    "status": "success",
+    "txNo": "TX202508220309"
+  },
+  {
+    "type": "income",
+    "name": "投资收益",
+    "amount": 265587.06,
+    "date": "2025-08-21 02:15",
+    "status": "success",
+    "txNo": "TX202508200310"
+  },
+  {
+    "type": "expense",
+    "name": "审计费",
+    "amount": 174649.07,
+    "date": "2025-08-20 16:51",
+    "status": "success",
+    "txNo": "TX202508200311"
+  },
+  {
+    "type": "income",
+    "name": "合同尾款",
+    "amount": 182881.78,
+    "date": "2025-08-19 23:20",
+    "status": "success",
+    "txNo": "TX202508190312"
+  },
+  {
+    "type": "expense",
+    "name": "快递费",
+    "amount": 45715.69,
+    "date": "2025-08-19 01:26",
+    "status": "success",
+    "txNo": "TX202508180313"
+  },
+  {
+    "type": "expense",
+    "name": "快递费",
+    "amount": 27016.37,
+    "date": "2025-08-16 14:55",
+    "status": "success",
+    "txNo": "TX202508160314"
+  },
+  {
+    "type": "expense",
+    "name": "停车费",
+    "amount": 84220.28,
+    "date": "2025-08-15 16:15",
+    "status": "success",
+    "txNo": "TX202508150315"
+  },
+  {
+    "type": "expense",
+    "name": "水电费",
+    "amount": 240594.27,
+    "date": "2025-08-15 13:00",
+    "status": "success",
+    "txNo": "TX202508150316"
+  },
+  {
+    "type": "expense",
+    "name": "打印费",
+    "amount": 136269.11,
+    "date": "2025-08-15 03:53",
+    "status": "success",
+    "txNo": "TX202508140317"
+  },
+  {
+    "type": "expense",
+    "name": "加班餐费",
+    "amount": 29763.37,
+    "date": "2025-08-14 03:47",
+    "status": "success",
+    "txNo": "TX202508130318"
+  },
+  {
+    "type": "expense",
+    "name": "办公用品",
+    "amount": 255650.72,
+    "date": "2025-08-14 02:01",
+    "status": "success",
+    "txNo": "TX202508130319"
+  },
+  {
+    "type": "expense",
+    "name": "服务器费用",
+    "amount": 64136.42,
+    "date": "2025-08-10 10:56",
+    "status": "success",
+    "txNo": "TX202508100320"
+  },
+  {
+    "type": "expense",
+    "name": "差旅报销",
+    "amount": 42905.44,
+    "date": "2025-08-10 08:09",
+    "status": "success",
+    "txNo": "TX202508100321"
+  },
+  {
+    "type": "income",
+    "name": "利息收入",
+    "amount": 84310.3,
+    "date": "2025-08-07 14:59",
+    "status": "success",
+    "txNo": "TX202508070322"
+  },
+  {
+    "type": "income",
+    "name": "平台分成",
+    "amount": 69018.04,
+    "date": "2025-08-07 04:21",
+    "status": "success",
+    "txNo": "TX202508060323"
+  },
+  {
+    "type": "expense",
+    "name": "设备采购",
+    "amount": 86213.19,
+    "date": "2025-08-07 03:03",
+    "status": "pending",
+    "txNo": "TX202508060324"
+  },
+  {
+    "type": "expense",
+    "name": "保险费",
+    "amount": 221442.38,
+    "date": "2025-08-07 00:02",
+    "status": "success",
+    "txNo": "TX202508060325"
+  },
+  {
+    "type": "expense",
+    "name": "云服务",
+    "amount": 119311.05,
+    "date": "2025-08-06 18:08",
+    "status": "success",
+    "txNo": "TX202508060326"
+  },
+  {
+    "type": "income",
+    "name": "平台分成",
+    "amount": 206858.14,
+    "date": "2025-08-06 13:48",
+    "status": "success",
+    "txNo": "TX202508060327"
+  },
+  {
+    "type": "income",
+    "name": "合同尾款",
+    "amount": 294702.49,
+    "date": "2025-08-05 11:03",
+    "status": "pending",
+    "txNo": "TX202508050328"
+  },
+  {
+    "type": "expense",
+    "name": "福利发放",
+    "amount": 56184.54,
+    "date": "2025-08-04 17:04",
+    "status": "success",
+    "txNo": "TX202508040329"
+  },
+  {
+    "type": "expense",
+    "name": "办公室租金",
+    "amount": 23290.03,
+    "date": "2025-08-03 06:42",
+    "status": "success",
+    "txNo": "TX202508020330"
+  },
+  {
+    "type": "income",
+    "name": "广告收入",
+    "amount": 428292.6,
+    "date": "2025-08-02 06:50",
+    "status": "success",
+    "txNo": "TX202508010331"
+  },
+  {
+    "type": "expense",
+    "name": "培训费",
+    "amount": 88260.69,
+    "date": "2025-08-01 12:38",
+    "status": "success",
+    "txNo": "TX202508010332"
+  },
+  {
+    "type": "expense",
+    "name": "加班餐费",
+    "amount": 49206.71,
+    "date": "2025-08-01 12:00",
+    "status": "success",
+    "txNo": "TX202508010333"
+  },
+  {
+    "type": "income",
+    "name": "客户回款",
+    "amount": 364038.61,
+    "date": "2025-07-31 23:10",
+    "status": "success",
+    "txNo": "TX202507310334"
+  },
+  {
+    "type": "expense",
+    "name": "通讯费",
+    "amount": 253857.65,
+    "date": "2025-07-31 16:06",
+    "status": "success",
+    "txNo": "TX202507310335"
+  },
+  {
+    "type": "income",
+    "name": "审计退款",
+    "amount": 459299.15,
+    "date": "2025-07-29 16:20",
+    "status": "success",
+    "txNo": "TX202507290336"
+  },
+  {
+    "type": "expense",
+    "name": "税费",
+    "amount": 173593.81,
+    "date": "2025-07-25 17:07",
+    "status": "success",
+    "txNo": "TX202507250337"
+  },
+  {
+    "type": "expense",
+    "name": "法律顾问",
+    "amount": 28920.1,
+    "date": "2025-07-24 18:27",
+    "status": "success",
+    "txNo": "TX202507240338"
+  },
+  {
+    "type": "income",
+    "name": "开发费",
+    "amount": 269510.75,
+    "date": "2025-07-24 13:38",
+    "status": "success",
+    "txNo": "TX202507240339"
+  },
+  {
+    "type": "income",
+    "name": "版权收入",
+    "amount": 273872.29,
+    "date": "2025-07-18 22:26",
+    "status": "success",
+    "txNo": "TX202507180340"
+  },
+  {
+    "type": "expense",
+    "name": "商标注册",
+    "amount": 262763.27,
+    "date": "2025-07-18 07:12",
+    "status": "success",
+    "txNo": "TX202507170341"
+  },
+  {
+    "type": "income",
+    "name": "许可费收入",
+    "amount": 173848.16,
+    "date": "2025-07-18 07:03",
+    "status": "success",
+    "txNo": "TX202507170342"
+  },
+  {
+    "type": "expense",
+    "name": "物流配送",
+    "amount": 169642.07,
+    "date": "2025-07-18 04:10",
+    "status": "success",
+    "txNo": "TX202507170343"
+  },
+  {
+    "type": "income",
+    "name": "许可费收入",
+    "amount": 264624.79,
+    "date": "2025-07-17 08:53",
+    "status": "success",
+    "txNo": "TX202507170344"
+  },
+  {
+    "type": "expense",
+    "name": "服务器费用",
+    "amount": 87302.87,
+    "date": "2025-07-16 13:45",
+    "status": "success",
+    "txNo": "TX202507160345"
+  },
+  {
+    "type": "income",
+    "name": "政府补贴",
+    "amount": 20079.32,
+    "date": "2025-07-14 23:13",
+    "status": "success",
+    "txNo": "TX202507140346"
+  },
+  {
+    "type": "income",
+    "name": "平台分成",
+    "amount": 139963.56,
+    "date": "2025-07-14 13:40",
+    "status": "success",
+    "txNo": "TX202507140347"
+  },
+  {
+    "type": "expense",
+    "name": "税费",
+    "amount": 148163.43,
+    "date": "2025-07-14 12:54",
+    "status": "success",
+    "txNo": "TX202507140348"
+  },
+  {
+    "type": "income",
+    "name": "开发费",
+    "amount": 337738.23,
+    "date": "2025-07-13 17:33",
+    "status": "success",
+    "txNo": "TX202507130349"
+  },
+  {
+    "type": "income",
+    "name": "许可费收入",
+    "amount": 260212.37,
+    "date": "2025-07-13 14:08",
+    "status": "success",
+    "txNo": "TX202507130350"
+  },
+  {
+    "type": "income",
+    "name": "咨询服务费",
+    "amount": 350511.56,
+    "date": "2025-07-12 19:56",
+    "status": "success",
+    "txNo": "TX202507120351"
+  },
+  {
+    "type": "income",
+    "name": "运维费",
+    "amount": 105506,
+    "date": "2025-07-12 15:07",
+    "status": "success",
+    "txNo": "TX202507120352"
+  },
+  {
+    "type": "expense",
+    "name": "税费",
+    "amount": 103948.33,
+    "date": "2025-07-11 04:28",
+    "status": "success",
+    "txNo": "TX202507100353"
+  },
+  {
+    "type": "income",
+    "name": "政府补贴",
+    "amount": 111909.02,
+    "date": "2025-07-10 13:41",
+    "status": "success",
+    "txNo": "TX202507100354"
+  },
+  {
+    "type": "income",
+    "name": "设计费",
+    "amount": 313890.34,
+    "date": "2025-07-07 00:49",
+    "status": "success",
+    "txNo": "TX202507060355"
+  },
+  {
+    "type": "income",
+    "name": "培训收入",
+    "amount": 215950.24,
+    "date": "2025-07-06 21:50",
+    "status": "success",
+    "txNo": "TX202507060356"
+  },
+  {
+    "type": "expense",
+    "name": "员工工资",
+    "amount": 166291.94,
+    "date": "2025-07-06 20:09",
+    "status": "success",
+    "txNo": "TX202507060357"
+  },
+  {
+    "type": "expense",
+    "name": "快递费",
+    "amount": 96164.01,
+    "date": "2025-07-06 10:07",
+    "status": "success",
+    "txNo": "TX202507060358"
+  },
+  {
+    "type": "expense",
+    "name": "停车费",
+    "amount": 241647.1,
+    "date": "2025-07-05 23:02",
+    "status": "success",
+    "txNo": "TX202507050359"
+  },
+  {
+    "type": "income",
+    "name": "合作分成",
+    "amount": 108875.06,
+    "date": "2025-07-04 14:53",
+    "status": "success",
+    "txNo": "TX202507040360"
+  },
+  {
+    "type": "income",
+    "name": "销售收入",
+    "amount": 192622.74,
+    "date": "2025-07-04 03:05",
+    "status": "success",
+    "txNo": "TX202507030361"
+  },
+  {
+    "type": "expense",
+    "name": "清洁费",
+    "amount": 264266.76,
+    "date": "2025-07-02 00:26",
+    "status": "success",
+    "txNo": "TX202507010362"
+  },
+  {
+    "type": "income",
+    "name": "客户回款",
+    "amount": 373534,
+    "date": "2025-07-01 22:21",
+    "status": "success",
+    "txNo": "TX202507010363"
+  },
+  {
+    "type": "income",
+    "name": "版权收入",
+    "amount": 319278.3,
+    "date": "2025-06-26 18:21",
+    "status": "success",
+    "txNo": "TX202506260364"
+  },
+  {
+    "type": "expense",
+    "name": "加油费",
+    "amount": 114071.76,
+    "date": "2025-06-26 15:30",
+    "status": "success",
+    "txNo": "TX202506260365"
+  },
+  {
+    "type": "expense",
+    "name": "保险费",
+    "amount": 134606.81,
+    "date": "2025-06-26 06:55",
+    "status": "success",
+    "txNo": "TX202506250366"
+  },
+  {
+    "type": "expense",
+    "name": "通讯费",
+    "amount": 137723.83,
+    "date": "2025-06-25 16:18",
+    "status": "success",
+    "txNo": "TX202506250367"
+  },
+  {
+    "type": "expense",
+    "name": "税费",
+    "amount": 107246.33,
+    "date": "2025-06-24 22:41",
+    "status": "success",
+    "txNo": "TX202506240368"
+  },
+  {
+    "type": "income",
+    "name": "代理佣金",
+    "amount": 191429.54,
+    "date": "2025-06-24 11:19",
+    "status": "success",
+    "txNo": "TX202506240369"
+  },
+  {
+    "type": "income",
+    "name": "代理佣金",
+    "amount": 411557.36,
+    "date": "2025-06-23 04:42",
+    "status": "success",
+    "txNo": "TX202506220370"
+  },
+  {
+    "type": "income",
+    "name": "咨询服务费",
+    "amount": 399534.36,
+    "date": "2025-06-19 22:35",
+    "status": "success",
+    "txNo": "TX202506190371"
+  },
+  {
+    "type": "expense",
+    "name": "停车费",
+    "amount": 297519.89,
+    "date": "2025-06-18 00:07",
+    "status": "success",
+    "txNo": "TX202506170372"
+  },
+  {
+    "type": "expense",
+    "name": "招待费",
+    "amount": 208496.29,
+    "date": "2025-06-17 23:05",
+    "status": "success",
+    "txNo": "TX202506170373"
+  },
+  {
+    "type": "expense",
+    "name": "培训费",
+    "amount": 285312.06,
+    "date": "2025-06-16 14:33",
+    "status": "success",
+    "txNo": "TX202506160374"
+  },
+  {
+    "type": "income",
+    "name": "部署费",
+    "amount": 410685.84,
+    "date": "2025-06-16 11:31",
+    "status": "success",
+    "txNo": "TX202506160375"
+  },
+  {
+    "type": "expense",
+    "name": "清洁费",
+    "amount": 161581.67,
+    "date": "2025-06-14 22:17",
+    "status": "success",
+    "txNo": "TX202506140376"
+  },
+  {
+    "type": "expense",
+    "name": "广告投放",
+    "amount": 249095.55,
+    "date": "2025-06-13 15:55",
+    "status": "success",
+    "txNo": "TX202506130377"
+  },
+  {
+    "type": "expense",
+    "name": "社保缴纳",
+    "amount": 129330.16,
+    "date": "2025-06-10 13:23",
+    "status": "success",
+    "txNo": "TX202506100378"
+  },
+  {
+    "type": "income",
+    "name": "咨询服务费",
+    "amount": 23645.17,
+    "date": "2025-06-09 10:32",
+    "status": "success",
+    "txNo": "TX202506090379"
+  },
+  {
+    "type": "expense",
+    "name": "专利申请",
+    "amount": 253774.64,
+    "date": "2025-06-08 19:15",
+    "status": "success",
+    "txNo": "TX202506080380"
+  },
+  {
+    "type": "income",
+    "name": "股权转让",
+    "amount": 366193.76,
+    "date": "2025-06-08 11:41",
+    "status": "success",
+    "txNo": "TX202506080381"
+  },
+  {
+    "type": "income",
+    "name": "技术服务费",
+    "amount": 271233.18,
+    "date": "2025-06-05 21:16",
+    "status": "pending",
+    "txNo": "TX202506050382"
+  },
+  {
+    "type": "income",
+    "name": "技术服务费",
+    "amount": 381045.36,
+    "date": "2025-06-05 19:12",
+    "status": "success",
+    "txNo": "TX202506050383"
+  },
+  {
+    "type": "income",
+    "name": "培训收入",
+    "amount": 144404.46,
+    "date": "2025-06-05 12:49",
+    "status": "success",
+    "txNo": "TX202506050384"
+  },
+  {
+    "type": "expense",
+    "name": "停车费",
+    "amount": 280464.39,
+    "date": "2025-06-05 03:57",
+    "status": "success",
+    "txNo": "TX202506040385"
+  },
+  {
+    "type": "income",
+    "name": "代理佣金",
+    "amount": 79185.25,
+    "date": "2025-06-04 13:32",
+    "status": "success",
+    "txNo": "TX202506040386"
+  }
+]

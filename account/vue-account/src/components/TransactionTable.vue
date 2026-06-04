@@ -35,6 +35,19 @@ const tableItems = computed(() => {
 
 const totalPages = computed(() => Math.ceil(tableItems.value.length / itemsPerPage.value))
 
+const visiblePages = computed(() => {
+  const total = totalPages.value
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1)
+  const pages: number[] = [1]
+  const start = Math.max(2, page.value - 2)
+  const end = Math.min(total - 1, page.value + 2)
+  if (start > 2) pages.push(-1) // ellipsis marker
+  for (let i = start; i <= end; i++) pages.push(i)
+  if (end < total - 1) pages.push(-2) // ellipsis marker
+  if (total > 1) pages.push(total)
+  return pages
+})
+
 function formatAmount(tx: Transaction): string {
   const prefix = tx.type === 'income' ? '+' : '-'
   return `${prefix}${acc.value.symbol}${formatMoney(tx.amount)}`
@@ -131,18 +144,20 @@ function typeLabel(t: string): string {
             >
               <v-icon size="14">mdi-chevron-left</v-icon>
             </v-btn>
-            <v-btn
-              v-for="p in totalPages"
-              :key="p"
-              size="x-small"
-              :variant="p === page ? 'flat' : 'outlined'"
-              :color="p === page ? 'foreground' : undefined"
-              :class="p === page ? 'text-white' : 'page-btn'"
-              icon
-              @click="page = p"
-            >
-              {{ p }}
-            </v-btn>
+            <template v-for="p in visiblePages" :key="p">
+              <span v-if="p < 0" class="text-caption text-muted px-1">…</span>
+              <v-btn
+                v-else
+                size="x-small"
+                :variant="p === page ? 'flat' : 'outlined'"
+                :color="p === page ? 'foreground' : undefined"
+                :class="p === page ? 'text-white' : 'page-btn'"
+                icon
+                @click="page = p"
+              >
+                {{ p }}
+              </v-btn>
+            </template>
             <v-btn
               size="x-small"
               variant="outlined"
