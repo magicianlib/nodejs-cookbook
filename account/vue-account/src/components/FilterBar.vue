@@ -106,14 +106,26 @@ const typeItems = [
   font-size: 13px;
 }
 
+/* Constrain all filter fields to consistent compact height */
+.filter-field :deep(.v-field) {
+  min-height: 40px;
+  max-height: 40px;
+}
+
+.filter-field :deep(.v-field__input) {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 40px;
+}
+
 .filter-date {
   width: 175px;
   flex-shrink: 0;
 }
 
 .filter-search {
-  width: 180px;
-  flex: 1 1 140px;
+  width: 200px;
+  flex-shrink: 0;
 }
 
 .filter-type {

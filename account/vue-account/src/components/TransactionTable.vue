@@ -48,6 +48,11 @@ const visiblePages = computed(() => {
   return pages
 })
 
+/*  Height calc:
+ *  100vh - 56(toolbar) - 48(tabs) - 49(table-header) - ~45(pagination) - 24(container pad) - 2(card border)
+ *  ≈ 100vh - 224px  */
+const tableBodyHeight = 'calc(100vh - 224px)'
+
 function formatAmount(tx: Transaction): string {
   const prefix = tx.type === 'income' ? '+' : '-'
   return `${prefix}${acc.value.symbol}${formatMoney(tx.amount)}`
@@ -82,6 +87,8 @@ function typeLabel(t: string): string {
       :headers="headers"
       :items="tableItems"
       :items-per-page="itemsPerPage"
+      fixed-header
+      :height="tableBodyHeight"
       hover
       density="comfortable"
       class="money-table"
@@ -176,7 +183,14 @@ function typeLabel(t: string): string {
 </template>
 
 <style scoped>
+/* ── Sticky card: sticks below toolbar(56) + tabs(48) ── */
 .table-card {
+  --sticky-top: 104px;
+  position: sticky;
+  top: var(--sticky-top);
+  z-index: 5;
+  background: rgb(var(--v-theme-background));
+  max-height: calc(100vh - var(--sticky-top) - 24px);
   overflow: hidden;
 }
 
