@@ -17,6 +17,7 @@
     <!-- Modes -->
     <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.43.6/src-min-noconflict/mode-json.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.43.6/src-min-noconflict/mode-yaml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.43.6/src-min-noconflict/mode-html.js"></script>
 
     <!-- Theme -->
     <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.43.6/src-min-noconflict/theme-chrome.js"></script>
@@ -27,7 +28,6 @@
 
     <!-- YAML parser，仅用于验证 -->
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-
     <style>
         * {
             box-sizing: border-box;
@@ -221,6 +221,8 @@
                 <select id="language">
                     <option value="json">JSON</option>
                     <option value="yaml">YAML</option>
+                    <option value="html">HTML</option>
+                    <option value="text">TEXT</option>
                 </select>
                 <!-- 编辑 / 预览 -->
                 <button id="mode">
@@ -330,7 +332,7 @@ borrow_records:
         editor.setTheme("ace/theme/tomorrow");
 
         editor.setOptions({
-            readOnly: true, // 只读模式
+            readOnly: false, // 只读模式
 
             // mode: "ace/mode/json", // 语言模式
             // theme: "ace/theme/chrome", // 主题
@@ -414,8 +416,10 @@ borrow_records:
             try {
                 if (currentLanguage === "json") {
                     JSON.parse(value);
-                } else {
+                } else if (currentLanguage === "yaml") {
                     jsyaml.load(value);
+                } else {
+
                 }
                 showValid();
             } catch (error) {
@@ -449,13 +453,27 @@ borrow_records:
                     -1
                 );
                 document.getElementById("status").textContent = "JSON";
-            } else {
+            } else if (language === "yaml") {
                 session.setMode("ace/mode/yaml");
                 editor.setValue(
                     yamlData,
                     -1
                 );
                 document.getElementById("status").textContent = "YAML";
+            } else if (language === "html") {
+                session.setMode("ace/mode/html");
+                editor.setValue(
+                    yamlData,
+                    -1
+                );
+                document.getElementById("status").textContent = "HTML";
+            } else if (language === "text") {
+                session.setMode("ace/mode/text");
+                editor.setValue(
+                    yamlData,
+                    -1
+                );
+                document.getElementById("status").textContent = "Text";
             }
 
             editor.clearSelection();
@@ -502,9 +520,15 @@ borrow_records:
 
             if (currentLanguage === "json") {
                 formatJson();
-            } else {
+            } else if (currentLanguage === "yaml") {
                 formatYaml();
+                // } else if (currentLanguage === "html") {
+                //    formatHtml();
+            } else {
+                formatDefaultLanguge();
             }
+
+            formatHtml();
 
             // 格式化完成后重新验证
             validate();
@@ -557,6 +581,32 @@ borrow_records:
             } catch (error) {
                 // 不弹窗，不修改原始数据
                 console.warn("YAML format failed:", error);
+            }
+        }
+
+        function formatDefaultLanguge() {
+            const value = editor.getValue();
+
+            if (!value.trim()) {
+                return;
+            }
+
+            try {
+                // 备份当前光标和滚动位置
+                const scrollTop = editor.session.getScrollTop();
+                const cursor = editor.getCursorPosition();
+
+                // 调用 Ace 自带的 beautify
+                ace.require("ace/ext/beautify").beautify(editor.session);
+
+                editor.clearSelection();
+
+                // 恢复滚动位置（光标位置可能因格式化而改变，这里只恢复滚动）
+                editor.session.setScrollTop(scrollTop);
+
+            } catch (error) {
+                // 不弹窗，不修改原始数据
+                console.warn("HTML format failed:", error);
             }
         }
 
