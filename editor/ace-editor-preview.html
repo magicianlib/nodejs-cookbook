@@ -1,4 +1,7 @@
-<!-- Act Github: https://github.com/ajaxorg/ace -->
+<!--
+ Ace-Editor Github:
+ https://github.com/ajaxorg/ace
+-->
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -327,17 +330,35 @@ borrow_records:
         editor.setTheme("ace/theme/tomorrow");
 
         editor.setOptions({
-            readOnly: true,
-            wrap: false,
-            showGutter: true,
-            showPrintMargin: false,
-            highlightActiveLine: true,
-            highlightSelectedWord: true,
-            showFoldWidgets: true,
+            readOnly: true, // 只读模式
+
+            // mode: "ace/mode/json", // 语言模式
+            // theme: "ace/theme/chrome", // 主题
+
             fontSize: "16px",
-            scrollPastEnd: 0,
-            tabSize: 2,
-            useSoftTabs: true
+            fontFamily: "SFMono-Regular, Menlo, Monaco, Consolas, monospace", // 字体
+
+            showLineNumbers: true, // 行号
+            showGutter: true, // 左侧 Gutter
+            highlightActiveLine: true, // 高亮当前行
+            highlightSelectedWord: true, // 高亮相同单词
+
+            enableAutoIndent: true, // 自动缩进
+            displayIndentGuides: false, // 缩进辅助线
+            showPrintMargin: false, // 右侧打印边界
+
+            showFoldWidgets: true, // 代码折叠按钮
+            fadeFoldWidgets: true, // 淡化折叠按钮
+
+            // cursorStyle: "ace|slim|smooth|wide" // 光标样式
+            // selectionStyle: "line|text|fullLine|screenLine" // 选择区域样式
+
+            scrollPastEnd: 0, // 是否允许滚过文档末尾
+
+            tabSize: 2, // Tab 大小
+            useSoftTabs: true, // Tab 是否使用空格
+
+            wrap: false // 换行
         });
 
 
