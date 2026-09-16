@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ace JSON/YAML Preview</title>
+
+    <!-- Ace -->
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.43.6/src-min-noconflict/ace.js"></script>
+
+    <!-- Modes -->
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.43.6/src-min-noconflict/mode-json.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.43.6/src-min-noconflict/mode-yaml.js"></script>
+
+    <!-- Theme -->
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.43.6/src-min-noconflict/theme-chrome.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.43.6/src-min-noconflict/theme-tomorrow.js"></script>
+
+    <!-- Ace Beautify -->
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.43.6/src-min-noconflict/ext-beautify.js"></script>
+
+    <!-- YAML parser，仅用于验证 -->
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px;
+
+            background: #f5f6f7;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* -------------------------------------------------- */
+        /* Toolbar */
+        /* -------------------------------------------------- */
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            height: 48px;
+            padding: 0 12px;
+
+            background: #fff;
+
+            border: 1px solid #d9dce1;
+            border-bottom: none;
+
+            border-radius: 6px 6px 0 0;
+        }
+
+        .toolbar-left,
+        .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        button,
+        select {
+            height: 30px;
+            padding: 0 10px;
+
+            border: 1px solid #d9dce1;
+            border-radius: 4px;
+
+            background: #fff;
+            color: #333;
+
+            font-size: 13px;
+
+            cursor: pointer;
+        }
+
+        button:hover,
+        select:hover {
+            background: #f5f6f7;
+        }
+
+        /* 当前模式按钮 */
+        #mode {
+            min-width: 70px;
+        }
+
+        /* -------------------------------------------------- */
+        /* Validation */
+        /* -------------------------------------------------- */
+
+        .validation {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+
+            font-size: 13px;
+        }
+
+        .validation-icon {
+            display: inline-flex;
+
+            width: 18px;
+            height: 18px;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .validation-text {
+            color: #777;
+        }
+
+        /*
+         * 合法
+         */
+        .validation.valid .validation-icon {
+            color: #16a34a;
+        }
+
+        /*
+         * 非法
+         */
+        .validation.invalid .validation-icon {
+            color: #dc2626;
+        }
+
+        /*
+         * 隐藏验证状态
+         */
+        .validation.hidden {
+            display: none;
+        }
+
+        /* -------------------------------------------------- */
+        /* Editor */
+        /* -------------------------------------------------- */
+
+        #editor {
+            width: 100%;
+            height: 500px;
+
+            border: 1px solid #d9dce1;
+            border-radius: 0 0 6px 6px;
+
+            font-size: 14px;
+        }
+
+        .status {
+            display: flex;
+            justify-content: space-between;
+
+            margin-top: 8px;
+
+            font-size: 12px;
+            color: #8a9199;
+        }
+
+        /* Ace */
+
+        .ace_editor {
+            font-family:
+                "SFMono-Regular",
+                Consolas,
+                "Liberation Mono",
+                Menlo,
+                monospace !important;
+        }
+
+        .ace_gutter {
+            background: #fafafa !important;
+            color: #999 !important;
+        }
+
+        .ace_print-margin {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="toolbar-left">
+                <span class="title">
+                    Message Preview
+                </span>
+                <select id="language">
+                    <option value="json">JSON</option>
+                    <option value="yaml">YAML</option>
+                </select>
+                <!-- 编辑 / 预览 -->
+                <button id="mode">
+                    编辑
+                </button>
+            </div>
+
+            <div class="toolbar-right">
+                <!-- 验证状态 -->
+                <div id="validation" class="validation hidden">
+                    <span id="validation-icon" class="validation-icon"></span>
+                    <span id="validation-text" class="validation-text"></span>
+                </div>
+                <button id="format"> 格式化</button>
+                <button id="copy">复制</button>
+                <button id="fullscreen">全屏</button>
+            </div>
+        </div>
+
+        <!-- Editor -->
+        <div id="editor"></div>
+
+        <!-- Status -->
+        <div class="status">
+            <span id="status">
+                JSON
+            </span>
+            <span id="position">
+                Ln 1, Col 1
+            </span>
+        </div>
+    </div>
+
+    <script>
+
+        /* ============================================================
+         * Data
+         * ============================================================ */
+        const jsonData = { "library": { "name": "星河公共图书馆", "address": "上海市浦东新区星光大道888号", "opening_hours": { "monday_to_friday": "09:00-21:00", "saturday": "10:00-18:00", "sunday": "闭馆" }, "total_books": 12480, "is_open": true }, "borrow_records": [{ "record_id": "BR-2025-001", "user": { "name": "陈思远", "member_id": "M10023", "email": "siyuan.chen@example.com" }, "books": [{ "title": "三体", "author": "刘慈欣", "isbn": "9787536692930", "borrow_date": "2025-03-01", "due_date": "2025-03-15", "returned": false }, { "title": "算法导论", "author": "Thomas H. Cormen", "isbn": "9787111407010", "borrow_date": "2025-02-20", "due_date": "2025-03-06", "returned": true }], "fine": 0.00 }, { "record_id": "BR-2025-002", "user": { "name": "林晓雨", "member_id": "M10045", "email": "xiaoyu.lin@example.com" }, "books": [{ "title": "百年孤独", "author": "加西亚·马尔克斯", "isbn": "9787544253994", "borrow_date": "2025-03-05", "due_date": "2025-03-19", "returned": false }], "fine": 2.50 }] };
+
+        const yamlData = `
+library:
+  name: 星河公共图书馆
+  address: 上海市浦东新区星光大道888号
+  opening_hours:
+    monday_to_friday: "09:00-21:00"
+    saturday: "10:00-18:00"
+    sunday: "闭馆"
+  total_books: 12480
+  is_open: true
+
+borrow_records:
+  - record_id: BR-2025-001
+    user:
+      name: 陈思远
+      member_id: M10023
+      email: siyuan.chen@example.com
+    books:
+      - title: 三体
+        author: 刘慈欣
+        isbn: "9787536692930"
+        borrow_date: "2025-03-01"
+        due_date: "2025-03-15"
+        returned: false
+      - title: 算法导论
+        author: Thomas H. Cormen
+        isbn: "9787111407010"
+        borrow_date: "2025-02-20"
+        due_date: "2025-03-06"
+        returned: true
+    fine: 0.00
+
+  - record_id: BR-2025-002
+    user:
+      name: 林晓雨
+      member_id: M10045
+      email: xiaoyu.lin@example.com
+    books:
+      - title: 百年孤独
+        author: 加西亚·马尔克斯
+        isbn: "9787544253994"
+        borrow_date: "2025-03-05"
+        due_date: "2025-03-19"
+        returned: false
+    fine: 2.50
+`.trim();
+
+        /* ============================================================
+         * State
+         * ============================================================ */
+
+        let currentLanguage = "json";
+
+        /*
+         * true  = 编辑
+         * false = 预览
+         */
+        let editing = false;
+
+        /* ============================================================
+         * Ace
+         * ============================================================ */
+
+        const editor = ace.edit("editor");
+
+        // editor.setTheme("ace/theme/chrome");
+        editor.setTheme("ace/theme/tomorrow");
+
+        editor.setOptions({
+            readOnly: true,
+            wrap: false,
+            showGutter: true,
+            showPrintMargin: false,
+            highlightActiveLine: true,
+            highlightSelectedWord: true,
+            showFoldWidgets: true,
+            fontSize: "16px",
+            scrollPastEnd: 0,
+            tabSize: 2,
+            useSoftTabs: true
+        });
+
+
+        /* ============================================================
+         * Validation UI
+         * ============================================================ */
+
+        const validation = document.getElementById("validation");
+        const validationIcon = document.getElementById("validation-icon");
+        const validationText = document.getElementById("validation-text");
+
+        function hideValidation() {
+            validation.classList.add("hidden");
+        }
+
+        function showValid() {
+            validation.classList.remove("hidden");
+            validation.classList.remove("invalid");
+            validation.classList.add("valid");
+            validationIcon.textContent = "✓";
+            validationText.textContent = "有效";
+        }
+
+        function showInvalid(message) {
+            validation.classList.remove("hidden");
+            validation.classList.remove("valid");
+            validation.classList.add("invalid");
+            validationIcon.textContent = "⚠";
+            validationText.textContent = "格式错误";
+            /*
+             * 不弹窗。
+             *
+             * 如果以后需要，可以把 message
+             * 放到 title / tooltip 中。
+             */
+            validation.title = message || "";
+        }
+
+        /* ============================================================
+         * Validate
+         * ============================================================ */
+        function validate() {
+            /*
+             * 验证结果只在编辑 / 预览状态显示。
+             */
+            if (!editing && !isPreviewMode()) {
+                hideValidation();
+                return;
+            }
+
+            const value = editor.getValue();
+
+            try {
+                if (currentLanguage === "json") {
+                    JSON.parse(value);
+                } else {
+                    jsyaml.load(value);
+                }
+                showValid();
+            } catch (error) {
+                showInvalid(error.message);
+            }
+        }
+
+        /*
+         * 当前组件始终处于：
+         *
+         * 编辑 / 预览
+         *
+         * 这里单独抽出来是为了让逻辑更加清晰。
+         */
+        function isPreviewMode() {
+            return !editing;
+        }
+
+
+        /* ============================================================
+         * Language
+         * ============================================================ */
+        function setLanguage(language) {
+            currentLanguage = language;
+            const session = editor.getSession();
+
+            if (language === "json") {
+                session.setMode("ace/mode/json");
+                editor.setValue(
+                    JSON.stringify(jsonData, null, 2),
+                    -1
+                );
+                document.getElementById("status").textContent = "JSON";
+            } else {
+                session.setMode("ace/mode/yaml");
+                editor.setValue(
+                    yamlData,
+                    -1
+                );
+                document.getElementById("status").textContent = "YAML";
+            }
+
+            editor.clearSelection();
+            editor.gotoLine(1);
+
+            /*
+             * 切换语言后立即重新验证。
+             */
+            validate();
+            updatePosition();
+        }
+
+
+        /* ============================================================
+         * Edit / Preview
+         * ============================================================ */
+        function toggleMode() {
+            editing = !editing;
+            editor.setReadOnly(!editing);
+            const button = document.getElementById("mode");
+
+            if (editing) {
+                button.textContent = "预览";
+                /*
+                 * 编辑状态显示错误状态
+                 */
+                validate();
+            } else {
+                button.textContent = "编辑";
+                /*
+                 * 预览状态也显示错误状态
+                 */
+                validate();
+            }
+        }
+
+
+        /* ============================================================
+         * Format
+         * ============================================================ */
+        function formatContent() {
+            // 格式化时暂时隐藏验证状态
+            hideValidation();
+
+            if (currentLanguage === "json") {
+                formatJson();
+            } else {
+                formatYaml();
+            }
+
+            // 格式化完成后重新验证
+            validate();
+        }
+
+        function formatJson() {
+            const value = editor.getValue();
+
+            if (!value.trim()) {
+                return;
+            }
+
+            try {
+                // 合法 JSON：标准格式化
+                const data = JSON.parse(value);
+                const formatted = JSON.stringify(
+                    data,
+                    null,
+                    2
+                );
+
+                editor.setValue(formatted, -1);
+                editor.clearSelection();
+
+            } catch (error) {
+                // JSON 非法：
+                // 不弹窗，不修改原始数据
+                console.warn("JSON format failed:", error);
+            }
+        }
+
+        function formatYaml() {
+            const value = editor.getValue();
+
+            if (!value.trim()) {
+                return;
+            }
+
+            try {
+                const data = jsyaml.load(value);
+                const formatted = jsyaml.dump(data, {
+                    indent: 2,
+                    lineWidth: -1,
+                    noRefs: true
+                });
+
+                editor.setValue(formatted.trim(), -1);
+                editor.clearSelection();
+
+            } catch (error) {
+                // 不弹窗，不修改原始数据
+                console.warn("YAML format failed:", error);
+            }
+        }
+
+        /* ============================================================
+         * Copy
+         * ============================================================ */
+
+        async function copyContent() {
+            try {
+                await navigator.clipboard.writeText(
+                    editor.getValue()
+                );
+
+                const button = document.getElementById("copy");
+                const oldText = button.textContent;
+                button.textContent = "已复制";
+
+                setTimeout(() => {
+                    button.textContent = oldText;
+                }, 1000);
+            } catch (error) {
+                console.warn("Copy failed:", error);
+            }
+        }
+
+
+        /* ============================================================
+         * Fullscreen
+         * ============================================================ */
+        function fullscreen() {
+            const container = document.querySelector(".container");
+            if (!document.fullscreenElement) {
+                container.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+
+        /* ============================================================
+         * Cursor
+         * ============================================================ */
+        function updatePosition() {
+            const cursor = editor.getCursorPosition();
+            document.getElementById("position")
+                .textContent = `Ln ${cursor.row + 1}, Col ${cursor.column + 1}`;
+        }
+
+
+        /* ============================================================
+         * Events
+         * ============================================================ */
+        document.getElementById("language").addEventListener(
+            "change",
+            event => { setLanguage(event.target.value); }
+        );
+
+        document.getElementById("mode").addEventListener("click", toggleMode);
+        document.getElementById("format").addEventListener("click", formatContent);
+        document.getElementById("copy").addEventListener("click", copyContent);
+        document.getElementById("fullscreen").addEventListener("click", fullscreen);
+
+        editor.selection.on("changeCursor", updatePosition);
+
+        /*
+         * 编辑内容发生变化：
+         *
+         * 不弹错误，
+         * 只更新右上角错误图标。
+         */
+        editor.session.on("change", () => {
+            if (editing) {
+                validate();
+            }
+        });
+
+
+        /* ============================================================
+         * Keyboard
+         * ============================================================ */
+        editor.commands.addCommand({
+            name: "format",
+            bindKey: {
+                win: "Ctrl-Shift-F",
+                mac: "Command-Shift-F"
+            },
+            exec: () => { formatContent(); }
+        });
+
+        /* ============================================================
+         * Init
+         * ============================================================ */
+        setLanguage("json");
+    </script>
+
+</body>
+
+</html>
