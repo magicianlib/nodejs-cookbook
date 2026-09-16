@@ -205,6 +205,21 @@
         .ace_print-margin {
             display: none !important;
         }
+
+        .ace_editor .ace_cursor {
+            border-left-style: solid;
+            border-left-width: 4px;
+        }
+
+        /* 浅色主题 */
+        .ace-chrome .ace_cursor {
+            border-left-color: #0084ff;
+        }
+
+        /* Tomorrow */
+        .ace-tomorrow .ace_cursor {
+            border-left-color: #0084ff;
+        }
     </style>
 </head>
 
@@ -331,7 +346,7 @@ borrow_records:
         editor.setTheme("ace/theme/tomorrow");
 
         editor.setOptions({
-            readOnly: false, // 只读模式
+            readOnly: true, // 只读模式
 
             // mode: "ace/mode/json", // 语言模式
             // theme: "ace/theme/chrome", // 主题
@@ -351,8 +366,8 @@ borrow_records:
             showFoldWidgets: true, // 代码折叠按钮
             fadeFoldWidgets: true, // 淡化折叠按钮
 
-            // cursorStyle: "ace|slim|smooth|wide" // 光标样式
-            // selectionStyle: "line|text|fullLine|screenLine" // 选择区域样式
+            // cursorStyle: "ace|slim|smooth|wide", // 光标样式
+            // selectionStyle: "line|text|fullLine|screenLine", // 选择区域样式
 
             scrollPastEnd: 0, // 是否允许滚过文档末尾
 
@@ -362,6 +377,12 @@ borrow_records:
             wrap: false // 换行
         });
 
+        // 自定义只读提示
+        const messages = ace.require(
+            "ace/lib/default_english_messages"
+        ).defaultEnglishMessages;
+
+        messages["editor.tooltip.disable-editing"] = "此内容仅供查看，暂不支持编辑";
 
         /* ============================================================
          * Validation UI
