@@ -382,7 +382,7 @@ borrow_records:
             "ace/lib/default_english_messages"
         ).defaultEnglishMessages;
 
-        messages["editor.tooltip.disable-editing"] = "此内容仅供查看，暂不支持编辑";
+        messages["editor.tooltip.disable-editing"] = "此内容仅供查看，不支持编辑";
 
         /* ============================================================
          * Validation UI
@@ -542,13 +542,9 @@ borrow_records:
                 formatJson();
             } else if (currentLanguage === "yaml") {
                 formatYaml();
-                // } else if (currentLanguage === "html") {
-                //    formatHtml();
             } else {
-                formatDefaultLanguge();
+                autoFormat();
             }
-
-            formatHtml();
 
             // 格式化完成后重新验证
             validate();
@@ -604,9 +600,8 @@ borrow_records:
             }
         }
 
-        function formatDefaultLanguge() {
+        function autoFormat() {
             const value = editor.getValue();
-
             if (!value.trim()) {
                 return;
             }
@@ -626,7 +621,7 @@ borrow_records:
 
             } catch (error) {
                 // 不弹窗，不修改原始数据
-                console.warn("HTML format failed:", error);
+                console.warn("content format failed:", error);
             }
         }
 
@@ -679,10 +674,9 @@ borrow_records:
         /* ============================================================
          * Events
          * ============================================================ */
-        document.getElementById("language").addEventListener(
-            "change",
-            event => { setLanguage(event.target.value); }
-        );
+        document.getElementById("language").addEventListener("change", event => {
+            setLanguage(event.target.value);
+        });
 
         document.getElementById("mode").addEventListener("click", toggleMode);
         document.getElementById("format").addEventListener("click", formatContent);
@@ -703,7 +697,6 @@ borrow_records:
             }
         });
 
-
         /* ============================================================
          * Keyboard
          * ============================================================ */
@@ -713,7 +706,9 @@ borrow_records:
                 win: "Ctrl-Shift-F",
                 mac: "Command-Shift-F"
             },
-            exec: () => { formatContent(); }
+            exec: () => {
+                formatContent();
+            }
         });
 
         /* ============================================================
